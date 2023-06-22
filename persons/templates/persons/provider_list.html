@@ -1,31 +1,23 @@
-{% extends 'home/base.html' %}
+{% extends 'persons/index.html' %}
+
 {% block title %} Providers {% endblock title %}
-{% block content %}
 
-        {% for provider in providersList %}
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">№</th>
-                  <th scope="col">Назва</th>
-                  <th scope="col">Місто</th>
-                  <th scope="col">Адреса</th>
-                  <th scope="col">Телефон</th>
-                  <th scope="col">Статус</th>
-                </tr>
-              </thead>
-              <tbody class="table-group-divider">
-                <tr>
-                  <th scope="row">{{ provider.id }}</th>
-                  <td>{{ provider.provider_name }}</td>
-                  <td>{{ provider.city }}</td>
-                  <td>{{ provider.address }}</td>
-                  <td>{{ provider.phone }}</td>
-                  <td>{{ provider.status }}</td>
-                  <td>Button</td>
-                </tr>
-              </tbody>
-            </table>
-        {% endfor %}
-
-{% endblock content %}
+{% block table-headers %}
+      <th scope="col">№</th>
+      <th scope="col">Назва</th>
+      <th scope="col">Місто</th>
+      <th scope="col">Адреса</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Статус</th>
+ {% endblock table-headers %}
+ {% block table-body %}
+     {% for provider in providersList %}
+          <th scope="row">{{ provider.id }}</th>
+          <td>{{ provider.provider_name }}</td>
+          <td>{{ provider.city }}</td>
+          <td>{{ provider.address }}</td>
+          <td>{{ provider.phone }}</td>
+          <td>{{ provider.status }}</td>
+          <td>Button</td>
+     {% endfor %}
+ {% endblock table-body %}

@@ -1,0 +1,12 @@
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	}
+a {
+    text-decoration: none;
+}
+html {
+	font-family: 'Dancing Script', cursive;
+	font-family: 'Dosis', sans-serif;
+}
