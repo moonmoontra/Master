@@ -1,0 +1,32 @@
+<table class=“table”>
+    <thead>
+    <tr>
+        <th scope=“col”>№</th>
+        <th scope=“col”>Назва</th>
+        <th scope=“col”>Місто</th>
+        <th scope=“col”>Адреса</th>
+        <th scope=“col”>Телефон</th>
+        <th scope=“col”>Статус</th>
+    </tr>
+    </thead>
+    <tbody class='table-group-divider'>
+    {% for object in object_list %}
+        <tr>
+            <th scope=“row”>{{ object.id }}</th>
+            <td>{{ object.name }}</td>
+            <td>{{ object.city }}</td>
+            <td>{{ object.address }}</td>
+            <td>{{ object.phone }}</td>
+            {% if object.status == 'individual' %}
+                <td>Фізична особа</td>
+            {% else %}
+                <td>Юридична особа</td>
+            {% endif %}
+            <td>
+                <div class='form-check'><input class='form-check-input' type=“checkbox” value='' id='flexCheckDefault'>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

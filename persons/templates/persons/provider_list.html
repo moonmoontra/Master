@@ -1,46 +1,47 @@
-{% extends 'persons/index.html' %}
+{% extends 'home/base.html' %}
+{% load table_tags %}
 
 {% block title %} Providers {% endblock title %}
 {% block content %}
-{% block second-title %}
+
     <div class="second-title">
         <h2>Контрагенти</h2>
     </div>
-{% endblock second-title %}
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">№</th>
-        <th scope="col">Назва</th>
-        <th scope="col">Місто</th>
-        <th scope="col">Адреса</th>
-        <th scope="col">Телефон</th>
-        <th scope="col">Статус</th>
-    </tr>
-    </thead>
-    <tbody class="table-group-divider">
-    {% for provider in providersList %}
-    <tr>
-        <th scope="row">{{ provider.id }}</th>
-        <td>{{ provider.provider_name }}</td>
-        <td>{{ provider.city }}</td>
-        <td>{{ provider.address }}</td>
-        <td>{{ provider.phone }}</td>
-        {% if provider.status == 'individual' %}
-            <td>Фізична особа</td>
-        {% else %}
-            <td>Юридична особа</td>
-        {% endif %}
-        <td>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </div>
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+{#<table class="table">#}
+{#    <thead>#}
+{#    <tr>#}
+{#        <th scope="col">№</th>#}
+{#        <th scope="col">Назва</th>#}
+{#        <th scope="col">Місто</th>#}
+{#        <th scope="col">Адреса</th>#}
+{#        <th scope="col">Телефон</th>#}
+{#        <th scope="col">Статус</th>#}
+{#    </tr>#}
+{#    </thead>#}
+{#    <tbody class="table-group-divider">#}
+{#    {% for provider in providersList %}#}
+{#    <tr>#}
+{#        <th scope="row">{{ provider.id }}</th>#}
+{#        <td>{{ provider.provider_name }}</td>#}
+{#        <td>{{ provider.city }}</td>#}
+{#        <td>{{ provider.address }}</td>#}
+{#        <td>{{ provider.phone }}</td>#}
+{#        {% if provider.status == 'individual' %}#}
+{#            <td>Фізична особа</td>#}
+{#        {% else %}#}
+{#            <td>Юридична особа</td>#}
+{#        {% endif %}#}
+{#        <td>#}
+{#            <div class="form-check">#}
+{#                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">#}
+{#            </div>#}
+{#        </td>#}
+{#    </tr>#}
+{#    {% endfor %}#}
+{#    </tbody>#}
+{#</table>#}
+
+    {% show_table providersList %}
 
 {% endblock content %}
-
