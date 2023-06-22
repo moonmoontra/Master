@@ -11,7 +11,15 @@
     {% for object in object_list %}
         <tr>
             {% for field in fields %}
-                <td>{{ object|get_attr:field }}</td>
+                {% if field == 'status' %}
+                    {% if object|get_attr:field == 'individual' %}
+                        <td>Фізична особа</td>
+                    {% else %}
+                        <td>Юридична особа</td>
+                    {% endif %}
+                {% else %}
+                    <td>{{ object|get_attr:field }}</td>
+                {% endif %}
             {% endfor %}
             <td>
                 <div class='form-check'><input class='form-check-input' type='checkbox' value='' id='flexCheckDefault'>
