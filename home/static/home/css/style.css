@@ -5,8 +5,12 @@
 	}
 a {
     text-decoration: none;
+	color: aquamarine;
 }
 html {
 	font-family: 'Dancing Script', cursive;
 	font-family: 'Dosis', sans-serif;
+}
+body a {
+	font-size: 65px;
 }
