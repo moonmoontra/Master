@@ -1,49 +1,91 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %} Master {% endblock title %}</title>
-    <link type="text/css" href="{% static 'home/css/style.css' %}" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link type="text/css" href="{% static 'home/css/style.css' %}" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+    </script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">MASTER</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
-              <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav" style="font-size: 20px">
                 <ul class="nav nav-underline">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Головна</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'providers' %}">Контрагенти</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'manufacturers' %}">Виробники</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Працівники</a>
-                    </li>
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" aria-current="page" href="#">Головна</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'providers' %}">Контрагенти</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'manufacturers' %}">Виробники</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="#">Працівники</a>#}
+{#                    </li>#}
+
+
+{#                    <li class="nav-item">#}
+{#    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Головна</a>#}
+{#</li>#}
+{#<li class="nav-item">#}
+{#    <a class="nav-link {% if request.path == 'person/providers/' %}active{% endif %}" href="{% url 'providers' %}">Контрагенти</a>#}
+{#</li>#}
+{#<li class="nav-item">#}
+{#    <a class="nav-link {% if request.path == '/manufacturers/' %}active{% endif %}" href="/manufacturers/">Виробники</a>#}
+{#</li>#}
+{#<li class="nav-item">#}
+{#    <a class="nav-link {% if request.path == '/employees/' %}active{% endif %}" href="/employees/">Працівники</a>#}
+{#</li>#}
+
+
                 </ul>
             </div>
-          </div>
-        </nav>
-    </header>
-    <div class="container">
-        {% block content %}
-        {% endblock content %}
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-  </body>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    {% block content %}
+    {% endblock content %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+        crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function() {
+    // Обработчик события нажатия на ссылку
+    $('.nav-link').on('click', function(event) {
+        event.preventDefault(); // Предотвратить переход по ссылке по умолчанию
+        $('.nav-link').removeClass('active'); // Удалить класс 'active' у всех ссылок
+        $(this).addClass('active'); // Добавить класс 'active' к нажатой ссылке
+        window.location.href = $(this).attr('href'); // Перенаправить на указанный URL
+    });
+});
+</script>
+
+</body>
 </html>
