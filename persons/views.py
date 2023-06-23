@@ -56,16 +56,16 @@ class EmployeeListView(ListView):
 
 def delete_persons_view(request):
     if request.method == 'POST':
+        url = request.META.get('HTTP_REFERER')
         model_name = request.POST.get('model_name')  # получаем название модели из POST-запроса
         model = apps.get_model('persons', model_name)
         person_ids = request.POST.getlist('person_ids')
         filter_objects_delete(model.objects, list=person_ids)
-        return redirect('/')
-    else:
-        return render(request, 'persons/provider_list.html')
+        return redirect(url)
 
 
 class ProviderCreateView(CreateView):
     model = Provider
-    template_name = 'persons/provider_list.html'
+    success_url = '/persons/providers'
+    template_name = 'persons/provider_create.html'
     form_class = ProviderCreateForm
