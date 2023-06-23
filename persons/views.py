@@ -1,8 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView
 from django.apps import apps
 
-from home.templatetags.table_tags import delete_objects
 from persons.forms import ProviderCreateForm
 from persons.models import Provider, Manufacturer, Employee
 from persons.services import filter_objects_delete
@@ -20,7 +20,7 @@ class ProviderListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['provider_title'] = 'Контрагенти'
+        context['title'] = 'Контрагенти'
         context['headers'] = ['№', 'Назва', 'Місто', 'Адреса', 'Телефон', 'Статус']
         context['fields'] = ['id', 'provider_name', 'city', 'address', 'phone', 'status']
         context['model_name'] = 'Provider'
@@ -30,11 +30,10 @@ class ProviderListView(ListView):
 class ManufacturerListView(ListView):
     model = Manufacturer
     template_name = 'persons/manufacturer_list.html'
-    context_object_name = 'manufacturersList'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['manufacturer_title'] = 'Виробники'
+        context['title'] = 'Виробники'
         context['headers'] = ['№', "Назва або Ім'я", 'Країна']
         context['fields'] = ['id', 'manufacturer_name', 'country']
         context['model_name'] = 'Manufacturer'
@@ -47,7 +46,7 @@ class EmployeeListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['employee_title'] = 'Працівники'
+        context['title'] = 'Працівники'
         context['headers'] = ['№', "Ім'я", 'Прізвище', 'Номер контракту', 'Посада', 'Телефон', 'Адреса', 'Дата прийняття', 'Дата звільнення']
         context['fields'] = ['id', 'first_name', 'last_name', 'contract', 'position', 'phone', 'address', 'start_date', 'end_date']
         context['model_name'] = 'Employee'
@@ -62,6 +61,8 @@ def delete_persons_view(request):
         person_ids = request.POST.getlist('person_ids')
         filter_objects_delete(model.objects, list=person_ids)
         return redirect(url)
+    else:
+        return HttpResponse("Метод запроса не поддерживается.")
 
 
 class ProviderCreateView(CreateView):

@@ -1,5 +1,4 @@
 from django import forms
-from service_objects.services import Service
 
 from persons.models import Provider
 
@@ -35,15 +34,6 @@ from persons.models import Provider
 #         )
 #
 #         return self.privider
-
-
-class DeleteObjectService(Service):
-    def process(self):
-        model = self.cleaned_data['model']
-        person_ids = self.cleaned_data['person_ids']
-
-        model.objects.filter(id_in=person_ids).delete()
-
 
 def filter_objects_delete(objects, list, **kwargs):
     return objects.filter(id__in=list, **kwargs).delete()

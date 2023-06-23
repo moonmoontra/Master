@@ -24,10 +24,10 @@
                 <li>
                     {% if model_name == 'Provider' %}
                         <a class="btn" role="button" style="border-top: 4px solid green;" href="{% url 'provider_create' %}">Додати</a>
-                    {% elif model_name == 'Manufacturer' %}
-                        <a class="btn" role="button" style="border-top: 4px solid green;" href="{% url 'manufacturer_create' %}">Додати</a>
-                    {% elif model_name == 'Employee' %}
-                        <a class="btn" role="button" style="border-top: 4px solid green;" href="{% url 'employee_create' %}">Додати</a>
+{#                    {% elif model_name == 'Manufacturer' %}#}
+{#                        <a class="btn" role="button" style="border-top: 4px solid green;" href="{% url 'manufacturer_create' %}">Додати</a>#}
+{#                    {% elif model_name == 'Employee' %}#}
+{#                        <a class="btn" role="button" style="border-top: 4px solid green;" href="{% url 'employee_create' %}">Додати</a>#}
                     {% endif %}
                     <button class="btn" style="border-top: 4px solid red;" type="submit">Видалити</button>
                 </li>
