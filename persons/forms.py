@@ -1,4 +1,4 @@
-from django.forms import forms
+from django import forms
 
 from persons.models import Provider
 
@@ -6,4 +6,4 @@ from persons.models import Provider
 class ProviderCreateForm(forms.ModelForm):
     class Meta:
         model = Provider
-        fields = 'all'
+        fields = '__all__'
