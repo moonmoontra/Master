@@ -105,6 +105,26 @@ body a {
 	border: 1px solid;
 	border-radius: 10px;
 	text-align: center;
-	margin: 20px 0 30px 0;
+	margin: 20px 0 40px 0;
 	width: 300px;
+	float: left;
+}
+.title-nav{
+	float: right;
+	margin-top: 18px;
+}
+.btn-menu{
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+.btn-menu li a {
+	margin-right: 41px;
+	font-size: 19px;
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 125px
+}
+.btn-menu li a:last-child {
+	margin-right: 0px;
 }
