@@ -125,7 +125,17 @@ body a {
 	border-radius: 10px;
 	width: 125px
 }
+.btn-menu li button{
+	margin-right: 41px;
+	font-size: 19px;
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 125px
+}
 .btn-menu li a:last-child {
+	margin-right: 0px;
+}
+.btn-menu li button:last-child {
 	margin-right: 0px;
 }
 .title_h2 {
