@@ -59,7 +59,7 @@ def delete_persons_view(request):
         model_name = request.POST.get('model_name')
         model = apps.get_model('persons', model_name)
         person_ids = request.POST.getlist('person_ids')
-        filter_objects_delete(model.objects, list=person_ids)
+        filter_objects_delete(model.objects, person_ids=person_ids)
         return redirect(url)
     else:
         return HttpResponse("Метод запроса не поддерживается.")

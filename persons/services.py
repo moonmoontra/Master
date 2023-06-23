@@ -3,8 +3,8 @@ from django import forms
 from persons.models import Provider
 
 
-def filter_objects_delete(objects, list, **kwargs):
-    return objects.filter(id__in=list, **kwargs).delete()
+def filter_objects_delete(objects, person_ids: list, **kwargs):
+    return objects.filter(id__in=person_ids, **kwargs).delete()
 
 
 def get_fields_table(model):
