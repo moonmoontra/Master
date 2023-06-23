@@ -1,5 +1,25 @@
 {% load table_tags %}
-<table class='table'>
+
+<form method="post" action="{% url 'delete_person' %}">
+{% csrf_token %}
+
+    <div class="title-container">
+        <div class="second-title">
+            <h2 class="title_h2">{{ title }}</h2>
+        </div>
+        <nav class="title-nav">
+            <ul class="btn-menu">
+                <li>
+                    <a class="btn" style="border-top: 4px solid green;" href="#" role="button">Додати</a>
+{#                    <a class="btn" style="border-top: 4px solid blue;" href="#" role="button">Редагувати</a>#}
+{#                    <a class="btn" style="border-top: 4px solid red;" href="#" role="button" type="submit">Видалити</a>#}
+                     <button class="btn" style="border-top: 4px solid red;" type="submit">Видалити</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+<table class='table' id="main-table">
     <thead>
     <tr style="font-size: 20px">
         {% for header in headers %}
@@ -22,10 +42,12 @@
                 {% endif %}
             {% endfor %}
             <td>
-                <div class='form-check'><input class='form-check-input' type='checkbox' value='' id='flexCheckDefault'>
+                <div class='form-check'>
+                    <input class='form-check-input' type='checkbox' name="person_ids" value='{{ object.id }}' id='flexCheckDefault'>
                 </div>
             </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+</form>

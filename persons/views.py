@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
+
+from home.templatetags.table_tags import delete_objects
 from persons.models import Provider, Manufacturer
 
 
@@ -11,19 +13,14 @@ def index(request):
 
 class ProviderListView(ListView):
     model = Provider
-    template_name = 'provider_list.html'
-    #context_object_name = 'providersList'
+    template_name = 'persons/provider_list.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        # for provider in context['providersList']:
-        #     if provider.status == 'individual':
-        #         context['providersList'][provider].status = 'Фізична особа'
-        #     else:
-        #         context['providersList'][provider].status = 'Юридична особа'
+        context['provider_title'] = 'Контрагенти'
         context['headers'] = ['№', 'Назва', 'Місто', 'Адреса', 'Телефон', 'Статус']
         context['fields'] = ['id', 'provider_name', 'city', 'address', 'phone', 'status']
-        #print(context['providersList'][0].status)
+        print(context)
         return context
 
 
@@ -37,3 +34,13 @@ class ManufacturerListView(ListView):
         context['headers'] = ['№', "Назва або Ім'я", 'Країна']
         context['fields'] = ['id', 'manufacturer_name', 'country']
         return context
+
+
+def delete_persons_view(request):
+    if request.method == 'POST':
+        person_ids = request.POST.getlist('person_ids')
+        print(person_ids)
+        Provider.objects.filter(id__in=person_ids).delete()
+        return redirect('/')
+    else:
+        return render(request, 'persons/provider_list.html')
