@@ -111,7 +111,7 @@ body a {
 }
 .title-nav{
 	float: right;
-	margin-top: 18px;
+	margin-top: 25px;
 }
 .btn-menu{
 	margin: 0;
@@ -127,4 +127,7 @@ body a {
 }
 .btn-menu li a:last-child {
 	margin-right: 0px;
+}
+.title_h2 {
+	padding-top: 5px;
 }
