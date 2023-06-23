@@ -3,6 +3,7 @@ from django.views.generic import ListView
 
 from home.templatetags.table_tags import delete_objects
 from persons.models import Provider, Manufacturer
+from persons.services import filter_objects_delete
 
 
 # Create your views here.
@@ -26,11 +27,12 @@ class ProviderListView(ListView):
 
 class ManufacturerListView(ListView):
     model = Manufacturer
-    template_name = 'manufacturer_list.html'
+    template_name = 'persons/manufacturer_list.html'
     context_object_name = 'manufacturersList'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['manufacturer_title'] = 'Виробники'
         context['headers'] = ['№', "Назва або Ім'я", 'Країна']
         context['fields'] = ['id', 'manufacturer_name', 'country']
         return context
@@ -39,8 +41,7 @@ class ManufacturerListView(ListView):
 def delete_persons_view(request):
     if request.method == 'POST':
         person_ids = request.POST.getlist('person_ids')
-        print(person_ids)
-        Provider.objects.filter(id__in=person_ids).delete()
+        filter_objects_delete(Manufacturer.objects, list=person_ids)
         return redirect('/')
     else:
         return render(request, 'persons/provider_list.html')

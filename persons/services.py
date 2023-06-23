@@ -43,3 +43,6 @@ class DeleteObjectService(Service):
         person_ids = self.cleaned_data['person_ids']
 
         model.objects.filter(id_in=person_ids).delete()
+
+def filter_objects_delete(objects, list, **kwargs):
+    return objects.filter(id__in = list, **kwargs).delete()
