@@ -20,7 +20,6 @@ class ProviderListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Контрагенти'
         context['headers'] = get_headers_table(Provider)
         context['fields'] = get_fields_table(Provider)
         context['model_name'] = 'Provider'
@@ -33,7 +32,6 @@ class ManufacturerListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Виробники'
         context['headers'] = get_headers_table(Manufacturer)
         context['fields'] = get_fields_table(Manufacturer)
         context['model_name'] = 'Manufacturer'
@@ -46,7 +44,6 @@ class EmployeeListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Працівники'
         context['headers'] = get_headers_table(Employee)
         context['fields'] = get_fields_table(Employee)
         context['model_name'] = 'Employee'
