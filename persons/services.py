@@ -1,6 +1,16 @@
 from django import forms
+from django.db import models
 
 from persons.models import Provider
+
+
+def get_model_context(model):
+    context = {
+        'headers': get_headers_table(model),
+        'fields': get_fields_table(model),
+        'model_name': model._meta.model_name.capitalize()
+    }
+    return context
 
 
 def filter_objects_delete(objects, person_ids: list, **kwargs):
