@@ -1,7 +1,7 @@
 {% load table_tags %}
 <table class='table'>
     <thead>
-    <tr>
+    <tr style="font-size: 19px">
         {% for header in headers %}
             <th>{{ header }}</th>
         {% endfor %}
@@ -9,7 +9,7 @@
     </thead>
     <tbody class='table-group-divider'>
     {% for object in object_list %}
-        <tr>
+        <tr style="font-size: 17px;">
             {% for field in fields %}
                 {% if field == 'status' %}
                     {% if object|get_attr:field == 'individual' %}
