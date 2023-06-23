@@ -4,9 +4,15 @@
 {% csrf_token %}
 
     <div class="title-container">
-        <div class="second-title">
-            <h2 class="title_h2">{{ title }}</h2>
-        </div>
+        {% if title == 'Контрагенти' %}
+            <div style="background-color: rgb(166, 255, 231);" class="second-title">
+                <h2 class="title_h2">{{ title }}</h2>
+            </div>
+        {% elif title == 'Виробники' %}
+            <div style="background-color: rgb(187, 235, 255);" class="second-title">
+                <h2 class="title_h2">{{ title }}</h2>
+            </div>
+        {% endif %}
         <nav class="title-nav">
             <ul class="btn-menu">
                 <li>
