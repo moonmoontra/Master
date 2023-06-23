@@ -5,7 +5,7 @@ from django.apps import apps
 
 from persons.forms import ProviderCreateForm
 from persons.models import Provider, Manufacturer, Employee
-from persons.services import filter_objects_delete
+from persons.services import filter_objects_delete, get_fields_table, get_headers_table
 
 
 # Create your views here.
@@ -21,8 +21,8 @@ class ProviderListView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Контрагенти'
-        context['headers'] = ['№', 'Назва', 'Місто', 'Адреса', 'Телефон', 'Статус']
-        context['fields'] = ['id', 'provider_name', 'city', 'address', 'phone', 'status']
+        context['headers'] = get_headers_table(Provider)
+        context['fields'] = get_fields_table(Provider)
         context['model_name'] = 'Provider'
         return context
 
@@ -34,8 +34,8 @@ class ManufacturerListView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Виробники'
-        context['headers'] = ['№', "Назва або Ім'я", 'Країна']
-        context['fields'] = ['id', 'manufacturer_name', 'country']
+        context['headers'] = get_headers_table(Manufacturer)
+        context['fields'] = get_fields_table(Manufacturer)
         context['model_name'] = 'Manufacturer'
         return context
 
@@ -47,8 +47,8 @@ class EmployeeListView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Працівники'
-        context['headers'] = ['№', "Ім'я", 'Прізвище', 'Номер контракту', 'Посада', 'Телефон', 'Адреса', 'Дата прийняття', 'Дата звільнення']
-        context['fields'] = ['id', 'first_name', 'last_name', 'contract', 'position', 'phone', 'address', 'start_date', 'end_date']
+        context['headers'] = get_headers_table(Employee)
+        context['fields'] = get_fields_table(Employee)
         context['model_name'] = 'Employee'
         return context
 
@@ -67,5 +67,6 @@ def delete_persons_view(request):
 
 class ProviderCreateView(CreateView):
     model = Provider
-    template_name = 'persons/provider_list.html'
+    template_name = 'persons/provider_create.html'
     form_class = ProviderCreateForm
+    success_url = '/persons/providers'
