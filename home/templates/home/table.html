@@ -12,14 +12,37 @@
             <div style="background-color: rgb(187, 235, 255);" class="second-title">
                 <h2 class="title_h2">{{ title }}</h2>
             </div>
+        {% elif title == 'Працівники' %}
+            <div style="background-color: rgb(255, 252, 196);" class="second-title">
+                <h2 class="title_h2">{{ title }}</h2>
+            </div>
         {% endif %}
         <nav class="title-nav">
             <ul class="btn-menu">
                 <li>
-                    <a class="btn" style="border-top: 4px solid green;" href="#" role="button">Додати</a>
-{#                    <a class="btn" style="border-top: 4px solid blue;" href="#" role="button">Редагувати</a>#}
-{#                    <a class="btn" style="border-top: 4px solid red;" href="#" role="button" type="submit">Видалити</a>#}
-                     <button class="btn" style="border-top: 4px solid red;" type="submit">Видалити</button>
+                    <a class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-top: 4px solid green;">Додати</a>
+                    <!-- Модальное окно -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Заголовок модального окна</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                          </div>
+                          <div class="modal-body">
+                              <form method="POST" action="{% url 'provider_create' %}">
+                                  {% csrf_token %}
+                                  {{ form.as_p }}
+                              </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="button" class="btn btn-primary">Сохранить изменения</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn" style="border-top: 4px solid red;" type="submit">Видалити</button>
                 </li>
             </ul>
         </nav>
