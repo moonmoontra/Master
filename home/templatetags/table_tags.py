@@ -9,9 +9,11 @@ register = template.Library()
 def show_table(object_list, title, headers, fields, model_name):
     return {'object_list': object_list, 'title': title, 'headers': headers, 'fields': fields, 'model_name': model_name}
 
+
 @register.filter()
 def get_attr(object, attr):
     return getattr(object, attr)
+
 
 @register.simple_tag
 def delete_objects(model, object_ids):
