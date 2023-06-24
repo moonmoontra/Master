@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Employee, Clients, Manufacturer, Provider
+from .models import Employee, Client, Manufacturer, Provider
 
 
 @admin.register(Employee)
@@ -9,8 +9,8 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_filter = ('position', 'start_date', 'end_date')
 
 
-@admin.register(Clients)
-class ClientsAdmin(admin.ModelAdmin):
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
     list_display = ('client_name', 'phone')
     list_filter = ('birthday_date',)
 

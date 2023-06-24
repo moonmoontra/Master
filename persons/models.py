@@ -65,7 +65,7 @@ class Employee(BaseData):
         ordering = ['position']
 
 
-class Clients(BaseData):
+class Client(BaseData):
     client_name = models.CharField(max_length=30, default=None, verbose_name="Ім'я")
     phone = PhoneNumberField(blank=True, region='UA',
                              error_messages={'invalid': 'Некоректний номер'}, verbose_name='Телефон')

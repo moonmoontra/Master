@@ -54,7 +54,7 @@ class BaseClientForm(forms.ModelForm):
         return object_validation_only_text_field(client_name)
 
     class Meta:
-        model = Clients
+        model = Client
         fields = '__all__'
 
 

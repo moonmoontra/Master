@@ -58,7 +58,7 @@ class EmployeeListView(BaseListView):
 
 
 class ClientListView(BaseListView):
-    model = Clients
+    model = Client
     template_name = 'persons/clients_list.html'
     edit_view_name = 'client_edit'
 
@@ -100,13 +100,13 @@ class ManufacturerEditView(BaseEditView):
 
 
 class ClientCreateView(BaseCreateView):
-    model = Clients
+    model = Client
     form_class = ClientCreateForm
     template_name = 'persons/client_create.html'
 
 
 class ClientEditView(BaseEditView):
-    model = Clients
+    model = Client
     form_class = ClientEditForm
     template_name = 'persons/client_edit.html'
 
