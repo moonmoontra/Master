@@ -27,7 +27,7 @@ def filter_objects_delete(objects, person_ids: list, **kwargs):
 
 
 def object_validation_only_text_field(_object):
-    regex = r'^[a-zA-ZА-Яа-яЁёЇїІіЄєҐґ\s]+$'
+    regex = r'^[""\'\'«»a-zA-ZА-Яа-яЁёЇїІіЄєҐґ\s]+$'
     if not re.match(regex, _object):
         raise ValidationError(_('Це поле не може містити цифри!'))
 
