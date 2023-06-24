@@ -1,4 +1,5 @@
 {% load table_tags %}
+{% load static %}
 
 <form method="post" action="{% url 'delete_person' %}">
 {% csrf_token %}
@@ -56,19 +57,4 @@
     </table>
 </form>
 
-<script>
-    jQuery(function ($) {
-        $('table > tbody > tr input[type="checkbox"]').click(function (event) {
-            event.stopPropagation();
-        });
-        $('tbody tr[data-href]').addClass('clickable').click(function () {
-            window.location = $(this).attr('data-href');
-        }).find('a').hover(function () {
-            $(this).parents('tr').unbind('click');
-        }, function () {
-            $(this).parents('tr').click(function () {
-                window.location = $(this).attr('data-href');
-            });
-        });
-    });
-</script>
+<script src="{% static 'home/js/clickable_main_table_field.js' %}"></script>
