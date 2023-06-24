@@ -1,4 +1,5 @@
 from django.db import models
+from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -33,7 +34,7 @@ class Provider(BaseData):
 
 class Manufacturer(BaseData):
     manufacturer_name = models.CharField(max_length=30, default=None, verbose_name="Назва або Ім'я")
-    country = models.CharField(max_length=30, default=None, verbose_name='Країна')
+    country = CountryField(max_length=30, default=None, verbose_name='Країна')
 
     def __str__(self):
         return f"{self.manufacturer_name}"

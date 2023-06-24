@@ -3,12 +3,12 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 
 
-def get_model_context(model, url_string):
+def get_model_context(model, url_for_edit):
     context = {
         'headers': get_headers_table(model),
         'fields': get_fields_table(model),
         'model_name': model._meta.model_name.capitalize(),
-        'url': url_string
+        'url': url_for_edit
     }
     return context
 
