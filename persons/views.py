@@ -13,48 +13,102 @@ def index(request):
     return render(request, 'persons/index.html')
 
 
-class ProviderListView(ListView):
+class BaseListView(ListView):
     paginate_by = 10
+    edit_view_name = None
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(get_model_context(self.model, self.edit_view_name))
+        return context
+
+
+class BaseCreateView(CreateView):
+    template_name = None
+    success_url = '/persons/'
+
+    def get_success_url(self):
+        return self.success_url + self.model.__name__.lower() + 's'
+
+
+class BaseEditView(UpdateView):
+    template_name = None
+    success_url = '/persons/'
+
+    def get_success_url(self):
+        return self.success_url + self.model.__name__.lower() + 's'
+
+
+class ProviderListView(BaseListView):
     model = Provider
     template_name = 'persons/provider_list.html'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update(get_model_context(Provider, 'provider_edit'))
-        return context
+    edit_view_name = 'provider_edit'
 
 
-class ManufacturerListView(ListView):
-    paginate_by = 10
+class ManufacturerListView(BaseListView):
     model = Manufacturer
     template_name = 'persons/manufacturer_list.html'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update(get_model_context(Manufacturer, 'manufacturer_edit'))
-        return context
+    edit_view_name = 'manufacturer_edit'
 
 
-class EmployeeListView(ListView):
-    paginate_by = 10
+class EmployeeListView(BaseListView):
     model = Employee
     template_name = 'persons/employees_list.html'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update(get_model_context(Employee, 'employee_edit'))
-        return context
+    edit_view_name = 'employee_edit'
 
 
-class ClientListView(ListView):
-    paginate_by = 10
+class ClientListView(BaseListView):
     model = Clients
     template_name = 'persons/clients_list.html'
+    edit_view_name = 'client_edit'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update(get_model_context(Clients, 'client_edit'))
-        return context
+
+class ProviderCreateView(BaseCreateView):
+    model = Provider
+    form_class = ProviderCreateForm
+    template_name = 'persons/provider_create.html'
+
+
+class ProviderEditView(BaseEditView):
+    model = Provider
+    form_class = ProviderEditForm
+    template_name = 'persons/provider_edit.html'
+
+
+class EmployeeCreateView(BaseCreateView):
+    model = Employee
+    form_class = EmployeeCreateForm
+    template_name = 'persons/employee_create.html'
+
+
+class EmployeeEditView(BaseEditView):
+    model = Employee
+    form_class = EmployeeEditForm
+    template_name = 'persons/employee_edit.html'
+
+
+class ManufacturerCreateView(BaseCreateView):
+    model = Manufacturer
+    form_class = ManufacturerCreateForm
+    template_name = 'persons/manufacturer_create.html'
+
+
+class ManufacturerEditView(BaseEditView):
+    model = Manufacturer
+    form_class = ManufacturerEditForm
+    template_name = 'persons/manufacturer_edit.html'
+
+
+class ClientCreateView(BaseCreateView):
+    model = Clients
+    form_class = ClientCreateForm
+    template_name = 'persons/client_create.html'
+
+
+class ClientEditView(BaseEditView):
+    model = Clients
+    form_class = ClientEditForm
+    template_name = 'persons/client_edit.html'
 
 
 @require_POST
@@ -70,59 +124,3 @@ def delete_persons_view(request):
         return redirect(url)
     except (LookupError, ValueError):
         return HttpResponse("Помилка видалення.")
-
-
-class ProviderCreateView(CreateView):
-    model = Provider
-    template_name = 'persons/provider_create.html'
-    form_class = ProviderCreateForm
-    success_url = '/persons/providers'
-
-
-class ProviderEditView(UpdateView):
-    model = Provider
-    success_url = '/persons/providers'
-    template_name = 'persons/provider_edit.html'
-    form_class = ProviderEditForm
-
-
-class EmployeeCreateView(CreateView):
-    model = Employee
-    template_name = 'persons/employee_create.html'
-    form_class = EmployeeCreateForm
-    success_url = '/persons/employees'
-
-
-class EmployeeEditView(UpdateView):
-    model = Employee
-    template_name = 'persons/employee_edit.html'
-    form_class = EmployeeEditForm
-    success_url = '/persons/employees'
-
-
-class ManufacturerCreateView(CreateView):
-    model = Manufacturer
-    template_name = 'persons/manufacturer_create.html'
-    form_class = ManufacturerCreateForm
-    success_url = '/persons/manufacturers'
-
-
-class ManufacturerEditView(UpdateView):
-    model = Manufacturer
-    success_url = '/persons/manufacturers'
-    template_name = 'persons/manufacturer_edit.html'
-    form_class = ManufacturerEditForm
-
-
-class ClientCreateView(CreateView):
-    model = Clients
-    template_name = 'persons/client_create.html'
-    form_class = ClientCreateForm
-    success_url = '/persons/clients'
-
-
-class ClientEditView(UpdateView):
-    model = Clients
-    success_url = '/persons/clients'
-    template_name = 'persons/client_edit.html'
-    form_class = ClientEditForm
