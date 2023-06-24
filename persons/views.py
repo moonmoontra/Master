@@ -14,6 +14,7 @@ def index(request):
 
 
 class ProviderListView(ListView):
+    paginate_by = 10
     model = Provider
     template_name = 'persons/provider_list.html'
 
@@ -24,6 +25,7 @@ class ProviderListView(ListView):
 
 
 class ManufacturerListView(ListView):
+    paginate_by = 10
     model = Manufacturer
     template_name = 'persons/manufacturer_list.html'
 
@@ -34,6 +36,7 @@ class ManufacturerListView(ListView):
 
 
 class EmployeeListView(ListView):
+    paginate_by = 10
     model = Employee
     template_name = 'persons/employees_list.html'
 
