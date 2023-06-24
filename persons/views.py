@@ -13,7 +13,17 @@ def index(request):
     return render(request, 'persons/index.html')
 
 
-class BaseListView(ListView):
+class BasePersonView:
+    template_name = None
+    model = None
+    form_class = None
+    success_url = '/persons/'
+
+    def get_success_url(self):
+        return self.success_url + self.model.__name__.lower() + 's'
+
+
+class BaseListView(BasePersonView, ListView):
     paginate_by = 10
     edit_view_name = None
 
@@ -23,92 +33,84 @@ class BaseListView(ListView):
         return context
 
 
-class BaseCreateView(CreateView):
-    template_name = None
-    success_url = '/persons/'
-
-    def get_success_url(self):
-        return self.success_url + self.model.__name__.lower() + 's'
+class BaseCreateView(BasePersonView, CreateView):
+    pass
 
 
-class BaseEditView(UpdateView):
-    template_name = None
-    success_url = '/persons/'
-
-    def get_success_url(self):
-        return self.success_url + self.model.__name__.lower() + 's'
+class BaseEditView(BasePersonView, UpdateView):
+    pass
 
 
 class ProviderListView(BaseListView):
-    model = Provider
     template_name = 'persons/provider_list.html'
     edit_view_name = 'provider_edit'
+    model = Provider
 
 
 class ManufacturerListView(BaseListView):
-    model = Manufacturer
     template_name = 'persons/manufacturer_list.html'
     edit_view_name = 'manufacturer_edit'
+    model = Manufacturer
 
 
 class EmployeeListView(BaseListView):
-    model = Employee
     template_name = 'persons/employees_list.html'
     edit_view_name = 'employee_edit'
+    model = Employee
 
 
 class ClientListView(BaseListView):
-    model = Client
     template_name = 'persons/clients_list.html'
     edit_view_name = 'client_edit'
+    model = Client
 
 
 class ProviderCreateView(BaseCreateView):
-    model = Provider
     form_class = ProviderForm
     template_name = 'persons/provider_create.html'
+    model = Provider
 
 
 class ProviderEditView(BaseEditView):
-    model = Provider
     form_class = ProviderForm
     template_name = 'persons/provider_edit.html'
+    model = Provider
 
 
 class EmployeeCreateView(BaseCreateView):
-    model = Employee
     form_class = EmployeeForm
     template_name = 'persons/employee_create.html'
+    model = Employee
 
 
 class EmployeeEditView(BaseEditView):
-    model = Employee
     form_class = EmployeeForm
     template_name = 'persons/employee_edit.html'
+    model = Employee
 
 
 class ManufacturerCreateView(BaseCreateView):
-    model = Manufacturer
     form_class = ManufacturerForm
     template_name = 'persons/manufacturer_create.html'
+    model = Manufacturer
 
 
 class ManufacturerEditView(BaseEditView):
-    model = Manufacturer
     form_class = ManufacturerForm
     template_name = 'persons/manufacturer_edit.html'
+    model = Manufacturer
 
 
 class ClientCreateView(BaseCreateView):
-    model = Client
     form_class = ClientForm
     template_name = 'persons/client_create.html'
+    model = Client
 
 
 class ClientEditView(BaseEditView):
-    model = Client
     form_class = ClientForm
     template_name = 'persons/client_edit.html'
+    model = Client
 
 
 @require_POST
