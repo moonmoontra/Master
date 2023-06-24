@@ -65,49 +65,49 @@ class ClientListView(BaseListView):
 
 class ProviderCreateView(BaseCreateView):
     model = Provider
-    form_class = ProviderCreateForm
+    form_class = ProviderForm
     template_name = 'persons/provider_create.html'
 
 
 class ProviderEditView(BaseEditView):
     model = Provider
-    form_class = ProviderEditForm
+    form_class = ProviderForm
     template_name = 'persons/provider_edit.html'
 
 
 class EmployeeCreateView(BaseCreateView):
     model = Employee
-    form_class = EmployeeCreateForm
+    form_class = EmployeeForm
     template_name = 'persons/employee_create.html'
 
 
 class EmployeeEditView(BaseEditView):
     model = Employee
-    form_class = EmployeeEditForm
+    form_class = EmployeeForm
     template_name = 'persons/employee_edit.html'
 
 
 class ManufacturerCreateView(BaseCreateView):
     model = Manufacturer
-    form_class = ManufacturerCreateForm
+    form_class = ManufacturerForm
     template_name = 'persons/manufacturer_create.html'
 
 
 class ManufacturerEditView(BaseEditView):
     model = Manufacturer
-    form_class = ManufacturerEditForm
+    form_class = ManufacturerForm
     template_name = 'persons/manufacturer_edit.html'
 
 
 class ClientCreateView(BaseCreateView):
     model = Client
-    form_class = ClientCreateForm
+    form_class = ClientForm
     template_name = 'persons/client_create.html'
 
 
 class ClientEditView(BaseEditView):
     model = Client
-    form_class = ClientEditForm
+    form_class = ClientForm
     template_name = 'persons/client_edit.html'
 
 

@@ -10,81 +10,65 @@ from persons.models import *
 from persons.services import object_validation_only_text_field
 
 
-class BaseProviderClass(forms.ModelForm):
+class ObjectValidationMixin:
+    def clean_field(self, field_name):
+        field_value = self.cleaned_data[field_name]
+        return object_validation_only_text_field(field_value)
+
+
+class BaseProviderClass(ObjectValidationMixin, forms.ModelForm):
     def clean_provider_name(self):
-        provider_name = self.cleaned_data['provider_name']
-        return object_validation_only_text_field(provider_name)
+        return self.clean_field('provider_name')
 
     class Meta:
         model = Provider
         fields = '__all__'
 
 
-class BaseEmployeeClass(forms.ModelForm):
+class BaseEmployeeClass(ObjectValidationMixin, forms.ModelForm):
     def clean_first_name(self):
-        first_name = self.cleaned_data['first_name']
-        return object_validation_only_text_field(first_name)
+        return self.clean_field('first_name')
 
     def clean_last_name(self):
-        last_name = self.cleaned_data['last_name']
-        return object_validation_only_text_field(last_name)
+        return self.clean_field('last_name')
 
     def clean_position(self):
-        position = self.cleaned_data['position']
-        return object_validation_only_text_field(position)
+        return self.clean_field('position')
 
     class Meta:
         model = Employee
         fields = '__all__'
 
 
-class BaseManufacturerClass(forms.ModelForm):
+class BaseManufacturerClass(ObjectValidationMixin, forms.ModelForm):
     def clean_manufacturer_name(self):
-        manufacturer_name = self.cleaned_data['manufacturer_name']
-        return object_validation_only_text_field(manufacturer_name)
+        return self.clean_field('manufacturer_name')
 
     class Meta:
         model = Manufacturer
         fields = '__all__'
 
 
-class BaseClientForm(forms.ModelForm):
+class BaseClientForm(ObjectValidationMixin, forms.ModelForm):
     def clean_client_name(self):
-        client_name = self.cleaned_data['client_name']
-        return object_validation_only_text_field(client_name)
+        return self.clean_field('client_name')
 
     class Meta:
         model = Client
         fields = '__all__'
 
 
-class ProviderCreateForm(BaseProviderClass):
+class ProviderForm(BaseProviderClass):
     pass
 
 
-class ProviderEditForm(BaseProviderClass):
+class EmployeeForm(BaseEmployeeClass):
     pass
 
 
-class EmployeeCreateForm(BaseEmployeeClass):
+class ManufacturerForm(BaseManufacturerClass):
     pass
 
 
-class EmployeeEditForm(BaseEmployeeClass):
-    pass
-
-
-class ManufacturerCreateForm(BaseManufacturerClass):
-    pass
-
-
-class ManufacturerEditForm(BaseManufacturerClass):
-    pass
-
-
-class ClientCreateForm(BaseClientForm):
-    pass
-
-
-class ClientEditForm(BaseClientForm):
+class ClientForm(BaseClientForm):
     pass
