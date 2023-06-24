@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import RegexValidator
 
 from persons.models import *
 
@@ -39,8 +40,9 @@ class ManufacturerEditForm(forms.ModelForm):
 
 
 class ClientCreateForm(forms.ModelForm):
-    client_name = forms.CharField(max_length=30, required=True)
-    phone = forms.CharField()
+    client_name = forms.CharField(max_length=30, required=True, validators=[RegexValidator(regex=r'^[a-zA-ZА-Яа-яЁёЇїІіЄєҐґ\s]+$')])
+    phone = forms.CharField(max_length=15, required=True, validators=[RegexValidator(regex=r'^[+]?\d+')])
+    birthday_date = forms.DateField(required=True)
     class Meta:
         model = Clients
         fields = '__all__'

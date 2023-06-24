@@ -64,11 +64,11 @@ class Employee(BaseData):
 
 class Clients(BaseData):
     client_name = models.CharField(max_length=30, default=None, verbose_name="Ім'я")
-    phone = models.CharField(max_length=15, default=None, verbose_name="Телефон")
-    birthday_date = models.DateField(default=None, verbose_name="Дата народження")
+    phone = models.CharField(max_length=15, default=None, verbose_name='Телефон')
+    birthday_date = models.DateField(default=None, verbose_name='Дата народження')
 
     def __str__(self):
-        return "{client_name} [{birthday_date}]".format(client_name=self.client_name, birthday_date=self.birthday_date)
+        return '{client_name} [{birthday_date}]'.format(client_name=self.client_name, birthday_date=self.birthday_date)
 
     class Meta:
         verbose_name = 'Клієнт'
