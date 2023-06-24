@@ -46,6 +46,17 @@ class EmployeeListView(ListView):
         return context
 
 
+class ClientListView(ListView):
+    paginate_by = 10
+    model = Clients
+    template_name = 'persons/clients_list.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(get_model_context(Clients, 'client_edit'))
+        return context
+
+
 @require_POST
 def delete_persons_view(request):
     try:
@@ -101,3 +112,17 @@ class ManufacturerEditView(UpdateView):
     success_url = '/persons/manufacturers'
     template_name = 'persons/manufacturer_edit.html'
     form_class = ManufacturerEditForm
+
+
+class ClientCreateView(CreateView):
+    model = Clients
+    template_name = 'persons/client_create.html'
+    form_class = ClientCreateForm
+    success_url = '/persons/clients'
+
+
+class ClientEditView(UpdateView):
+    model = Clients
+    success_url = '/persons/clients'
+    template_name = 'persons/client_edit.html'
+    form_class = ClientEditForm

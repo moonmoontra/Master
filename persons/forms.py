@@ -8,8 +8,19 @@ class ProviderCreateForm(forms.ModelForm):
         model = Provider
         fields = '__all__'
 
+class ProviderEditForm(forms.ModelForm):
+    class Meta:
+        model = Provider
+        fields = '__all__'
+
 
 class EmployeeCreateForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = '__all__'
+
+
+class EmployeeEditForm(forms.ModelForm):
     class Meta:
         model = Employee
         fields = '__all__'
@@ -27,13 +38,13 @@ class ManufacturerEditForm(forms.ModelForm):
         fields = '__all__'
 
 
-class ProviderEditForm(forms.ModelForm):
+class ClientCreateForm(forms.ModelForm):
     class Meta:
-        model = Provider
+        model = Clients
         fields = '__all__'
 
 
-class EmployeeEditForm(forms.ModelForm):
+class ClientEditForm(forms.ModelForm):
     class Meta:
-        model = Employee
+        model = Clients
         fields = '__all__'
