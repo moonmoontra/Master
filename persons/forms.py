@@ -7,82 +7,84 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 from persons.models import *
+from persons.services import object_validation_only_text_field
 
 
-class ProviderCreateForm(forms.ModelForm):
+class BaseProviderClass(forms.ModelForm):
+    def clean_provider_name(self):
+        provider_name = self.cleaned_data['provider_name']
+        return object_validation_only_text_field(provider_name)
+
     class Meta:
         model = Provider
         fields = '__all__'
 
-class ProviderEditForm(forms.ModelForm):
-    class Meta:
-        model = Provider
-        fields = '__all__'
 
+class BaseEmployeeClass(forms.ModelForm):
+    def clean_first_name(self):
+        first_name = self.cleaned_data['first_name']
+        return object_validation_only_text_field(first_name)
 
-class EmployeeCreateForm(forms.ModelForm):
+    def clean_last_name(self):
+        last_name = self.cleaned_data['last_name']
+        return object_validation_only_text_field(last_name)
+
+    def clean_position(self):
+        position = self.cleaned_data['position']
+        return object_validation_only_text_field(position)
+
     class Meta:
         model = Employee
         fields = '__all__'
 
 
-class EmployeeEditForm(forms.ModelForm):
-    class Meta:
-        model = Employee
-        fields = '__all__'
+class BaseManufacturerClass(forms.ModelForm):
+    def clean_manufacturer_name(self):
+        manufacturer_name = self.cleaned_data['manufacturer_name']
+        return object_validation_only_text_field(manufacturer_name)
 
-
-class ManufacturerCreateForm(forms.ModelForm):
     class Meta:
         model = Manufacturer
         fields = '__all__'
 
 
-class ManufacturerEditForm(forms.ModelForm):
-    class Meta:
-        model = Manufacturer
-        fields = '__all__'
-
-
-class ClientCreateForm(forms.ModelForm):
+class BaseClientForm(forms.ModelForm):
     def clean_client_name(self):
         client_name = self.cleaned_data['client_name']
-
-        if not re.match(r'^[a-zA-ZА-Яа-яЁёЇїІіЄєҐґ\s]+$', client_name):
-            raise ValidationError(_('Ім\'я не може містити цифри!'))
-
-        return client_name
-
-    def clean_phone(self):
-        phone = self.cleaned_data['phone']
-
-        if not re.match(r'^[+]?\d+', phone):
-            raise ValidationError(_('Некоректний номер телефону!'))
-
-        return phone
+        return object_validation_only_text_field(client_name)
 
     class Meta:
         model = Clients
         fields = '__all__'
 
 
-class ClientEditForm(forms.ModelForm):
-    def clean_client_name(self):
-        client_name = self.cleaned_data['client_name']
+class ProviderCreateForm(BaseProviderClass):
+    pass
 
-        if not re.match(r'^[a-zA-ZА-Яа-яЁёЇїІіЄєҐґ\s]+$', client_name):
-            raise ValidationError(_('Ім\'я не може містити цифри!'))
 
-        return client_name
+class ProviderEditForm(BaseProviderClass):
+    pass
 
-    def clean_phone(self):
-        phone = self.cleaned_data['phone']
 
-        if not re.match(r'^[+]?\d+', phone):
-            raise ValidationError(_('Некоректний номер телефону!'))
+class EmployeeCreateForm(BaseEmployeeClass):
+    pass
 
-        return phone
 
-    class Meta:
-        model = Clients
-        fields = '__all__'
+class EmployeeEditForm(BaseEmployeeClass):
+    pass
+
+
+class ManufacturerCreateForm(BaseManufacturerClass):
+    pass
+
+
+class ManufacturerEditForm(BaseManufacturerClass):
+    pass
+
+
+class ClientCreateForm(BaseClientForm):
+    pass
+
+
+class ClientEditForm(BaseClientForm):
+    pass
