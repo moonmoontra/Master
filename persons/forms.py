@@ -23,5 +23,11 @@ class ManufacturerCreateForm(forms.ModelForm):
 
 class ManufacturerEditForm(forms.ModelForm):
     class Meta:
-        model = Employee
+        model = Manufacturer
+        fields = '__all__'
+
+
+class ProviderEditForm(forms.ModelForm):
+    class Meta:
+        model = Provider
         fields = '__all__'

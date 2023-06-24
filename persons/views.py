@@ -4,7 +4,7 @@ from django.views.decorators.http import require_POST
 from django.views.generic import ListView, CreateView, UpdateView
 from django.apps import apps
 
-from persons.forms import ProviderCreateForm, EmployeeCreateForm, ManufacturerCreateForm, ManufacturerEditForm
+from persons.forms import *
 from persons.models import Provider, Manufacturer, Employee
 from persons.services import filter_objects_delete, get_model_context
 
@@ -19,7 +19,7 @@ class ProviderListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update(get_model_context(Provider))
+        context.update(get_model_context(Provider, 'provider_edit'))
         return context
 
 
@@ -29,7 +29,7 @@ class ManufacturerListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update(get_model_context(Manufacturer))
+        context.update(get_model_context(Manufacturer, 'manufacturer_edit'))
         return context
 
 
@@ -81,6 +81,13 @@ class ManufacturerCreateView(CreateView):
 
 class ManufacturerEditView(UpdateView):
     model = Manufacturer
-    success_url = 'persons/manufacturers'
+    success_url = '/persons/manufacturers'
     template_name = 'persons/manufacturer_edit.html'
     form_class = ManufacturerEditForm
+
+
+class ProviderEditView(UpdateView):
+    model = Provider
+    success_url = '/persons/providers'
+    template_name = 'persons/provider_edit.html'
+    form_class = ProviderEditForm

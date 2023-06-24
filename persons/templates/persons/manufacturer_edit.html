@@ -7,10 +7,10 @@
 {% block content %}
     {% csrf_token %}
     <div class="create-title">
-        <h2>Редагувати виробника [{{ manufacturer_name }}] <i class="fa-solid fa-person-circle-plus"></i></h2>
+        <h2>Редагувати виробника <span style="color: green"><u><em>{{ object.manufacturer_name }}</em></u></span> <i class="fa-solid fa-person-circle-plus"></i></h2>
     </div>
     <div class="create-form">
-        <form action="{% url 'manufacturer_edit' %}" method="post" class="row g-3">
+        <form action="{% url 'manufacturer_edit' object.pk %}" method="post" class="row g-3">
             {% csrf_token %}
             <div class="form-group col-md-4 mb-0">
                 <b>{{ form.manufacturer_name|as_crispy_field }}</b>
