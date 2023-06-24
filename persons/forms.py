@@ -39,6 +39,8 @@ class ManufacturerEditForm(forms.ModelForm):
 
 
 class ClientCreateForm(forms.ModelForm):
+    client_name = forms.CharField(max_length=30, required=True)
+    phone = forms.CharField()
     class Meta:
         model = Clients
         fields = '__all__'

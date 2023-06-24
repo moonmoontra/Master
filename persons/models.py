@@ -16,7 +16,7 @@ class Provider(BaseData):
     )
     provider_name = models.CharField(max_length=30, default=None, verbose_name="Назва або Ім'я")
     city = models.CharField(max_length=30, default=None, verbose_name="Місто")
-    address = models.CharField(max_length=30, default=None, verbose_name="Адреса")
+    address = models.CharField(max_length=50, default=None, verbose_name="Адреса")
     phone = models.CharField(max_length=15, default=None, verbose_name="Телефон")
     status = models.CharField(max_length=15, choices=STATUS, default=None, verbose_name="Статус")
 
@@ -64,7 +64,7 @@ class Employee(BaseData):
 
 class Clients(BaseData):
     client_name = models.CharField(max_length=30, default=None, verbose_name="Ім'я")
-    phone = models.CharField(max_length=30, default=None, verbose_name="Телефон")
+    phone = models.CharField(max_length=15, default=None, verbose_name="Телефон")
     birthday_date = models.DateField(default=None, verbose_name="Дата народження")
 
     def __str__(self):
