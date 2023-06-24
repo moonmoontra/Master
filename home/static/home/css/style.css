@@ -164,3 +164,6 @@ legend {
 	text-align: center;
 	padding-top: 15px;
 }
+.table tbody tr:hover {
+    background: rgb(236, 231, 223);
+}

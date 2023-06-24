@@ -13,5 +13,5 @@ urlpatterns = [
     re_path(r'^employees/employee_create/$', views.EmployeeCreateView.as_view(), name='employee_create'),
     re_path(r'^employees/employee_edit/(?P<pk>\d+)$', views.EmployeeEditView.as_view(), name='employee_edit'),
     re_path(r'^manufacturers/manufacturer_create/$', views.ManufacturerCreateView.as_view(), name='manufacturer_create'),
-    re_path(r'^manufacturer_edit/(?P<pk>\d+)$', views.ManufacturerEditView.as_view(), name='manufacturer_edit'),
+    re_path(r'^manufacturers/manufacturer_edit/(?P<pk>\d+)$', views.ManufacturerEditView.as_view(), name='manufacturer_edit'),
 ]
