@@ -31,7 +31,7 @@
         </thead>
         <tbody class='table-group-divider'>
         {% for object in object_list %}
-            <tr style="font-size: 19px;">
+          <tr style="font-size: 19px;" {#  data-href="{% url 'manufacturer_edit' element.pk%}"#}>
                 {% for field in fields %}
                     {% if field == 'status' %}
                         {% if object|get_attr:field == 'individual' %}
@@ -53,3 +53,17 @@
         </tbody>
     </table>
 </form>
+
+<script>
+        jQuery( function($) {
+            $('tbody tr[data-href]').addClass('clickable').click( function() {
+                window.location = $(this).attr('data-href');
+            }).find('a').hover( function() {
+                $(this).parents('tr').unbind('click');
+            }, function() {
+                $(this).parents('tr').click( function() {
+                    window.location = $(this).attr('data-href');
+                });
+            });
+        });
+    </script>

@@ -1,10 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.apps import apps
 
-from persons.forms import ProviderCreateForm, EmployeeCreateForm, ManufacturerCreateForm
+from persons.forms import ProviderCreateForm, EmployeeCreateForm, ManufacturerCreateForm, ManufacturerEditForm
 from persons.models import Provider, Manufacturer, Employee
 from persons.services import filter_objects_delete, get_model_context
 
@@ -77,3 +77,10 @@ class ManufacturerCreateView(CreateView):
     template_name = 'persons/manufacturer_create.html'
     form_class = ManufacturerCreateForm
     success_url = '/persons/manufacturers'
+
+
+class ManufacturerEditView(UpdateView):
+    model = Manufacturer
+    success_url = 'persons/manufacturers'
+    template_name = 'persons/manufacturer_edit.html'
+    form_class = ManufacturerEditForm
