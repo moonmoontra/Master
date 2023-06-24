@@ -1,6 +1,4 @@
 {% extends 'home/base.html' %}
-{% load crispy_forms_filters %}
-{% load crispy_forms_tags %}
 
 {% block title %}Редагувати клієнта{% endblock %}
 
@@ -12,11 +10,7 @@
     <div class="create-form">
         <form action="{% url 'client_edit' object.pk %}" method="post" class="row g-3">
             {% csrf_token %}
-            {% for field in form %}
-                <div class="form-group col-md-4 mb-0">
-                    {{ field|as_crispy_field }}
-                </div>
-            {% endfor %}
+            {% include 'home/fields_for_form.html' %}
             <div class="a-create">
                 <a style="border-top: 4px solid green" class="btn" onclick="document.querySelector('form').submit(); return false;" role="button">Змінити</a>
             </div>
