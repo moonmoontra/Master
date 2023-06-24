@@ -14,7 +14,6 @@ def get_fields_table(model):
 
 
 def get_headers_table(model):
-    print([model._meta.get_field(field_name).verbose_name for field_name in get_fields_table(model)])
     return [model._meta.get_field(field_name).verbose_name for field_name in get_fields_table(model)]
 
 
