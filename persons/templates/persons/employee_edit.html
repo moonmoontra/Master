@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %}Редагувати працівника{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+    <div class="create-title">
+        <h2>Редагувати працівника <span style="color: green"><u><em>{{ object.first_name }} {{ object.last_name }}</em></u></span> <i class="fa-solid fa-person-circle-plus"></i></h2>
+    </div>
+    <div class="create-form">
+        <form action="{% url 'employee_edit' object.pk %}" method="post" class="row g-3">
+            {% csrf_token %}
+            <div class="form-group col-md-4 mb-0">
+                <b>{{ form.first_name|as_crispy_field }}</b>
+            </div>
+            <div class="form-group col-md-4 mb-0">
+                <b>{{ form.last_name|as_crispy_field }}</b>
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                <b>{{ form.contract|as_crispy_field }}</b>
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                <b>{{ form.position|as_crispy_field }}</b>
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                <b>{{ form.phone|as_crispy_field }}</b>
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                <b>{{ form.address|as_crispy_field }}</b>
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                <b>{{ form.start_date|as_crispy_field }}</b>
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                <b>{{ form.end_date|as_crispy_field }}</b>
+            </div>
+            <div class="a-create">
+                <a style="border-top: 4px solid green" class="btn" onclick="document.querySelector('form').submit(); return false;" role="button">Змінити</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

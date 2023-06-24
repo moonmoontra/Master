@@ -39,7 +39,7 @@ class EmployeeListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update(get_model_context(Employee))
+        context.update(get_model_context(Employee, 'employee_edit'))
         return context
 
 
@@ -65,10 +65,24 @@ class ProviderCreateView(CreateView):
     success_url = '/persons/providers'
 
 
+class ProviderEditView(UpdateView):
+    model = Provider
+    success_url = '/persons/providers'
+    template_name = 'persons/provider_edit.html'
+    form_class = ProviderEditForm
+
+
 class EmployeeCreateView(CreateView):
     model = Employee
     template_name = 'persons/employee_create.html'
     form_class = EmployeeCreateForm
+    success_url = '/persons/employees'
+
+
+class EmployeeEditView(UpdateView):
+    model = Employee
+    template_name = 'persons/employee_edit.html'
+    form_class = EmployeeEditForm
     success_url = '/persons/employees'
 
 
@@ -84,10 +98,3 @@ class ManufacturerEditView(UpdateView):
     success_url = '/persons/manufacturers'
     template_name = 'persons/manufacturer_edit.html'
     form_class = ManufacturerEditForm
-
-
-class ProviderEditView(UpdateView):
-    model = Provider
-    success_url = '/persons/providers'
-    template_name = 'persons/provider_edit.html'
-    form_class = ProviderEditForm

@@ -11,6 +11,7 @@ urlpatterns = [
     re_path(r'^providers/provider_create/$', views.ProviderCreateView.as_view(), name='provider_create'),
     re_path(r'^providers/provider_edit/(?P<pk>\d+)$', views.ProviderEditView.as_view(), name='provider_edit'),
     re_path(r'^employees/employee_create/$', views.EmployeeCreateView.as_view(), name='employee_create'),
+    re_path(r'^employees/employee_edit/(?P<pk>\d+)$', views.EmployeeEditView.as_view(), name='employee_edit'),
     re_path(r'^manufacturers/manufacturer_create/$', views.ManufacturerCreateView.as_view(), name='manufacturer_create'),
     re_path(r'^manufacturer_edit/(?P<pk>\d+)$', views.ManufacturerEditView.as_view(), name='manufacturer_edit'),
 ]
