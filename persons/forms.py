@@ -1,9 +1,21 @@
 from django import forms
 
-from persons.models import Provider
+from persons.models import *
 
 
 class ProviderCreateForm(forms.ModelForm):
     class Meta:
         model = Provider
+        fields = '__all__'
+
+
+class EmployeeCreateForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = '__all__'
+
+
+class ManufacturerCreateForm(forms.ModelForm):
+    class Meta:
+        model = Manufacturer
         fields = '__all__'

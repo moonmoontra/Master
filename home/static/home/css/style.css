@@ -95,7 +95,9 @@ legend {
 	display: block;
 }
 * {
-	font-family: 'Ysabeau', sans-serif;
+	/*font-family: 'Ysabeau', sans-serif;*/
+	/*font-family: 'Ubuntu', sans-serif;*/
+	font-family: 'Raleway', sans-serif;
 }
 
 .second-title{
@@ -138,4 +140,27 @@ legend {
 }
 .title_h2 {
 	padding-top: 5px;
+}
+.create-form{
+	font-size: 21px;
+	margin-top: 50px;
+}
+.create-form a {
+	width: 550px;
+	font-size: 21px;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+.create-title{
+	margin-top: 30px;
+	text-align: center;
+}
+.asteriskField {
+	/*padding-left: 2px;*/
+	color: red;
+	/*font-size: 35px;*/
+}
+.a-create{
+	text-align: center;
+	padding-top: 15px;
 }

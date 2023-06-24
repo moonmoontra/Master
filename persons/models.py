@@ -31,7 +31,7 @@ class Provider(BaseData):
 
 class Manufacturer(BaseData):
     manufacturer_name = models.CharField(max_length=30, default=None, verbose_name="Назва або Ім'я")
-    country = models.CharField(max_length=30, default=None, verbose_name="Країна")
+    country = models.CharField(max_length=30, default=None, verbose_name='Країна')
 
     def __str__(self):
         return f"{self.manufacturer_name}"
@@ -44,13 +44,13 @@ class Manufacturer(BaseData):
 
 class Employee(BaseData):
     first_name = models.CharField(max_length=30, default=None, verbose_name="Ім'я")
-    last_name = models.CharField(max_length=30, default=None, verbose_name="Прізвище")
-    contract = models.CharField(max_length=30, default=None, verbose_name="Номер контракту")
-    position = models.CharField(max_length=30, default=None, verbose_name="Посада")
-    phone = models.CharField(max_length=15, default=None, verbose_name="Телефон")
-    address = models.CharField(max_length=30, default=None, verbose_name="Адреса")
-    start_date = models.DateField(verbose_name="Дата прийняття")
-    end_date = models.DateField(blank=True, null=True, verbose_name="Дата звільнення")
+    last_name = models.CharField(max_length=30, default=None, verbose_name='Прізвище')
+    contract = models.CharField(max_length=30, default=None, verbose_name='Номер контракту')
+    position = models.CharField(max_length=30, default=None, verbose_name='Посада')
+    phone = models.CharField(max_length=15, default=None, verbose_name='Телефон')
+    address = models.CharField(max_length=30, default=None, verbose_name='Адреса')
+    start_date = models.DateField(verbose_name='Дата прийняття')
+    end_date = models.DateField(blank=True, null=True, verbose_name='Дата звільнення')
 
 
     def __str__(self):
