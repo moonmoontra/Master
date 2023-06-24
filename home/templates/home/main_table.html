@@ -45,7 +45,7 @@
                         <td>{{ object|get_attr:field }}</td>
                     {% endif %}
                 {% endfor %}
-                <td class="not-click">
+                <td id="not-click">
                     <div class='form-check'>
                         <input class='form-check-input' type='checkbox' name="person_ids" value='{{ object.id }}' id='flexCheckDefault'>
                     </div>
@@ -57,15 +57,18 @@
 </form>
 
 <script>
-        jQuery( function($) {
-            $('tbody tr[data-href]').addClass('clickable').click( function() {
+    jQuery(function ($) {
+        $('table > tbody > tr input[type="checkbox"]').click(function (event) {
+            event.stopPropagation();
+        });
+        $('tbody tr[data-href]').addClass('clickable').click(function () {
+            window.location = $(this).attr('data-href');
+        }).find('a').hover(function () {
+            $(this).parents('tr').unbind('click');
+        }, function () {
+            $(this).parents('tr').click(function () {
                 window.location = $(this).attr('data-href');
-            }).find('a').hover( function() {
-                $(this).parents('tr').unbind('click');
-            }, function() {
-                $(this).parents('tr').click( function() {
-                    window.location = $(this).attr('data-href');
-                });
             });
         });
-    </script>
+    });
+</script>
