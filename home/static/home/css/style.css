@@ -156,9 +156,7 @@ legend {
 	text-align: center;
 }
 .asteriskField {
-	/*padding-left: 2px;*/
 	color: red;
-	/*font-size: 35px;*/
 }
 .a-create{
 	text-align: center;
@@ -166,4 +164,89 @@ legend {
 }
 .table tbody tr:hover {
     background: rgb(236, 231, 223);
+}
+.navbar-brand{
+	font-family: 'Lobster', sans-serif;
+}
+.site-main-menu{
+	margin-top: 40px;
+	border: 1px solid black;
+	border-top: 5px solid rgb(241, 78, 86);
+	border-radius: 10px;
+}
+.site-main-menu_header{
+	text-align: center;
+}
+.main-menu-p{
+	width: 500px;
+	margin-left: 400px;
+}
+.site-main-menu_header p{
+	font-size: 30px;
+	border-bottom: 2px solid black;
+	padding-bottom: 10px;
+}
+.logo-title{
+	font-family: 'Lobster', sans-serif;
+	font-size: 90px;
+	color: rgb(241, 78, 86);
+}
+
+.navbar-collapse a{
+	color: rgb(44,52,163);
+}
+.menu {
+	margin-bottom: 40px;
+	margin-left: 40px;
+	padding-left: 20px;
+	border-left: 3px solid sienna;
+}
+.second-menu li{
+	list-style-type: disc;
+	padding-left: 20px;
+	font-size: 23px;
+	color: #231E20;
+	font-weight: 500;
+}
+.toc {
+	list-style: none;
+	counter-reset: li;
+	font-size: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.toc a{
+	color: sienna;
+}
+.toc a:hover{
+	border-bottom: 1px solid saddlebrown;
+}
+.style-li {
+   margin-bottom: 10px;
+   transition: .3s linear;
+}
+
+.toc .style-li:last-child {
+   margin-bottom: 0;
+}
+
+.toc .style-li:before {
+   counter-increment: li;
+   content: counters(li);
+   margin-right: 10px;
+   font-weight: 700;
+   width: 28px;
+   height: 28px;
+   text-align: center;
+   color: rgb(44,52,163);
+   line-height: 28px;
+   display: inline-block;
+   /*border-top: 1px solid transparent;*/
+	border: 1px solid transparent;
+	border-radius: 50px;
+}
+
+.toc .style-li:hover:before {
+   border-color: rgb(44,52,163);
+   color: rgb(44,52,163);
 }

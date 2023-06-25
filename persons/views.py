@@ -9,10 +9,6 @@ from persons.models import Provider, Manufacturer, Employee
 from persons.services import filter_objects_delete, get_model_context
 
 
-def index(request):
-    return render(request, 'persons/index.html')
-
-
 class BasePersonView:
     template_name = None
     model = None
