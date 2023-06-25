@@ -221,6 +221,9 @@ legend {
 .toc a:hover{
 	border-bottom: 1px solid saddlebrown;
 }
+.toc a:hover{
+	color: rgb(241, 78, 86);
+}
 .style-li {
    margin-bottom: 10px;
    transition: .3s linear;
@@ -241,7 +244,6 @@ legend {
    color: rgb(44,52,163);
    line-height: 28px;
    display: inline-block;
-   /*border-top: 1px solid transparent;*/
 	border: 1px solid transparent;
 	border-radius: 50px;
 }
