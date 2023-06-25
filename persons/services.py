@@ -32,6 +32,4 @@ def object_validation_only_text_field(_object):
     if not re.match(regex, _object):
         raise ValidationError(_('Це поле не може містити цифри!'))
 
-    print(_object)
-
     return _object
