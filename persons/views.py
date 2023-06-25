@@ -1,12 +1,12 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView, CreateView, UpdateView
 from django.apps import apps
 
 from persons.forms import *
 from persons.models import Provider, Manufacturer, Employee
-from persons.services import filter_objects_delete, get_model_context
+from home.services import filter_objects_delete, get_model_context
 
 
 class BasePersonView:
