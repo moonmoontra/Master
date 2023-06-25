@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_DB', 'MasterDB'),
         'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'post4gr4sl5'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'RT%^&Ed25W//D'),
         'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
         'PORT': os.environ.get('POSTGRES_PORT', ''),
     }
@@ -133,9 +133,28 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# django library for converting forms to bootstrap form
+# https://django-crispy-forms.readthedocs.io/en/latest/
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-# COUNTRIES_FIRST = [
-#
-# ]
+
+# django library for giving the user a choice of country from a list
+# https://github.com/SmileyChris/django-countries#show-certain-countries-first
+
+COUNTRIES_FIRST = [
+    'UA',
+    'US',
+    'DE',
+    'PL',
+    'FR',
+    'KR',
+    'JP',
+    'CN',
+    'FI',
+    'GB',
+    'IT',
+    'ES',
+]

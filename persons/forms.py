@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+from django_select2.forms import Select2Widget
 
 from persons.models import *
 from persons.services import object_validation_only_text_field
@@ -47,6 +48,9 @@ class BaseManufacturerClass(ObjectValidationMixin, forms.ModelForm):
     class Meta:
         model = Manufacturer
         fields = '__all__'
+        widgets = {
+            'country': Select2Widget({'data-language': 'uk'}),
+        }
 
 
 class BaseClientForm(ObjectValidationMixin, forms.ModelForm):

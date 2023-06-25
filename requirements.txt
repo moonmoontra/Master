@@ -1,9 +1,11 @@
 asgiref==3.7.2
 crispy-bootstrap5==0.7
 Django==4.2.2
+django-appconf==1.0.5
 django-countries==7.5.1
 django-crispy-forms==2.0
 django-phonenumber-field==7.1.0
+django-select2==8.1.2
 phonenumbers==8.13.15
 psycopg2-binary==2.9.6
 six==1.16.0
