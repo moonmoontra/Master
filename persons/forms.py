@@ -42,9 +42,6 @@ class BaseManufacturerClass(ObjectValidationMixin, forms.ModelForm):
     class Meta:
         model = Manufacturer
         fields = '__all__'
-        widgets = {
-            'country': Select2Widget({'data-language': 'uk'}),
-        }
 
 
 class BaseClientForm(ObjectValidationMixin, forms.ModelForm):
