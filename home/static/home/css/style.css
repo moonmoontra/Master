@@ -250,3 +250,7 @@ legend {
    border-color: rgb(44,52,163);
    color: rgb(44,52,163);
 }
+
+.nav .nav-link:hover{
+	color: rgb(241, 78, 86);
+}
