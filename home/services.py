@@ -56,11 +56,9 @@ def get_headers_table(model, exclude: bool) -> list:
     model - модель, для которой нужно удалить объекты"""
 
 
-def delete_objects(request):
+def delete_objects(request, model):
     try:
         url = request.META.get('HTTP_REFERER')
-        model_name = request.POST.get('model_name')
-        model = apps.get_model('persons', model_name)
         object_ids = request.POST.getlist('object_ids')
 
         print(object_ids, model)

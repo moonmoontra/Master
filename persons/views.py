@@ -111,4 +111,6 @@ class ClientEditView(BaseEditView):
 
 @require_POST
 def delete_persons_view(request):
-    return delete_objects(request)
+    model_name = request.POST.get('model_name')
+    model = apps.get_model('persons', model_name)
+    return delete_objects(request, model)
