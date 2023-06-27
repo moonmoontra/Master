@@ -1,6 +1,11 @@
 import re
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.shortcuts import redirect
+from django.http import HttpResponse
+from django.apps import apps
+
+# from persons import apps
 
 
 def get_model_context(model, url_for_edit):
@@ -23,8 +28,16 @@ def get_headers_table(model):
             for field_name in get_fields_table(model)]
 
 
-def filter_objects_delete(objects, person_ids: list, **kwargs):
-    return objects.filter(id__in=person_ids, **kwargs).delete()
+def filter_objects_delete(request, **kwargs):
+    url = request.META.get('HTTP_REFERER')
+    model_name = request.POST.get('model_name')
+    model = apps.get_model('persons', model_name)
+    person_ids = request.POST.getlist('person_ids')
+
+    if model and person_ids:
+        model.objects.filter(id__in=person_ids, **kwargs).delete()
+    return url
+
 
 
 def object_validation_only_text_field(_object):
