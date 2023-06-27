@@ -28,16 +28,22 @@ def get_headers_table(model):
             for field_name in get_fields_table(model)]
 
 
-def filter_objects_delete(request, **kwargs):
-    url = request.META.get('HTTP_REFERER')
-    model_name = request.POST.get('model_name')
-    model = apps.get_model('persons', model_name)
-    person_ids = request.POST.getlist('person_ids')
+def delete_objects(request):
+    try:
+        url = request.META.get('HTTP_REFERER')
+        model_name = request.POST.get('model_name')
+        model = apps.get_model('persons', model_name)
+        object_ids = request.POST.getlist('object_ids')
 
-    if model and person_ids:
-        model.objects.filter(id__in=person_ids, **kwargs).delete()
-    return url
+        if model and object_ids:
+           filter_objects_delete(model.objects, object_ids)
+        return redirect(url)
+    except(LookupError, ValueError):
+        return HttpResponse("Помилка видалення.")
 
+
+def filter_objects_delete(objects, object_ids: list, **kwargs):
+    return objects.filter(id__in=object_ids, **kwargs).delete()
 
 
 def object_validation_only_text_field(_object):

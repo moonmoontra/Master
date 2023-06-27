@@ -6,7 +6,7 @@ from django.apps import apps
 
 from persons.forms import *
 from persons.models import Provider, Manufacturer, Employee
-from home.services import filter_objects_delete, get_model_context
+from home.services import filter_objects_delete, get_model_context, delete_objects
 
 
 class BasePersonView:
@@ -111,15 +111,4 @@ class ClientEditView(BaseEditView):
 
 @require_POST
 def delete_persons_view(request):
-    return redirect(filter_objects_delete(request))
-    # try:
-    #     url = request.META.get('HTTP_REFERER')
-    #     model_name = request.POST.get('model_name')
-    #     model = apps.get_model('persons', model_name)
-    #     person_ids = request.POST.getlist('person_ids')
-    #
-    #     if model and person_ids:
-    #         filter_objects_delete(model.objects, person_ids=person_ids)
-    #     return redirect(url)
-    # except (LookupError, ValueError):
-    #     return HttpResponse("Помилка видалення.")
+    return delete_objects(request)
