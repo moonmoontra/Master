@@ -17,8 +17,8 @@ class Provider(BaseData):
         ('legal', 'Юридична особа'),
     )
     provider_name = models.CharField(max_length=30, default=None, verbose_name="Назва або Ім'я")
-    city = models.CharField(max_length=30, default=None, verbose_name="Місто")
-    address = models.CharField(max_length=50, default=None, verbose_name="Адреса")
+    city = models.CharField(max_length=30, default=None, verbose_name='Місто')
+    address = models.CharField(max_length=50, default=None, verbose_name='Адреса')
     phone = PhoneNumberField(blank=True, region='UA',
                              error_messages={'invalid': 'Некоректний номер'}, verbose_name='Телефон')
     status = models.CharField(max_length=15, choices=STATUS, default=None, verbose_name="Статус")
