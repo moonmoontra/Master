@@ -5,6 +5,9 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.apps import apps
 
+from persons.models import Manufacturer
+
+
 # from persons import apps
 
 
@@ -13,14 +16,17 @@ def get_model_context(model, url_for_edit):
         'headers': get_headers_table(model),
         'fields': get_fields_table(model),
         'model_name': model._meta.model_name.capitalize(),
-        'url': url_for_edit
+        'url_for_edit': url_for_edit
     }
     return context
 
 
 def get_fields_table(model):
-    excluded_fields = ['create_date', 'update_date']
+    # excluded_models = ['ProductRefBook', 'Manufacturer']
+    excluded_fields = ['create_date', 'update_date', 'manufacturer_products', 'productrefbook_products']
     return [field.name for field in model._meta.get_fields() if field.name not in excluded_fields]
+    # or
+    # model._meta.model_name not in excluded_models
 
 
 def get_headers_table(model):

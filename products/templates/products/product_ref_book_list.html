@@ -1,14 +1,13 @@
 {% extends 'home/base.html' %}
 {% load user_tags %}
 
-{% block title %} Контрагенти {% endblock title %}
+{% block title %} Довідник товарів {% endblock title %}
 {% block content %}
 
     <div style="background-color: rgb(166, 255, 231);" class="second-title">
-        <h2 class="title_h2">Контрагенти</h2>
+        <h2 class="title_h2">Довідник товарів</h2>
     </div>
 
     {% include 'home/main_table.html' %}
     {% include 'home/pagination.html' %}
 {% endblock content %}
-

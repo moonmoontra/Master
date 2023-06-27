@@ -2,5 +2,5 @@ from products import views
 from django.urls import path, re_path
 
 urlpatterns = [
-    path('', views.index, name='products')
+    re_path('products_ref_book/', views.ProductRefBookListView.as_view(), name='products_ref_book')
 ]
