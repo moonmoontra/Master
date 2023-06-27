@@ -20,3 +20,12 @@ class ProductRefBookListView(ListView):
         return context
 
 
+class ProductPriceListView(ListView):
+    model = ProductPrice
+    template_name = 'products/product_price_list.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(get_model_context(self.model, 'manufacturer_edit'))
+        return context
+
