@@ -23,5 +23,6 @@ from Master import settings
 urlpatterns = [
     path('', include('home.urls')),
     path('persons/', include('persons.urls')),
+    path('goods/', include('goods.urls')),
     path('admin/', admin.site.urls),
 ]
