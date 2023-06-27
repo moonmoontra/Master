@@ -51,7 +51,11 @@
                             <td>Юридична особа</td>
                         {% endif %}
                     {% else %}
-                        <td>{{ object|get_attr:field }}</td>
+                        {% if object|get_attr:field == None %}
+                            <td>Не зазначено</td>
+                        {% else %}
+                            <td>{{ object|get_attr:field }}</td>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
                 <td id="not-click">
