@@ -38,8 +38,8 @@ class Price(BaseData):
 class ProductRefBook(BaseData):
     articul = models.CharField(max_length=20, default=None, verbose_name='Артикул')
     product_name = models.CharField(max_length=50, default=None, verbose_name='Назва')
-    manufacturer = models.ForeignKey(Manufacturer, null=True, on_delete=models.SET_NULL, verbose_name='Виробник',
-                                     related_name='manufacturer_products')
+    manufacturer = models.ForeignKey(Manufacturer, default=None, on_delete=models.SET_DEFAULT,
+                                     verbose_name='Виробник', related_name='manufacturer_products')
     unitOfMeasure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру',
                                       related_name='unit_of_measure')
 
