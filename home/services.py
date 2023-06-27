@@ -5,19 +5,20 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.apps import apps
 
-"""get_model_context - метод возвращающий контекст во views.py...
+"""get_model_context - метод возвращающий словарь контекста во views.py...
    model - модель, для которой нужно получить контекст
    url_for_edit - url для редактирования объекта, например: 'manufacturer_edit'
    exclude - исключить определенные поля из контекста, по умолчанию True"""
 
 
-def get_model_context(model, url_for_edit: str, exclude: bool = True):
+def get_model_context(model, url_for_edit: str, exclude: bool = True) -> dict:
     context = {
         'headers': get_headers_table(model, exclude),
-        'fields': get_fields_table(model),
+        'fields': get_fields_table(model, exclude),
         'model_name': model._meta.model_name.capitalize(),
         'url_for_edit': url_for_edit
     }
+    print(context)
     return context
 
 
@@ -26,10 +27,10 @@ def get_model_context(model, url_for_edit: str, exclude: bool = True):
     exclude - исключить определенные поля из списка, по умолчанию True
     excluded_models_date - список полей модели, которые нужно исключить из списка
     excluded_fields_related_name - список полей модели,
-     которые нужно исключить из списка (related_name(связанные поля))))"""
+     которые нужно исключить из списка (related_name(связанные поля))"""
 
 
-def get_fields_table(model, exclude: bool = True):
+def get_fields_table(model, exclude: bool = True) -> list:
     excluded_models_date = ['create_date', 'update_date']
     excluded_fields_related_name = ['manufacturer_products', 'productrefbook_products']
     if exclude:
@@ -45,7 +46,7 @@ def get_fields_table(model, exclude: bool = True):
     exclude - исключить определенные поля из списка, по умолчанию True"""
 
 
-def get_headers_table(model, exclude: bool):
+def get_headers_table(model, exclude: bool) -> list:
     return ['№' if field_name == 'id' else model._meta.get_field(field_name).verbose_name
             for field_name in get_fields_table(model, exclude)]
 
@@ -62,6 +63,8 @@ def delete_objects(request):
         model_name = request.POST.get('model_name')
         model = apps.get_model('persons', model_name)
         object_ids = request.POST.getlist('object_ids')
+
+        print(object_ids, model)
 
         if model and object_ids:
             filter_objects_delete(model.objects, object_ids)
