@@ -18,7 +18,6 @@ def get_model_context(model, url_for_edit: str, exclude: bool = True) -> dict:
         'model_name': model._meta.model_name.capitalize(),
         'url_for_edit': url_for_edit
     }
-    print(context)
     return context
 
 
