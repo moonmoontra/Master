@@ -1,17 +1,15 @@
 {% block pagination %}
-    <div class="pagination">
-        <span class="step-links">
+
+    <nav style="margin-top: 30px" aria-label="nav">
+        <ul class="pagination">
             {% if page_obj.has_previous %}
-                <a style="padding: 10px 0 10px 15px" href="?page={{ page_obj.previous_page_number }}"><i style="margin-right: 5px" class="fa-solid fa-arrow-left-long"></i></a>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Попередня</a></li>
             {% endif %}
-
-            <span class="current">
-                <b>Сторінка <b style="color: green">{{ page_obj.number }}</b> із {{ page_obj.paginator.num_pages }}</b>
-            </span>
-
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
             {% if page_obj.has_next %}
-                <a style="padding: 10px 15px 10px 0" href="?page={{ page_obj.next_page_number }}&orderby={{ sorting }}"><i style="margin-left: 5px" class="fa-solid fa-arrow-right-long"></i></a>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Наступна</a></li>
             {% endif %}
-        </span>
-    </div>
+        </ul>
+    </nav>
+
 {% endblock %}
