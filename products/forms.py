@@ -28,6 +28,14 @@ class BaseProductRefBookClass(forms.ModelForm):
 
 class BaseUnitOfMeasureClass(forms.ModelForm, ObjectValidationMixin):
 
+    def clean_unit_name(self):
+        unit_name = self.cleaned_data['unit_name']
+        regex = r'^[А-ЯЁа-яё. ]+$'
+        if not re.match(regex, unit_name):
+            raise ValidationError(_('Введіть коректне значення!'))
+        else:
+            return unit_name
+
     class Meta:
         model = UnitOfMeasure
         fields = '__all__'
@@ -46,7 +54,10 @@ class BaseProductPriceNameClass(forms.ModelForm):
         fields = '__all__'
 
 
-class BasePriceNameClass(forms.ModelForm):
+class BasePriceNameClass(forms.ModelForm, ObjectValidationMixin):
+
+    def clean_price_name(self):
+        return self.clean_field('price_name')
 
     class Meta:
         model = PriceName
