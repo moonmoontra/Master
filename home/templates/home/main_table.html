@@ -24,6 +24,12 @@
                     {% elif model_name == 'Productrefbook' %}
                         <a class="btn" role="button" style="border-top: 4px solid green;"
                            href="{% url 'product_ref_book_create' %}">Додати</a>
+                    {% elif model_name == 'Productpricename' %}
+                        <a class="btn" role="button" style="border-top: 4px solid green;"
+                           href="{% url 'product_price_create' %}">Додати</a>
+                    {% elif model_name == 'Unitofmeasure' %}
+                        <a class="btn" role="button" style="border-top: 4px solid green;"
+                           href="{% url 'unit_of_measure_create' %}">Додати</a>
                     {% endif %}
 
                     {% include 'home/modal_for_delete.html' %}
@@ -45,7 +51,7 @@
         </thead>
         <tbody class='table-group-divider'>
         {% for object in object_list %}
-          <tr style="font-size: 19px;" data-href="#">
+          <tr style="font-size: 19px;" data-href="{% url url_for_edit object.pk%}">
                 {% for field in fields %}
                     {% if field == 'status' %}
                         {% if object|get_attr:field == 'individual' %}
