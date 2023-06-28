@@ -2,10 +2,10 @@
 
 {% block content %}
     <div class="create-title">
-        <h2><i class="fa-solid fa-pen-to-square"></i> Додати товару тип ціни</h2>
+        <h2><i class="fa-solid fa-pen-to-square"></i> Додати новий тип ціни</h2>
     </div>
     <div class="create-form">
-        <form action="{% url 'product_price_create' %}" method="post" class="row g-3">
+        <form action="{% url 'price_name_create' %}" method="post" class="row g-3">
             {% csrf_token %}
             {% include 'home/fields_for_form.html' %}
             <div class="a-create">

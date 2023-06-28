@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, UpdateView
 
 from home.services import get_model_context, delete_objects
-from products.forms import UnitOfMeasureForm, ProductRefBookForm, ProductPriceNameForm
+from products.forms import UnitOfMeasureForm, ProductRefBookForm, ProductPriceNameForm, PriceNameForm
 from products.models import PriceName, ProductPriceName, UnitOfMeasure, ProductRefBook
 from django.apps import apps
 
@@ -75,7 +75,7 @@ class ProductPriceNameCreateView(BaseCreateView):
 class ProductPriceNameEditView(BaseEditView):
     form_class = ProductPriceNameForm
     model = ProductPriceName
-    template_name = 'products/product_price_create.html'
+    template_name = 'products/product_price_edit.html'
 
 
 class UnitOfMeasureListView(BaseListView):
@@ -95,6 +95,25 @@ class UnitOfMeasureEditView(BaseEditView):
     form_class = UnitOfMeasureForm
     model = UnitOfMeasure
     template_name = 'products/unit_of_measure_edit.html'
+
+
+class PriceNameListView(BaseListView):
+    model = PriceName
+    template_name = 'products/price_name_list.html'
+    edit_view_name = 'price_name_edit'
+    delete_view_name = 'delete_product'
+
+
+class PriceNameCreateView(BaseCreateView):
+    form_class = PriceNameForm
+    model = PriceName
+    template_name = 'products/price_name_create.html'
+
+
+class PriceNameEditView(BaseEditView):
+    form_class = PriceNameForm
+    model = PriceName
+    template_name = 'products/price_name_edit.html'
 
 
 def delete_products_view(request):

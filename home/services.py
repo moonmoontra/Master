@@ -32,7 +32,7 @@ def get_model_context(model, url_for_edit: str, url_for_delete: str, exclude: bo
 def get_fields_table(model, exclude: bool = True) -> list:
     excluded_models_date = ['create_date', 'update_date']
     excluded_fields_related_name = ['manufacturer_products', 'productrefbook_products', 'unitofmeasure_products',
-                                    'unitofmeasure_price_products']
+                                    'unitofmeasure_price_products', 'pricename_products']
     if exclude:
         return [field.name for field in model._meta.get_fields()
                 if field.name not in excluded_fields_related_name and field.name not in excluded_models_date]

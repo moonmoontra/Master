@@ -30,6 +30,9 @@
                     {% elif model_name == 'Unitofmeasure' %}
                         <a class="btn" role="button" style="border-top: 4px solid green;"
                            href="{% url 'unit_of_measure_create' %}">Додати</a>
+                    {% elif model_name == 'Pricename' %}
+                        <a class="btn" role="button" style="border-top: 4px solid green;"
+                           href="{% url 'price_name_create' %}">Додати</a>
                     {% endif %}
 
                     {% include 'home/modal_for_delete.html' %}

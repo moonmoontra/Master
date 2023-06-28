@@ -13,5 +13,8 @@ urlpatterns = [
     re_path(r'^unitofmeasures/$', views.UnitOfMeasureListView.as_view(), name='unit_of_measure'),
     re_path(r'^unitofmeasures/unit_of_measure_create/$', views.UnitOfMeasureCreateView.as_view(), name='unit_of_measure_create'),
     re_path(r'^unitofmeasures/unit_of_measure_edit/(?P<pk>\d+)$', views.UnitOfMeasureEditView.as_view(), name='unit_of_measure_edit'),
+    re_path(r'^pricenames/$', views.PriceNameListView.as_view(), name='price_names'),
+    re_path(r'^pricenames/price_name_create/$', views.PriceNameCreateView.as_view(), name='price_name_create'),
+    re_path(r'^pricenames/price_name_edit/(?P<pk>\d+)$', views.PriceNameEditView.as_view(), name='price_name_edit'),
     re_path(r'^delete_product/$', views.delete_products_view, name='delete_product'),
 ]

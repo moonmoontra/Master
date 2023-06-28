@@ -1,6 +1,6 @@
 from django import forms
 from home.services import object_validation_only_text_field
-from products.models import ProductRefBook, UnitOfMeasure, ProductPriceName
+from products.models import ProductRefBook, UnitOfMeasure, ProductPriceName, PriceName
 
 
 class BaseProductRefBookClass(forms.ModelForm):
@@ -24,6 +24,13 @@ class BaseProductPriceNameClass(forms.ModelForm):
         fields = '__all__'
 
 
+class BasePriceNameClass(forms.ModelForm):
+
+    class Meta:
+        model = PriceName
+        fields = '__all__'
+
+
 class ProductRefBookForm(BaseProductRefBookClass):
     pass
 
@@ -33,4 +40,8 @@ class UnitOfMeasureForm(BaseUnitOfMeasureClass):
 
 
 class ProductPriceNameForm(BaseProductPriceNameClass):
+    pass
+
+
+class PriceNameForm(BasePriceNameClass):
     pass
