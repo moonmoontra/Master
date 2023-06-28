@@ -7,9 +7,6 @@ from products.forms import UnitOfMeasureForm, ProductRefBookForm, ProductPriceNa
 from products.models import PriceName, ProductPriceName, UnitOfMeasure, ProductRefBook
 from django.apps import apps
 
-def index(request):
-    return render(request, 'products/product_ref_book_list.html')
-
 
 class BaseProductView:
     template_name = None
