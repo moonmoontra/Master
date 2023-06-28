@@ -23,7 +23,7 @@ class UnitOfMeasure(BaseData):
         ordering = ['unit_name']
 
 
-class Price(BaseData):
+class PriceName(BaseData):
     price_name = models.CharField(max_length=30, default=None, verbose_name='Назва')
 
     def __str__(self):
@@ -44,7 +44,7 @@ class ProductRefBook(BaseData):
                                       related_name='unitofmeasure_products')
 
     def __str__(self):
-        return '{articul} {product_name}'.format(articul=self.articul,product_name=self.product_name)
+        return '[{articul}] {product_name}'.format(articul=self.articul,product_name=self.product_name)
 
     class Meta:
         verbose_name = 'Довідник товарів'
@@ -52,10 +52,10 @@ class ProductRefBook(BaseData):
         ordering = ['product_name', 'manufacturer']
 
 
-class ProductPrice(BaseData):
+class ProductPriceName(BaseData):
     product = models.ForeignKey(ProductRefBook, on_delete=models.CASCADE, verbose_name='Товар',
                                 related_name='productrefbook_products')
-    price = models.ForeignKey(Price, on_delete=models.PROTECT, verbose_name='Ціна')
+    price = models.ForeignKey(PriceName, on_delete=models.PROTECT, verbose_name='Тип ціни')
     unitOfMeasure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру',
                                       related_name='unitofmeasure_price_products')
     coefficient = models.FloatField(default=0.0, verbose_name='Коефіцієнт')

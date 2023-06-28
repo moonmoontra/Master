@@ -9,5 +9,5 @@ urlpatterns = [
             name='product_ref_book_create'),
     re_path(r'^products_price/$', views.ProductPriceListView.as_view(), name='products_price'),
     re_path(r'^unit_of_measure/$', views.UnitOfMeasureListView.as_view(), name='unit_of_measure'),
-    re_path(r'^delete_products/$', views.delete_products_view, name='delete_products'),
+    re_path(r'^delete_product/$', views.delete_products_view, name='delete_product'),
 ]

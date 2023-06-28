@@ -1,7 +1,7 @@
 {% load user_tags %}
 {% load static %}
 
-<form method="post" action="{% url 'delete_person' %}">
+<form method="post" action="{% url url_for_delete %}">
 {% csrf_token %}
 
     <input type="hidden" name="model_name" value="{{ model_name }}">
@@ -45,7 +45,7 @@
         </thead>
         <tbody class='table-group-divider'>
         {% for object in object_list %}
-          <tr style="font-size: 19px;" data-href="{% url url_for_edit object.pk%}">
+          <tr style="font-size: 19px;" data-href="#">
                 {% for field in fields %}
                     {% if field == 'status' %}
                         {% if object|get_attr:field == 'individual' %}

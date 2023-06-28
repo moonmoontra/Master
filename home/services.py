@@ -10,12 +10,13 @@ from django.http import HttpResponse
    exclude - исключить определенные поля из контекста, по умолчанию True"""
 
 
-def get_model_context(model, url_for_edit: str, exclude: bool = True) -> dict:
+def get_model_context(model, url_for_edit: str, url_for_delete: str, exclude: bool = True) -> dict:
     context = {
         'headers': get_headers_table(model, exclude),
         'fields': get_fields_table(model, exclude),
         'model_name': model._meta.model_name.capitalize(),
-        'url_for_edit': url_for_edit
+        'url_for_edit': url_for_edit,
+        'url_for_delete': url_for_delete,
     }
     return context
 

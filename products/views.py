@@ -4,7 +4,7 @@ from django.views.generic import ListView, CreateView, UpdateView
 
 from home.services import get_model_context, delete_objects
 from products.forms import *
-from products.models import *
+from products.models import PriceName, ProductPriceName, UnitOfMeasure
 from django.apps import apps
 
 def index(request):
@@ -24,10 +24,11 @@ class BaseProductView:
 class BaseListView(BaseProductView, ListView):
     paginate_by = 10
     edit_view_name = None
+    delete_view_name = None
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update(get_model_context(self.model, self.edit_view_name))
+        context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name))
         return context
 
 
@@ -43,6 +44,7 @@ class ProductRefBookListView(BaseListView):
     model = ProductRefBook
     template_name = 'products/product_ref_book_list.html'
     edit_view_name = 'product_ref_book_edit'
+    delete_view_name = 'delete_product'
 
 
 class ProductRefBookEditView(BaseEditView):
@@ -58,15 +60,18 @@ class ProductRefBookCreateView(BaseCreateView):
 
 
 class ProductPriceListView(BaseListView):
-    model = ProductPrice
+    model = ProductPriceName
     template_name = 'products/product_price_list.html'
-    edit_view_name = 'manufacturer_edit'
+    edit_view_name = 'product_price_edit'
+    delete_view_name = 'delete_product'
 
 
 class UnitOfMeasureListView(BaseListView):
     model = UnitOfMeasure
     template_name = 'products/unit_of_measure_list.html'
     edit_view_name = 'product_ref_book_edit'
+    delete_view_name = 'delete_product'
+
 
 def delete_products_view(request):
     model_name = request.POST.get('model_name')
