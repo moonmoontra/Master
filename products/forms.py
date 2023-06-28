@@ -1,10 +1,20 @@
+import re
 from django import forms
 from home.services import object_validation_only_text_field
 from persons.forms import ObjectValidationMixin
 from products.models import ProductRefBook, UnitOfMeasure, ProductPriceName, PriceName
+from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
 
+class BaseProductRefBookClass(forms.ModelForm):
 
-class BaseProductRefBookClass(forms.ModelForm, ObjectValidationMixin):
+    def clean_articul(self):
+        articul = self.cleaned_data['articul']
+        regex = r'^[A-Z0-9-]+$'
+        if not re.match(regex, articul):
+            raise ValidationError(_('Введіть коректне значення!'))
+        else:
+            return articul
 
     def __init__(self, *args, **kwargs):
         super(BaseProductRefBookClass, self).__init__(*args, **kwargs)
