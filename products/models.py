@@ -41,7 +41,7 @@ class ProductRefBook(BaseData):
     manufacturer = models.ForeignKey(Manufacturer, default=None, on_delete=models.SET_DEFAULT,
                                      verbose_name='Виробник', related_name='manufacturer_products')
     unitOfMeasure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру',
-                                      related_name='unit_of_measure')
+                                      related_name='unitofmeasure_products')
 
     def __str__(self):
         return '{articul} {product_name}'.format(articul=self.articul,product_name=self.product_name)
@@ -56,7 +56,8 @@ class ProductPrice(BaseData):
     product = models.ForeignKey(ProductRefBook, on_delete=models.CASCADE, verbose_name='Товар',
                                 related_name='productrefbook_products')
     price = models.ForeignKey(Price, on_delete=models.PROTECT, verbose_name='Ціна')
-    unitOfMeasure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру')
+    unitOfMeasure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру',
+                                      related_name='unitofmeasure_price_products')
     coefficient = models.FloatField(default=0.0, verbose_name='Коефіцієнт')
 
     def __str__(self):

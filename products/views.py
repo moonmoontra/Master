@@ -8,7 +8,7 @@ from products.models import *
 from django.apps import apps
 
 def index(request):
-    return render(request, 'products/product_ref_book_list.html') + 's'
+    return render(request, 'products/product_ref_book_list.html')
 
 
 class BaseProductView:
@@ -18,7 +18,7 @@ class BaseProductView:
     success_url = '/products/'
 
     def get_success_url(self):
-        return self.success_url + self.model.__name__.lower()
+        return self.success_url + self.model.__name__.lower() + 's'
 
 
 class BaseListView(BaseProductView, ListView):
@@ -62,6 +62,11 @@ class ProductPriceListView(BaseListView):
     template_name = 'products/product_price_list.html'
     edit_view_name = 'manufacturer_edit'
 
+
+class UnitOfMeasureListView(BaseListView):
+    model = UnitOfMeasure
+    template_name = 'products/unit_of_measure_list.html'
+    edit_view_name = 'product_ref_book_edit'
 
 def delete_products_view(request):
     model_name = request.POST.get('model_name')

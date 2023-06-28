@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'home.apps.HomeConfig',
     'persons.apps.PersonsConfig',
-    'products.apps.GoodsConfig',
+    'products.apps.ProductsConfig',
 ]
 
 MIDDLEWARE = [
