@@ -22,10 +22,11 @@ class BasePersonView:
 class BaseListView(BasePersonView, ListView):
     paginate_by = 10
     edit_view_name = None
+    delete_view_name = None
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update(get_model_context(self.model, self.edit_view_name))
+        context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name))
         return context
 
 
@@ -40,24 +41,28 @@ class BaseEditView(BasePersonView, UpdateView):
 class ProviderListView(BaseListView):
     template_name = 'persons/provider_list.html'
     edit_view_name = 'provider_edit'
+    delete_view_name = 'delete_person'
     model = Provider
 
 
 class ManufacturerListView(BaseListView):
     template_name = 'persons/manufacturer_list.html'
     edit_view_name = 'manufacturer_edit'
+    delete_view_name = 'delete_person'
     model = Manufacturer
 
 
 class EmployeeListView(BaseListView):
     template_name = 'persons/employees_list.html'
     edit_view_name = 'employee_edit'
+    delete_view_name = 'delete_person'
     model = Employee
 
 
 class ClientListView(BaseListView):
     template_name = 'persons/clients_list.html'
     edit_view_name = 'client_edit'
+    delete_view_name = 'delete_person'
     model = Client
 
 
