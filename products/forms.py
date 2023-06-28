@@ -6,6 +6,11 @@ from products.models import ProductRefBook, UnitOfMeasure, ProductPriceName, Pri
 
 class BaseProductRefBookClass(forms.ModelForm, ObjectValidationMixin):
 
+    def __init__(self, *args, **kwargs):
+        super(BaseProductRefBookClass, self).__init__(*args, **kwargs)
+        self.fields['manufacturer'].empty_label = None
+        self.fields['unitOfMeasure'].empty_label = None
+
     class Meta:
         model = ProductRefBook
         fields = '__all__'
@@ -19,6 +24,12 @@ class BaseUnitOfMeasureClass(forms.ModelForm, ObjectValidationMixin):
 
 
 class BaseProductPriceNameClass(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(BaseProductPriceNameClass, self).__init__(*args, **kwargs)
+        self.fields['product'].empty_label = None
+        self.fields['price'].empty_label = None
+        self.fields['unitOfMeasure'].empty_label = None
 
     class Meta:
         model = ProductPriceName
