@@ -21,6 +21,9 @@
                     {% elif model_name == 'Client' %}
                         <a class="btn" role="button" style="border-top: 4px solid green;"
                            href="{% url 'client_create' %}">Додати</a>
+                    {% elif model_name == 'Productrefbook' %}
+                        <a class="btn" role="button" style="border-top: 4px solid green;"
+                           href="{% url 'product_ref_book_create' %}">Додати</a>
                     {% endif %}
 
                     {% include 'home/modal_for_delete.html' %}

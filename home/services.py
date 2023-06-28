@@ -3,7 +3,6 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect
 from django.http import HttpResponse
-from django.apps import apps
 
 """get_model_context - метод возвращающий словарь контекста во views.py...
    model - модель, для которой нужно получить контекст
