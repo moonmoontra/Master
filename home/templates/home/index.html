@@ -24,10 +24,10 @@
                  <li class="style-li"><a href=""><b>Товари</b></a></li>
                   <li class="second-menu">
                      <ul>
-                         <li><a href="">довідник товарів</a></li>
-                         <li><a href="">товари та їх типи цін</a></li>
-                         <li><a href="">одиниці вимірювання товару</a></li>
-                         <li><a href="">типи цін товару</a></li>
+                         <li><a href="{% url 'product_ref_books' %}">довідник товарів</a></li>
+                         <li><a href="{% url 'product_prices' %}">товари та їх типи цін</a></li>
+                         <li><a href="{% url 'unit_of_measure' %}">одиниці вимірювання товару</a></li>
+                         <li><a href="{% url 'price_names' %}">типи цін товару</a></li>
                      </ul>
                   </li>
                  <li class="style-li"><a href=""><b>Документи</b></a></li>

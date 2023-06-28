@@ -1,16 +1,17 @@
 from django import forms
 from home.services import object_validation_only_text_field
+from persons.forms import ObjectValidationMixin
 from products.models import ProductRefBook, UnitOfMeasure, ProductPriceName, PriceName
 
 
-class BaseProductRefBookClass(forms.ModelForm):
+class BaseProductRefBookClass(forms.ModelForm, ObjectValidationMixin):
 
     class Meta:
         model = ProductRefBook
         fields = '__all__'
 
 
-class BaseUnitOfMeasureClass(forms.ModelForm):
+class BaseUnitOfMeasureClass(forms.ModelForm, ObjectValidationMixin):
 
     class Meta:
         model = UnitOfMeasure
