@@ -1,12 +1,10 @@
-from django.http import HttpResponse
-from django.shortcuts import redirect
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView
 from django.apps import apps
-
+from home.base_view import BaseListView
 from persons.forms import *
 from persons.models import Provider, Manufacturer, Employee
-from home.services import filter_objects_delete, get_model_context, delete_objects
+from home.services import delete_objects
 
 
 class BasePersonView:
@@ -19,17 +17,6 @@ class BasePersonView:
         return self.success_url + self.model.__name__.lower() + 's'
 
 
-class BaseListView(BasePersonView, ListView):
-    paginate_by = 10
-    edit_view_name = None
-    delete_view_name = None
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name))
-        return context
-
-
 class BaseCreateView(BasePersonView, CreateView):
     pass
 
@@ -38,28 +25,28 @@ class BaseEditView(BasePersonView, UpdateView):
     pass
 
 
-class ProviderListView(BaseListView):
+class ProviderListView(BaseListView, BasePersonView):
     template_name = 'persons/provider_list.html'
     edit_view_name = 'provider_edit'
     delete_view_name = 'delete_person'
     model = Provider
 
 
-class ManufacturerListView(BaseListView):
+class ManufacturerListView(BaseListView, BasePersonView):
     template_name = 'persons/manufacturer_list.html'
     edit_view_name = 'manufacturer_edit'
     delete_view_name = 'delete_person'
     model = Manufacturer
 
 
-class EmployeeListView(BaseListView):
+class EmployeeListView(BaseListView, BasePersonView):
     template_name = 'persons/employees_list.html'
     edit_view_name = 'employee_edit'
     delete_view_name = 'delete_person'
     model = Employee
 
 
-class ClientListView(BaseListView):
+class ClientListView(BaseListView, BasePersonView):
     template_name = 'persons/clients_list.html'
     edit_view_name = 'client_edit'
     delete_view_name = 'delete_person'
