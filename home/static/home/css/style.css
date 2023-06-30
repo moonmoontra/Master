@@ -165,8 +165,46 @@ legend {
 .table tbody tr:hover {
     background: rgb(236, 231, 223);
 }
-.navbar-brand{
+.container-fluid .navbar-brand{
 	font-family: 'Lobster', sans-serif;
+	color: rgb(241, 78, 86);
+	font-size: 35px;
+}
+.container-fluid .navbar-brand:hover {
+	color: brown;
+}
+
+.dropdown{
+	padding-top: 4px;
+}
+
+.dropdown a {
+    display: inline-block;
+    color: #07aa19;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+.dropdown a:after {
+    display: block;
+    content: "";
+	background-color: rgb(241, 78, 86);
+    height: 3px;
+	margin-top: 9px;
+    width: 0%;
+    left: 50%;
+    position: absolute;
+    -webkit-transition: width .3s ease-in-out;
+    -moz--transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.dropdown a:hover:after,
+.dropdown a:focus:after {
+    width: 80%;
 }
 
 .site-main-menu{
