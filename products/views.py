@@ -117,4 +117,3 @@ def delete_products_view(request):
     model_name = request.POST.get('model_name')
     model = apps.get_model('products', model_name)
     return delete_objects(request, model)
-

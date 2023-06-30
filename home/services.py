@@ -62,11 +62,9 @@ def delete_objects(request, model):
         url = request.META.get('HTTP_REFERER')
         object_ids = request.POST.getlist('object_ids')
 
-        print(object_ids, model)
-
         if model and object_ids:
             filter_objects_delete(model.objects, object_ids)
-        return redirect(url)
+        return redirect('/')
     except(LookupError, ValueError):
         return HttpResponse("Помилка видалення.")
 

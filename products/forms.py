@@ -31,7 +31,7 @@ class BaseUnitOfMeasureClass(forms.ModelForm, ObjectValidationMixin):
 
     def clean_unit_name(self):
         unit_name = self.cleaned_data['unit_name']
-        regex = r'^[А-ЯЁа-яё. ]+$'
+        regex = r'^[0-9А-ЯЁа-яё. ]+$'
         if not re.match(regex, unit_name):
             raise ValidationError(_('Введіть коректне значення!'))
         else:
