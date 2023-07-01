@@ -44,7 +44,7 @@ class StockCreateView(BaseCreateView):
     model = Stock
 
 
-def delete_stoks_view(request):
+def delete_stocks_view(request):
     model_name = request.POST.get('model_name')
     model = apps.get_model('stocks', model_name)
     return delete_objects(request, model)

@@ -166,6 +166,7 @@ legend {
     background: rgb(236, 231, 223);
 }
 .container-fluid .navbar-brand{
+	margin-right: 30px;
 	font-family: 'Lobster', sans-serif;
 	color: rgb(241, 78, 86);
 	font-size: 35px;
@@ -274,7 +275,7 @@ legend {
 
 .toc .style-li:before {
    counter-increment: li;
-   content: counters(li);
+   content-counters(li);
    margin-right: 10px;
    font-weight: 700;
    width: 28px;
@@ -294,4 +295,8 @@ legend {
 
 .nav .nav-link:hover{
 	color: rgb(241, 78, 86);
+}
+
+.hoverable:hover .dropdown-menu {
+  display: block;
 }

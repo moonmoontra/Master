@@ -7,5 +7,5 @@ urlpatterns = [
             name='stock_edit'),
     re_path(r'^stocks/stock_create/$', views.StockCreateView.as_view(),
             name='stock_create'),
-    re_path(r'^delete_stock/$', views.delete_stoks_view, name='delete_stock'),
+    re_path(r'^delete_stock/$', views.delete_stocks_view, name='delete_stock'),
 ]

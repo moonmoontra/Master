@@ -1,0 +1,24 @@
+.dark-theme{
+    background-color: #000000;
+    color: #fff;
+}
+
+.dark-theme table{
+    color: #fff;
+}
+
+.dark-theme .btn-menu li a{
+    background-color: #ffffff;
+}
+
+.dark-theme .btn-menu li button{
+    background-color: #ffffff;
+}
+
+.dark-theme .table tbody tr:hover {
+    background: rgb(77, 77, 77);
+}
+
+.dark-theme .bg-body-tertiary{
+    background-color: #000000;
+}
