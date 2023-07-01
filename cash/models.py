@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class BaseData(models.Model):
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='Створено:')
     update_date = models.DateTimeField(auto_now=True, verbose_name='Редаговано:')
@@ -47,9 +48,9 @@ class Cash(BaseData):
 
 
 class CashDocuments(BaseData):
-    cash = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса')
+    cash_id = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса', related_name='cash_documents')
     cash_document_date = models.DateField(auto_now_add=True, verbose_name='Дата документа')
-    document_id = models.ForeignKey(to='Document', on_delete=models.CASCADE, verbose_name='Номер документа',
+    document_id = models.ForeignKey('Document', on_delete=models.CASCADE, verbose_name='Номер документа',
                                          related_name='cash_documents')
     cash_document_description = models.CharField(blank=True, max_length=50, default=None, verbose_name='Опис документа')
 

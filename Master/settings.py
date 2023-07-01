@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'stocks.apps.StocksConfig',
     'cash.apps.CashConfig',
+    'documents.apps.DocumentsConfig',
 ]
 
 MIDDLEWARE = [
