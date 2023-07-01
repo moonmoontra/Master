@@ -20,7 +20,6 @@ class Document(BaseData):
         ('expense', 'Витрата'),
     )
 
-    document_number = models.AutoField()
     document_type = models.CharField(max_length=10, choices=TYPE_DOCUMENT, verbose_name='Тип документу')
     provider_id = models.ForeignKey(Provider, default=None, on_delete=models.SET_DEFAULT, verbose_name='Постачальник',
                                     related_name='provider_documents')
@@ -32,24 +31,12 @@ class Document(BaseData):
     cash_id = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса', related_name='cash_documents')
 
     def __str__(self):
-        return '[{document_number}] {create_date}'.format(document_number=self.document_number,
-                                                          create_date=self.create_date)
+        return '[{pk}] {create_date}'.format(pk=self.pk, create_date=self.create_date)
 
     class Meta:
         verbose_name = 'Документ'
         verbose_name_plural = 'Документи'
-        ordering = ['-document_number', 'provider_id']
-
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            last_object = Document.objects.order_by('-id').first()
-            if last_object:
-                last_id = int(last_object.id)
-                new_id = str(last_id + 1).zfill(9)
-                self.document_number = new_id
-            else:
-                self.document_number = '000000001'
-        super().save(args, **kwargs)
+        ordering = ['provider_id']
 
 
 class ProductInDocument(models.Model):
@@ -97,3 +84,19 @@ class StockMovementDocumentProduct(models.Model):
     class Meta:
         verbose_name = 'Товар в документі переміщення'
         verbose_name_plural = 'Товари в документі переміщення'
+
+
+class CashDocument(BaseData):
+    cash_id = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса',
+                                related_name='cash_document_documents')
+    document_id = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Номер документа',
+                                         related_name='cash_documents')
+    cash_document_description = models.CharField(blank=True, max_length=50, default=None, verbose_name='Опис документа')
+
+    def __str__(self):
+        return '[{cash_id}] {document_id}'.format(cash_id=self.cash_id, document_id=self.document_id)
+
+    class Meta:
+        verbose_name = 'Документ каси'
+        verbose_name_plural = 'Документи каси'
+        ordering = ['-create_date', 'cash_id']
