@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'persons.apps.PersonsConfig',
     'products.apps.ProductsConfig',
     'stocks.apps.StocksConfig',
+    'cash.apps.CashConfig',
 ]
 
 MIDDLEWARE = [
@@ -85,14 +86,14 @@ WSGI_APPLICATION = 'Master.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'MasterDB'),
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'post4gr4sl5'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
         'PORT': os.environ.get('POSTGRES_PORT'),
     }
 }
-
+#POSTGRES_DB=MasterDB;POSTGRES_USER=postgres;POSTGRES_PASSWORD=post4gr4sl5;POSTGRES_HOST=localhost;
 # if 'test' in sys.argv:
 #     DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
 

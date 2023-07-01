@@ -10,5 +10,8 @@ class BaseListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name))
+        if self.model._meta.model_name == 'productpricename':
+            context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name, False))
+        else:
+            context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name))
         return context
