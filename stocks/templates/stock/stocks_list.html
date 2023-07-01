@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+{% load user_tags %}
+
+{% block title %} Склади {% endblock title %}
+{% block content %}
+
+    <div style="background-color: rgb(166, 255, 231);" class="second-title">
+        <h2 class="title_h2">Склади</h2>
+    </div>
+
+    {% include 'home/main_table.html' %}
+    {% include 'home/pagination.html' %}
+{% endblock content %}

@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView
 from home.base_view import BaseListView
 from home.services import delete_objects
 from products.forms import UnitOfMeasureForm, ProductRefBookForm, ProductPriceNameForm, PriceNameForm
