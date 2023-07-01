@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.apps import apps
 
 """get_model_context - метод возвращающий словарь контекста во views.py...
    model - модель, для которой нужно получить контекст
@@ -30,12 +31,9 @@ def get_model_context(model, url_for_edit: str, url_for_delete: str, exclude: bo
 
 
 def get_fields_table(model, exclude: bool = True) -> list:
+
     excluded_models_date = ['create_date', 'update_date']
-    excluded_fields_related_name = ['manufacturer_products', 'productrefbook_products', 'unitofmeasure_products',
-                                    'unitofmeasure_price_products', 'pricename_products', 'cash_documents',
-                                    'cash_document_documents', 'products_in_stock_movement_document', 'cash_documents',
-                                    'stock_end_documents', 'stock_start_documents', 'products_in_document', 'documents',
-                                    'valute_documents', 'pricename_documents', 'provider_documents', 'stock_documents']
+    excluded_fields_related_name = get_all_related_names()
     if exclude:
         return [field.name for field in model._meta.get_fields()
                 if field.name not in excluded_fields_related_name and field.name not in excluded_models_date]
@@ -92,3 +90,18 @@ def object_validation_only_text_field(_object):
         raise ValidationError(_('Це поле не може містити цифри!'))
 
     return _object
+
+
+"""get_all_related_names - метод для получения всех связанных полей...
+    related_names - список связанных полей
+    all_models - список всех моделей"""
+
+
+def get_all_related_names():
+    related_names = []
+    all_models = apps.get_models()
+    for model in all_models:
+        for field in model._meta.get_fields():
+            if hasattr(field, 'related_name') and field.related_name:
+                related_names.append(field.related_name)
+    return related_names
