@@ -64,7 +64,7 @@ def delete_objects(request, model):
 
         if model and object_ids:
             filter_objects_delete(model.objects, object_ids)
-        return redirect('/')
+        return redirect(url)
     except(LookupError, ValueError):
         return HttpResponse("Помилка видалення.")
 
