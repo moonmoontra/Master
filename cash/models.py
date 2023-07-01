@@ -1,5 +1,7 @@
 from django.db import models
 
+from documents.models import Document
+
 
 class BaseData(models.Model):
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='Створено:')
@@ -49,16 +51,14 @@ class Cash(BaseData):
 
 class CashDocuments(BaseData):
     cash_id = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса', related_name='cash_documents')
-    cash_document_date = models.DateField(auto_now_add=True, verbose_name='Дата документа')
-    document_id = models.ForeignKey('Document', on_delete=models.CASCADE, verbose_name='Номер документа',
+    document_id = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Номер документа',
                                          related_name='cash_documents')
     cash_document_description = models.CharField(blank=True, max_length=50, default=None, verbose_name='Опис документа')
 
     def __str__(self):
-        return '[{document_id}] {cash_document_date}'.format(document_id=self.document_id,
-                                                          cash_document_date=self.cash_document_date)
+        return '[{cash_id}] {document_id}'.format(cash_id=self.cash_id, document_id=self.document_id)
 
     class Meta:
         verbose_name = 'Документ каси'
         verbose_name_plural = 'Документи каси'
-        ordering = ['cash_document_date', 'document_id']
+        ordering = ['-create_date', 'cash_id']

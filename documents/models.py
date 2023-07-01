@@ -22,14 +22,23 @@ class Document(BaseData):
 
     document_number = models.AutoField()
     document_type = models.CharField(max_length=10, choices=TYPE_DOCUMENT, verbose_name='Тип документу')
-    provider_id = models.ForeignKey(Provider, on_delete=models.PROTECT, verbose_name='Постачальник',
+    provider_id = models.ForeignKey(Provider, default=None, on_delete=models.SET_DEFAULT, verbose_name='Постачальник',
                                     related_name='provider_documents')
-    stck_id = models.ForeignKey(Stock, on_delete=models.PROTECT, verbose_name='Склад', related_name='stock_documents')
+    stock_id = models.ForeignKey(Stock, on_delete=models.PROTECT, verbose_name='Склад', related_name='stock_documents')
     price_name_id = models.ForeignKey(PriceName, on_delete=models.PROTECT, verbose_name='Тип ціни',
                                       related_name='pricename_documents')
-    valuta_id = models.ForeignKey(Valuta, on_delete=models.PROTECT, verbose_name='Валюта',
+    valuta_id = models.ForeignKey(Valuta, default=None, on_delete=models.SET_DEFAULT, verbose_name='Валюта',
                                   related_name='valute_documents')
     cash_id = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса', related_name='cash_documents')
+
+    def __str__(self):
+        return '[{document_number}] {create_date}'.format(document_number=self.document_number,
+                                                          create_date=self.create_date)
+
+    class Meta:
+        verbose_name = 'Документ'
+        verbose_name_plural = 'Документи'
+        ordering = ['-document_number', 'provider_id']
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -45,24 +54,46 @@ class Document(BaseData):
 
 class ProductInDocument(models.Model):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Документ', related_name='documents')
-    product_id = models.ForeignKey(ProductRefBook, on_delete=models.CASCADE, verbose_name='Товар',
+    product_id = models.ForeignKey(ProductRefBook, on_delete=models.PROTECT, verbose_name='Товар',
                                    related_name='products_in_document')
     count = models.PositiveIntegerField(verbose_name='Кількість')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ціна')
 
+    def __str__(self):
+        return '{product_id}[{count}]'.format(product_id=self.product_id,
+                                                          count=self.count)
     @property
     def sum(self):
         return self.count * self.price
 
+    class Meta:
+        verbose_name = 'Товар в документі'
+        verbose_name_plural = 'Товари в документі'
+
 
 class StockMovementDocument(BaseData):
-    stock_start = models.ForeignKey(Stock, on_delete=models.PROTECT, verbose_name='Зі складу',
+    stock_start = models.ForeignKey(Stock, default=None, on_delete=models.SET_DEFAULT, verbose_name='Зі складу',
                                     related_name='stock_start_documents')
-    stock_end = models.ForeignKey(Stock, on_delete=models.PROTECT, verbose_name='На склад',
+    stock_end = models.ForeignKey(Stock, default=None, on_delete=models.SET_DEFAULT, verbose_name='На склад',
                                   related_name='stock_end_documents')
+
+    def __str__(self):
+        return '[{pk}] {stock_start} -> {stock_end}'.format(pk=self.pk, stock_start=self.stock_start,
+                                                            stock_end=self.stock_end)
+
+    class Meta:
+        verbose_name = 'Документ переміщення'
+        verbose_name_plural = 'Документи переміщення'
 
 
 class StockMovementDocumentProduct(models.Model):
-    product_id = models.ForeignKey(ProductRefBook, on_delete=models.CASCADE, verbose_name='Товар',
+    product_id = models.ForeignKey(ProductRefBook, on_delete=models.PROTECT, verbose_name='Товар',
                                    related_name='products_in_stock_movement_document')
     count = models.PositiveIntegerField(verbose_name='Кількість')
+
+    def __str__(self):
+        return '{product_id}[{count}]'.format(product_id=self.product_id, count=self.count)
+
+    class Meta:
+        verbose_name = 'Товар в документі переміщення'
+        verbose_name_plural = 'Товари в документі переміщення'
