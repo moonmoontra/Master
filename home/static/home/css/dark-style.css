@@ -22,3 +22,7 @@
 .dark-theme .bg-body-tertiary{
     background-color: #000000;
 }
+
+.dark-theme .second-title{
+    background-color: black;
+}
