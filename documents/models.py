@@ -41,8 +41,8 @@ class ProductInDocument(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ціна')
 
     def __str__(self):
-        return '[{articul}] {product_name} [{count}]'.format(articul=self.product.articul,
-                                                            product_name=self.product.product_name, count=self.count)
+        return '[{articul}] {product_name}'.format(articul=self.product.articul,
+                                                            product_name=self.product.product_name)
 
     @property
     def sum(self):

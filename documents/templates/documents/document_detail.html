@@ -1,58 +1,70 @@
 {% extends 'home/base.html' %}
 {% block content %}
+    <div class="document-detail-title">
+        <div class="document-detail-second-title-btn">
+            <div style="background-color: rgb(223, 225, 247);" class="document-detail-second-title">
+                <h2 class="title_h2">Товари в документі</h2>
+            </div>
+            <a class="document-detail-second-title-btn" role="button" style="border-top: 4px solid green;" href="{% url 'provider_create' %}">Додати</a>
+        </div>
 
-    <div class="content-main">
-        <div class="content-table">
-            <table class="table">
-              <thead>
-                <tr>
-                    <th scope="col">Номер</th>
-                    <th scope="col">Тип документу</th>
-                    <th scope="col">Кількість товарів</th>
-                    <th scope="col">Загальна сума</th>
-                    <th scope="col">Контрагент</th>
-                    <th scope="col">Склад</th>
-                    <th scope="col">Тип ціни</th>
-                    <th scope="col">Валюта</th>
-                    <th scope="col">Дата створення</th>
-                    <th scope="col">Дата редагування</th>
+        <div class="document-detail-info">
+            <ul>
+                <li>Кількість: <span class="product-count">{{ object.products_in_document.count }}</span></li>
+                <li>Загальна сума: <span class="summ-valute">100000 {{ object.valuta }}</span></li>
+            </ul>
+{#            <h4>Кількість: {{ object.products_in_document.count }}</h4>#}
+{#            <h4>Загальна сума: 100000 {{ object.valuta }}</h4>#}
+        </div>
+    </div>
+
+{#    <div class="content-main">#}
+{#        <div class="content-table">#}
+{#            <table class="table">#}
+{#              <thead>#}
+{#                <tr>#}
+{#                    <th scope="col">Номер</th>#}
+{#                    <th scope="col">Тип документу</th>#}
+{#                    <th scope="col">Загальна сума</th>#}
+{#                    <th scope="col">Тип ціни</th>#}
+{#                    <th scope="col">Валюта</th>#}
+{#                    <th scope="col">Дата створення</th>#}
+{#                    <th scope="col">Дата редагування</th>#}
 {#                    <th scope="col">Проведено?</th>#}
-                </tr>
-              </thead>
-              <tbody>
-                    <tr>
-                        <th scope="row"> {{ object.pk }} </th>
-                        {% if object.document_type == 'receipt' %}
-                            <td>Прихід</td>
-                        {% else %}
-                            <td>Витрата</td>
-                        {% endif %}
-                        <td>{{ object.products_in_document.count }}</td>
-                        {% if object.document_type == 'receipt' %}
-                            <td style="color: green"><b>smth</b></td>
-                        {% else %}
-                            <td style="color: red"><b>smth</b></td>
-                        {% endif %}
-                        <td>{{ object.provider }}</td>
-                        <td>{{ object.stock }}</td>
-                        <td>{{ object.price_name }}</td>
-                        <td>{{ object.valuta }}</td>
-                        <td>{{ object.create_date }}</td>
-                        <td>{{ object.update_date }}</td>
+{#                </tr>#}
+{#              </thead>#}
+{#              <tbody>#}
+{#                    <tr>#}
+{#                        <th scope="row"> {{ object.pk }} </th>#}
+{#                        {% if object.document_type == 'receipt' %}#}
+{#                            <td>Прихід</td>#}
+{#                        {% else %}#}
+{#                            <td>Витрата</td>#}
+{#                        {% endif %}#}
+{#                        {% if object.document_type == 'receipt' %}#}
+{#                            <td style="color: green"><b>smth</b></td>#}
+{#                        {% else %}#}
+{#                            <td style="color: red"><b>smth</b></td>#}
+{#                        {% endif %}#}
+{#                        <td>{{ object.price_name }}</td>#}
+{#                        <td>{{ object.valuta }}</td>#}
+{#                        <td>{{ object.create_date }}</td>#}
+{#                        <td>{{ object.update_date }}</td>#}
 {#                        {% if documentDetail.flag == True %}#}
 {#                            <td><a href="{% url 'document-edit-flag' documentDetail.pk %}"><i class="fa-solid fa-check"></i></a></td>#}
 {#                        {% else %}#}
 {#                            <td><a href="{% url 'document-edit-flag' documentDetail.pk %}"><i class="fa-solid fa-xmark"></i></a></td>#}
 {#                        {% endif %}#}
-                    </tr>
-              </tbody>
-            </table>
-        </div>
-    </div>
+{#                    </tr>#}
+{#              </tbody>#}
+{#            </table>#}
+{#        </div>#}
+{#    </div>#}
         <div class="product_list">
-            <h1 class="main-title m-lg-5">Список товарів:</h1>
             {% for document_product in object.products_in_document.all %}
-                {{ document_product }}
+                <ul class="category-list">
+                    <li><a href="">{{ document_product }}</a><span>{{ document_product.count }}</span></li>
+                </ul>
             {% endfor %}
 {#            {% if document_products %}#}
 {#                <ul class="ul_product_list">#}
@@ -93,5 +105,4 @@
 {#                </div>#}
 {#            {% endif %}#}
         </div>
-
 {% endblock %}
