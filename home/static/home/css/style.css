@@ -299,3 +299,21 @@ legend {
 .hoverable:hover .dropdown-menu {
   display: block;
 }
+
+.product_list{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 100px;
+}
+.ul_product_list {
+    list-style: none;
+    border-left: 10px solid green;
+    padding: 0;
+}
+.ul_product_list li {padding: 10px;}
+.ul_product_list li:nth-child(odd) {background: #E1F1FF;}
+.ul_product_list li:nth-child(even) {background: white;}
+.main-title{
+    margin-top: 15px;
+    margin-left: 10px;
+}

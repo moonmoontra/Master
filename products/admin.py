@@ -15,11 +15,11 @@ class PriceAdmin(admin.ModelAdmin):
 
 @admin.register(ProductRefBook)
 class ProductRefBookAdmin(admin.ModelAdmin):
-    list_display = ('product_name', 'unitOfMeasure', 'manufacturer')
+    list_display = ('product_name', 'unit_of_measure', 'manufacturer')
     list_filter = ('articul',)
 
 
 @admin.register(ProductPriceName)
 class ProductPriceAdmin(admin.ModelAdmin):
-    list_display = ('product', 'unitOfMeasure', 'coefficient')
+    list_display = ('product', 'unit_of_measure', 'coefficient')
     list_filter = ('price',)

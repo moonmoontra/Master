@@ -33,7 +33,7 @@ class ProductRefBook(BaseData):
     product_name = models.CharField(max_length=50, default=None, verbose_name='Назва')
     manufacturer = models.ForeignKey(Manufacturer, default=None, on_delete=models.SET_DEFAULT,
                                      verbose_name='Виробник', related_name='manufacturer_products')
-    unitOfMeasure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру',
+    unit_of_measure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру',
                                       related_name='unitofmeasure_products')
 
     def __str__(self):
@@ -50,7 +50,7 @@ class ProductPriceName(BaseData):
                                 related_name='productrefbook_products')
     price = models.ForeignKey(PriceName, on_delete=models.PROTECT, verbose_name='Тип ціни',
                               related_name='pricename_products')
-    unitOfMeasure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру',
+    unit_of_measure = models.ForeignKey(UnitOfMeasure, on_delete=models.PROTECT, verbose_name='Од. виміру',
                                       related_name='unitofmeasure_price_products')
     coefficient = models.FloatField(default=0.0, verbose_name='Коефіцієнт')
 

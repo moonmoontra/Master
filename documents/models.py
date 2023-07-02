@@ -14,14 +14,14 @@ class Document(BaseData):
     )
 
     document_type = models.CharField(max_length=10, default='receipt', choices=TYPE_DOCUMENT, verbose_name='Тип документу')
-    provider_id = models.ForeignKey(Provider, default=None, on_delete=models.SET_DEFAULT, verbose_name='Постачальник',
+    provider = models.ForeignKey(Provider, default=None, on_delete=models.SET_DEFAULT, verbose_name='Постачальник',
                                     related_name='provider_documents')
-    stock_id = models.ForeignKey(Stock, on_delete=models.PROTECT, verbose_name='Склад', related_name='stock_documents')
-    price_name_id = models.ForeignKey(PriceName, on_delete=models.PROTECT, verbose_name='Тип ціни',
+    stock = models.ForeignKey(Stock, on_delete=models.PROTECT, verbose_name='Склад', related_name='stock_documents')
+    price_name = models.ForeignKey(PriceName, on_delete=models.PROTECT, verbose_name='Тип ціни',
                                       related_name='pricename_documents')
-    valuta_id = models.ForeignKey(Valuta, default=None, on_delete=models.SET_DEFAULT, verbose_name='Валюта',
+    valuta = models.ForeignKey(Valuta, default=None, on_delete=models.SET_DEFAULT, verbose_name='Валюта',
                                   related_name='valute_documents')
-    cash_id = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса', related_name='cash_documents')
+    cash = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса', related_name='cash_documents')
 
     def __str__(self):
         return '[{pk}] {create_date}'.format(pk=self.pk, create_date=self.create_date)
@@ -33,15 +33,17 @@ class Document(BaseData):
 
 
 class ProductInDocument(models.Model):
-    document = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Документ', related_name='documents')
-    product_id = models.ForeignKey(ProductRefBook, on_delete=models.PROTECT, verbose_name='Товар',
-                                   related_name='products_in_document')
+    document = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Документ',
+                                 related_name='products_in_document')
+    product = models.ForeignKey(ProductRefBook, on_delete=models.PROTECT, verbose_name='Товар',
+                                   related_name='products_in_products_in_document')
     count = models.PositiveIntegerField(verbose_name='Кількість')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ціна')
 
     def __str__(self):
-        return '{product_id}[{count}]'.format(product_id=self.product_id,
-                                                          count=self.count)
+        return '[{articul}] {product_name} [{count}]'.format(articul=self.product.articul,
+                                                            product_name=self.product.product_name, count=self.count)
+
     @property
     def sum(self):
         return self.count * self.price
@@ -67,7 +69,7 @@ class StockMovementDocument(BaseData):
 
 
 class StockMovementDocumentProduct(models.Model):
-    product_id = models.ForeignKey(ProductRefBook, on_delete=models.PROTECT, verbose_name='Товар',
+    product = models.ForeignKey(ProductRefBook, on_delete=models.PROTECT, verbose_name='Товар',
                                    related_name='products_in_stock_movement_document')
     count = models.PositiveIntegerField(verbose_name='Кількість')
 
@@ -80,9 +82,9 @@ class StockMovementDocumentProduct(models.Model):
 
 
 class CashDocument(BaseData):
-    cash_id = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса',
+    cash = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса',
                                 related_name='cash_document_documents')
-    document_id = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Номер документа',
+    document = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Номер документа',
                                          related_name='cash_documents')
     cash_document_description = models.CharField(blank=True, max_length=50, default=None, verbose_name='Опис документа')
 

@@ -7,11 +7,11 @@ class BaseDocumentClass(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BaseDocumentClass, self).__init__(*args, **kwargs)
         self.fields['document_type'].empty_label = None
-        self.fields['provider_id'].empty_label = None
-        self.fields['stock_id'].empty_label = None
-        self.fields['price_name_id'].empty_label = None
-        self.fields['valuta_id'].empty_label = None
-        self.fields['cash_id'].empty_label = None
+        self.fields['provider'].empty_label = None
+        self.fields['stock'].empty_label = None
+        self.fields['price_name'].empty_label = None
+        self.fields['valuta'].empty_label = None
+        self.fields['cash'].empty_label = None
 
     class Meta:
         model = Document

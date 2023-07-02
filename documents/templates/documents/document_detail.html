@@ -1,0 +1,97 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+    <div class="content-main">
+        <div class="content-table">
+            <table class="table">
+              <thead>
+                <tr>
+                    <th scope="col">Номер</th>
+                    <th scope="col">Тип документу</th>
+                    <th scope="col">Кількість товарів</th>
+                    <th scope="col">Загальна сума</th>
+                    <th scope="col">Контрагент</th>
+                    <th scope="col">Склад</th>
+                    <th scope="col">Тип ціни</th>
+                    <th scope="col">Валюта</th>
+                    <th scope="col">Дата створення</th>
+                    <th scope="col">Дата редагування</th>
+{#                    <th scope="col">Проведено?</th>#}
+                </tr>
+              </thead>
+              <tbody>
+                    <tr>
+                        <th scope="row"> {{ object.pk }} </th>
+                        {% if object.document_type == 'receipt' %}
+                            <td>Прихід</td>
+                        {% else %}
+                            <td>Витрата</td>
+                        {% endif %}
+                        <td>{{ object.products_in_document.count }}</td>
+                        {% if object.document_type == 'receipt' %}
+                            <td style="color: green"><b>smth</b></td>
+                        {% else %}
+                            <td style="color: red"><b>smth</b></td>
+                        {% endif %}
+                        <td>{{ object.provider }}</td>
+                        <td>{{ object.stock }}</td>
+                        <td>{{ object.price_name }}</td>
+                        <td>{{ object.valuta }}</td>
+                        <td>{{ object.create_date }}</td>
+                        <td>{{ object.update_date }}</td>
+{#                        {% if documentDetail.flag == True %}#}
+{#                            <td><a href="{% url 'document-edit-flag' documentDetail.pk %}"><i class="fa-solid fa-check"></i></a></td>#}
+{#                        {% else %}#}
+{#                            <td><a href="{% url 'document-edit-flag' documentDetail.pk %}"><i class="fa-solid fa-xmark"></i></a></td>#}
+{#                        {% endif %}#}
+                    </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+        <div class="product_list">
+            <h1 class="main-title m-lg-5">Список товарів:</h1>
+            {% for document_product in object.products_in_document.all %}
+                {{ document_product }}
+            {% endfor %}
+{#            {% if document_products %}#}
+{#                <ul class="ul_product_list">#}
+{#                    {% for document_product in document_products %}#}
+{#                        <li class="list-group-item">#}
+{#                            {% if documentDetail.flag %}#}
+{#                                {{ document_product }}#}
+{#                            {% else %}#}
+{#                                <a href="">{{ document_product }}</a>#}
+{#                            {% endif %}#}
+{#                            {% if documentDetail.document_type != 'receipt' %}#}
+{#                                {% for balance_product in balance_products %}#}
+{#                                    {% if balance_product.product.id == document_product.product.id %}#}
+{#                                        {% if balance_product.count < document_product.count %}#}
+{#                                        <b style="color: red; margin-left: 30px">В залишку: <b>{{ balance_product.count }}</b></b>#}
+{#                                        {% endif %}#}
+{#                                    {% endif %}#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
+{#                            <div class="element_price_in_list">#}
+{#                                <b>Сума:#}
+{#                                    {% if documentDetail.document_type == 'receipt' %}#}
+{#                                        <b style="color: green">{{ document_product.price_calc }}</b>#}
+{#                                    {% else %}#}
+{#                                        <b style="color: red">{{ document_product.price_calc }}</b>#}
+{#                                    {% endif %}#}
+{#                                    {% if documentDetail.flag == False %}#}
+{#                                    <a style="margin-left: 30px; color: red" href="{% url 'document_product_delete' document_product.pk %}"><i class="fa-solid fa-xmark"></i></a>#}
+{#                                    {% endif %}#}
+{#                                </b>#}
+{#                            </div>#}
+{#                        </li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            {% else %}#}
+{#                <div class="alert alert-danger" role="alert">#}
+{#                  <p style="text-align: center"><strong>В цьому документі немає товарів!</strong></p>#}
+{#                </div>#}
+{#            {% endif %}#}
+        </div>
+
+{% endblock %}

@@ -1,9 +1,15 @@
 from django.contrib import admin
 
-from .models import Document
+from .models import Document, ProductInDocument
 
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('document_type', 'stock_id', 'price_name_id', 'valuta_id', 'cash_id')
-    list_filter = ('provider_id',)
+    list_display = ('document_type', 'provider', 'stock', 'price_name', 'valuta', 'cash')
+    list_filter = ('provider',)
+
+
+@admin.register(ProductInDocument)
+class ProductInDocumentAdmin(admin.ModelAdmin):
+    list_display = ('document', 'product', 'count', 'price')
+    list_filter = ('document',)

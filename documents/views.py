@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DetailView
 from django.apps import apps
 from home.base_view import BaseListView
 from documents.forms import DocumentForm
@@ -28,7 +28,7 @@ class BaseEditView(BaseDocumentView, UpdateView):
 
 class DocumentListView(BaseListView, BaseDocumentView):
     template_name = 'documents/document_list.html'
-    edit_view_name = 'document_edit'
+    edit_view_name = 'document_detail'
     delete_view_name = 'delete_document'
     model = Document
 
@@ -44,6 +44,11 @@ class DocumentEditView(BaseEditView):
     template_name = 'documents/document_edit.html'
     model = Document
 
+
+class DocumentDetailView(DetailView):
+    form_class = DocumentForm
+    template_name = 'documents/document_detail.html'
+    model = Document
 
 
 @require_POST
