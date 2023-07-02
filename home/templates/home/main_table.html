@@ -39,6 +39,15 @@
                     {% elif model_name == 'Document' %}
                         <a class="btn" role="button" style="border-top: 4px solid green;"
                            href="{% url 'document_create' %}">Додати</a>
+                    {% elif model_name == 'Cash' %}
+                        <a class="btn" role="button" style="border-top: 4px solid green;"
+                           href="{% url 'cash_create' %}">Додати</a>
+                    {% elif model_name == 'Valuta' %}
+                        <a class="btn" role="button" style="border-top: 4px solid green;"
+                           href="{% url 'valuta_create' %}">Додати</a>
+                    {% elif model_name == 'Rate' %}
+                        <a class="btn" role="button" style="border-top: 4px solid green;"
+                           href="{% url 'rate_create' %}">Додати</a>
                     {% endif %}
 
                     {% include 'home/modal_for_delete.html' %}

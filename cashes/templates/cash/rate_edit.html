@@ -1,14 +1,14 @@
 {% extends 'home/base.html' %}
 
-{% block title %}Редагувати документ{% endblock %}
+{% block title %}Редагувати курс валюти{% endblock %}
 
 {% block content %}
     {% csrf_token %}
     <div class="create-title">
-        <h2><i class="fa-solid fa-file-pen"></i> Редагувати документ від <span style="color: green"><u><em>{{ object.client_name }} {{ object.document_type }}</em></u></span></h2>
+        <h2><i class="fa-solid fa-file-pen"></i> Редагувати курс від <span style="color: green"><u><em>{{ object.rate_date }} {{ object.valuta }}</em></u></span></h2>
     </div>
     <div class="create-form">
-        <form action="{% url 'document_edit' object.pk %}" method="post" class="row g-3">
+        <form action="{% url 'rate_edit' object.pk %}" method="post" class="row g-3">
             {% csrf_token %}
             {% include 'home/fields_for_form.html' %}
             <div class="a-create">

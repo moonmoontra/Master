@@ -27,6 +27,15 @@
                     <ul class="nav" style="font-weight: 500">
                         <div class="dropdown hoverable">
                             <a  class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                               aria-expanded="false"> Гроші </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{% url 'cashes' %}">Каси</a></li>
+                                <li><a class="nav-link" href="{% url 'valutas' %}">Валюти</a></li>
+                                <li><a class="nav-link" href="{% url 'rates' %}">Курси валют</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown hoverable">
+                            <a  class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                                aria-expanded="false"> Персонал </a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="{% url 'providers' %}">Контрагенти</a></li>

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'persons.apps.PersonsConfig',
     'products.apps.ProductsConfig',
     'stocks.apps.StocksConfig',
-    'cash.apps.CashConfig',
+    'cashes.apps.CashesConfig',
     'documents.apps.DocumentsConfig',
 ]
 

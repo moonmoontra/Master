@@ -12,7 +12,15 @@
         <div class="main-menu-container">
            <section class="menu">
               <ol class="toc">
-                 <li class="style-li"><a href=""><b>Персонал</b></a></li>
+                 <li class="style-li"><a href=""><b>Гроші</b></a></li>
+                 <li class="second-menu">
+                     <ul>
+                         <li><a href="{% url 'cashes' %}">каси</a></li>
+                         <li><a href="{% url 'valutas' %}">валюти</a></li>
+                         <li><a href="{% url 'rates' %}">курси валют</a></li>
+                     </ul>
+                  </li>
+                  <li class="style-li"><a href=""><b>Персонал</b></a></li>
                  <li class="second-menu">
                      <ul>
                          <li><a href="{% url 'providers' %}">контрагенти</a></li>

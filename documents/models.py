@@ -3,7 +3,7 @@ from django.db import models
 from persons.models import Provider
 from products.models import PriceName, ProductRefBook
 from stocks.models import Stock
-from cash.models import Valuta, Cash
+from cashes.models import Valuta, Cash
 from home.models import BaseData
 
 
