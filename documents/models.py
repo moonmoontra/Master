@@ -4,14 +4,7 @@ from persons.models import Provider
 from products.models import PriceName, ProductRefBook
 from stocks.models import Stock
 from cash.models import Valuta, Cash
-
-
-class BaseData(models.Model):
-    create_date = models.DateTimeField(auto_now_add=True, verbose_name='Створено:')
-    update_date = models.DateTimeField(auto_now=True, verbose_name='Редаговано:')
-
-    class Meta:
-        abstract = True
+from home.models import BaseData
 
 
 class Document(BaseData):

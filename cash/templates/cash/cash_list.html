@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+{% load user_tags %}
+
+{% block title %} Каси {% endblock title %}
+{% block content %}
+
+    <div style="background-color: rgb(255, 255, 227);" class="second-title">
+        <h2 class="title_h2">Каси</h2>
+    </div>
+
+    {% include 'home/main_table.html' %}
+    {% include 'persons/pagination.html' %}
+{% endblock content %}

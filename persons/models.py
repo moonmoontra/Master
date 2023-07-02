@@ -2,13 +2,7 @@ from django.db import models
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
-
-class BaseData(models.Model):
-    create_date = models.DateTimeField(auto_now_add=True, verbose_name='Створено:')
-    update_date = models.DateTimeField(auto_now=True, verbose_name='Редаговано:')
-
-    class Meta:
-        abstract = True
+from home.models import BaseData
 
 
 class Provider(BaseData):

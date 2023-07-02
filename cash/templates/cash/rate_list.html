@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+{% load user_tags %}
+
+{% block title %} Курси валют {% endblock title %}
+{% block content %}
+
+    <div style="background-color: rgb(219, 255, 255);" class="second-title">
+        <h2 class="title_h2">Курси валют</h2>
+    </div>
+
+    {% include 'home/main_table.html' %}
+    {% include 'home/pagination.html' %}
+{% endblock content %}

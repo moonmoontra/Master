@@ -36,6 +36,9 @@
                     {% elif model_name == 'Stock' %}
                         <a class="btn" role="button" style="border-top: 4px solid green;"
                            href="{% url 'stock_create' %}">Додати</a>
+                    {% elif model_name == 'Document' %}
+                        <a class="btn" role="button" style="border-top: 4px solid green;"
+                           href="{% url 'document_create' %}">Додати</a>
                     {% endif %}
 
                     {% include 'home/modal_for_delete.html' %}
