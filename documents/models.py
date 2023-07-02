@@ -13,7 +13,7 @@ class Document(BaseData):
         ('expense', 'Витрата'),
     )
 
-    document_type = models.CharField(max_length=10, choices=TYPE_DOCUMENT, verbose_name='Тип документу')
+    document_type = models.CharField(max_length=10, default='receipt', choices=TYPE_DOCUMENT, verbose_name='Тип документу')
     provider_id = models.ForeignKey(Provider, default=None, on_delete=models.SET_DEFAULT, verbose_name='Постачальник',
                                     related_name='provider_documents')
     stock_id = models.ForeignKey(Stock, on_delete=models.PROTECT, verbose_name='Склад', related_name='stock_documents')
