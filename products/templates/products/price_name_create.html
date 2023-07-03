@@ -9,7 +9,10 @@
             {% csrf_token %}
             {% include 'home/fields_for_form.html' %}
             <div class="a-create">
-                <a style="border-top: 4px solid green" class="btn" onclick="document.querySelector('form').submit(); return false;" role="button">Додати</a>
+                <div class="a-btn">
+                    <a class="btn-edit-href" onclick="document.querySelector('form').submit(); return false;"
+                       role="button">Додати</a>
+                </div>
             </div>
         </form>
     </div>

@@ -45,6 +45,14 @@
 .dark-theme .bg-body-tertiary{
     background-color: #000000;
 }
+.dark-theme .modal-content{
+    background-color: grey;
+    color: white;
+}
+.dark-theme .modal-content button{
+    background-color: white;
+    color: black;
+}
 
 .dark-theme .second-title{
     background-color: black;
