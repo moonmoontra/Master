@@ -20,14 +20,15 @@ class BaseDocumentClass(forms.ModelForm):
 
 class BaseProductInDocumentClass(forms.ModelForm):
 
-        def __init__(self, *args, **kwargs):
-            super(BaseProductInDocumentClass, self).__init__(*args, **kwargs)
-            self.fields['document'].empty_label = None
-            self.fields['product'].empty_label = None
+    def __init__(self, *args, **kwargs):
+        super(BaseProductInDocumentClass, self).__init__(*args, **kwargs)
+        self.fields['product'].empty_label = None
+        self.fields['document'].empty_label = self.cleaned_data['document']
 
-        class Meta:
-            model = ProductInDocument
-            fields = '__all__'
+    class Meta:
+        model = ProductInDocument
+        fields = ['document', 'product', 'count', 'price']
+        exclude = ('document',)
 
 
 class DocumentForm(BaseDocumentClass):
