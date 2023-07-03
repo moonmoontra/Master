@@ -107,5 +107,14 @@ def get_all_related_names():
     return related_names
 
 
+"""update_object - метод для обновления объекта...
+    model - модель, для которой нужно обновить объект
+    object_id - id объекта, который нужно обновить
+    kwargs - дополнительные параметры для обновления объекта
+    (например, если в модели Document нужно обновить поле update_date,
+    то в kwargs передаем update_date=timezone.now()
+    полный пример вызова: update_object(Document, 1, update_date=timezone.now()))"""
+
+
 def update_object(model, object_id, **kwargs):
     return model.objects.filter(id=object_id).update(**kwargs)
