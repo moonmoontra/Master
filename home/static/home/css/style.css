@@ -99,7 +99,10 @@ legend {
 	/*font-family: 'Ubuntu', sans-serif;*/
 	font-family: 'Raleway', sans-serif;
 }
-
+.page_link{
+	font-family: 'Raleway', sans-serif;
+	color: darkblue;
+}
 .second-title{
 	border: 1px solid;
 	border-radius: 10px;
@@ -107,6 +110,46 @@ legend {
 	margin: 20px 0 40px 0;
 	width: 330px;
 	float: left;
+}
+.second-title-provider{
+	background-color: rgb(166, 255, 231);
+}
+.second-title-manufacturer{
+	background-color: rgb(187, 235, 255);
+}
+.second-title-employee{
+	background-color: rgb(255, 252, 196);
+}
+.second-title-client{
+	background-color: rgb(235, 209, 235);
+}
+.second-title-document{
+	background-color: rgb(223, 225, 247);
+}
+.second-title-valuta{
+	background-color: rgb(255, 227, 215);
+}
+.second-title-rate{
+	background-color: rgb(219, 255, 255);
+}
+.second-title-cash{
+	background-color: rgb(255, 255, 227);
+}
+.second-title-stock{
+	background-color: rgb(236, 236, 255);
+}
+.second-title-product-price{
+	background-color: rgb(255, 215, 235);
+}
+.second-title-price-name{
+	background-color: rgb(166, 255, 231);
+}
+.second-title-product-ref-book{
+	background-color: rgb(255, 225, 205);
+}
+.second-title-unit-of-measure{
+	background-color: rgb(237, 220, 220);
+	width: 400px;
 }
 .title-nav{
 	float: right;
@@ -173,7 +216,9 @@ legend {
 .container-fluid .navbar-brand:hover {
 	color: brown;
 }
-
+.btn-edit{
+	border-top: 4px solid green
+}
 .dropdown{
 	padding-top: 4px;
 }
@@ -350,7 +395,7 @@ legend {
 .product-count{
 	color: darkred;
 }
-.summ-valute{
+.summ-valuta{
 	color: darkgreen;
 }
 .document-detail-header{

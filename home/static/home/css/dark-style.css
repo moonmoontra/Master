@@ -12,8 +12,7 @@
     /*background-color: #ffffff;*/
     background-color: rgb(63,63,63);
     color: white;
-    /*border: 1px solid white;*/
-    border-top: 3px solid lightgoldenrodyellow;
+    border: 1px solid white;
 }
 
 .dark-theme .btn-menu li button{
@@ -34,31 +33,61 @@
 .dark-theme .second-title{
     background-color: black;
 }
-.title_h2{
-    color: black;
+.dark-theme .title_h2{
+    color: white;
 }
-.category-list{
+.dark-theme .btn-edit{
+    border: 1px solid white;
+}
+.dark-theme .category-list{
     background-color: rgb(63,63,63);
 }
-.category-list a{
+.dark-theme .category-list a{
     color: white;
 }
-.category-list li span{
+.dark-theme .document-detail-info li{
+	color: grey;
+}
+.dark-theme .category-list li span{
     color: white;
 }
-.product-count, .summ-valute{
-    color: white;
+.dark-theme .product-count{
+    color: lightgrey;
 }
-.document-detail-header a{
+.dark-theme .summ-valuta{
+    color: lightgrey;
+}
+.dark-theme .document-detail-header a{
 	border-top: 4px solid white;
 }
-.document-detail-title-add-product{
+.dark-theme .document-detail-title-add-product{
 	margin-left: 15px;
 	border: 1px solid dimgray;
 	border-radius: 50px;
 	padding: 5px 10px;
 	color: white;
 }
-.btn{
+.dark-theme .btn{
     border-top: 3px solid white;
 }
+.dark-theme .second-title{
+    background-color: rgb(63,63,63);
+}
+.dark-theme .page-link{
+    background-color: rgb(63,63,63);
+    color: white;
+}
+.dark-theme .page-link:hover{
+    background-color: white;
+    color: black;
+}
+.dark-theme .dropdown a:after{
+    background-color: white;
+}
+.dark-theme .nav .nav-link{
+	color: lightgrey;
+}
+.dark-theme .nav .nav-link:hover{
+	color: white;
+}
+
