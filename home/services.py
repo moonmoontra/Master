@@ -118,9 +118,16 @@ def get_all_related_names():
     полный пример вызова: update_object(Document, 1, update_date=timezone.now()))"""
 
 
-def update_object(model, object_id, **kwargs):
+def update_object(model, object_id: int, **kwargs: dict):
     return model.objects.filter(id=object_id).update(**kwargs)
 
 
-def get_all_sum_document(model, field_name):
-    return model.objects.all().aggregate(Sum(field_name))
+""" get_all_sum_document - метод для получения общей цены товаров в документе...
+    _object - объект, для которого нужно получить общую цену товаров
+    sum - общая цена товаров в документе
+    product_in_document.sum - цена товара в документе
+    _object.products_in_document.all() - все товары в документе"""
+
+
+def get_all_sum_document(_object: object) -> Sum:
+    return sum([product_in_document.sum for product_in_document in _object.products_in_document.all()])

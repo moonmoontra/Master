@@ -7,7 +7,7 @@ from django.apps import apps
 from home.base_view import BaseListView
 from documents.forms import DocumentForm, ProductInDocumentForm
 from documents.models import Document, ProductInDocument
-from home.services import delete_objects, update_object
+from home.services import delete_objects, update_object, get_all_sum_document
 
 
 class BaseDocumentView:
@@ -53,7 +53,7 @@ class DocumentDetailView(DetailView):
     model = Document
 
     def get_all_sum(self):
-        return sum([product_in_document.sum for product_in_document in self.object.products_in_document.all()])
+        return get_all_sum_document(self.object)
 
 
 class ProductInDocumentCreateView(CreateView):
