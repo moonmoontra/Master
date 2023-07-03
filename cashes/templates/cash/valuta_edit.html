@@ -5,14 +5,18 @@
 {% block content %}
     {% csrf_token %}
     <div class="create-title">
-        <h2><i class="fa-solid fa-file-pen"></i> Редагувати валюту <span style="color: green"><u><em>{{ object.valuta_name }}</em></u></span></h2>
+        <h2><i class="fa-solid fa-file-pen"></i> Редагувати валюту <span class="create-title-span"><u>
+            <em>{{ object.valuta_name }}</em></u></span></h2>
     </div>
     <div class="create-form">
         <form action="{% url 'valuta_edit' object.pk %}" method="post" class="row g-3">
             {% csrf_token %}
             {% include 'home/fields_for_form.html' %}
             <div class="a-create">
-                <a style="border-top: 4px solid green" class="btn" onclick="document.querySelector('form').submit(); return false;" role="button">Змінити</a>
+                <div class="a-btn">
+                    <a class="btn-edit-href" onclick="document.querySelector('form').submit(); return false;"
+                       role="button">Змінити</a>
+                </div>
             </div>
         </form>
     </div>

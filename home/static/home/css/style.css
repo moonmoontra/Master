@@ -187,11 +187,25 @@ legend {
 	font-size: 21px;
 	margin-top: 50px;
 }
-.create-form a {
-	width: 550px;
-	font-size: 21px;
-	border: 1px solid black;
+.create-form .a-create{
+	width: -500px;
+	text-align: center;
+}
+.a-btn{
+	margin-left: 350px;
+	margin-right: 350px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-top: 4px solid green;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
 	border-radius: 10px;
+}
+.create-form a {
+	text-decoration: none;
+	font-size: 21px;
+	color: black;
 }
 .create-title{
 	margin-top: 30px;
@@ -199,10 +213,6 @@ legend {
 }
 .asteriskField {
 	color: red;
-}
-.a-create{
-	text-align: center;
-	padding-top: 15px;
 }
 .table tbody tr:hover {
     background: rgb(236, 231, 223);
@@ -216,13 +226,12 @@ legend {
 .container-fluid .navbar-brand:hover {
 	color: brown;
 }
-.btn-edit{
-	border-top: 4px solid green
+.create-title-span{
+	color: green;
 }
 .dropdown{
 	padding-top: 4px;
 }
-
 .dropdown a {
     display: inline-block;
     color: #07aa19;
