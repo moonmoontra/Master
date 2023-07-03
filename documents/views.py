@@ -51,10 +51,19 @@ class DocumentDetailView(DetailView):
     model = Document
 
 
-class ProductInDocumentCreateView(BaseCreateView):
+class ProductInDocumentCreateView(CreateView):
+    model = ProductInDocument
     form_class = ProductInDocumentForm
     template_name = 'documents/document_product_create.html'
-    model = ProductInDocument
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['document'] = get_object_by_id(Document, self.kwargs['pk'])
+        return context
+
+    def get_initial(self):
+        document = get_object_by_id(Document, self.kwargs['pk'])
+        return {'document': document}
 
     def get_success_url(self):
         url = '/documents/documents/document_detail/' + str(self.object.document.id)

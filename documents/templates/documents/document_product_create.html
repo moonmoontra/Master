@@ -5,7 +5,7 @@
         <h2><i class="fa-solid fa-pen-to-square"></i> Додати товар у документ</h2>
     </div>
     <div class="create-form">
-        <form action="{% url 'document_product_create' %}" method="post" class="row g-3">
+        <form action="{% url 'document_product_create' document.pk %}" method="post" class="row g-3">
             {% csrf_token %}
             {% include 'home/fields_for_form.html' %}
             <div class="a-create">

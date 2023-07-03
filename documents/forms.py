@@ -22,13 +22,12 @@ class BaseProductInDocumentClass(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(BaseProductInDocumentClass, self).__init__(*args, **kwargs)
-        # self.fields['document'].initial = document_id
+        self.fields['document'].disabled = True
         self.fields['product'].empty_label = None
 
     class Meta:
         model = ProductInDocument
         fields = ['document', 'product', 'count', 'price']
-        # exclude = ('document',)
 
 
 class DocumentForm(BaseDocumentClass):
