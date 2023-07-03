@@ -69,9 +69,7 @@ class ProductInDocumentCreateView(CreateView):
 
     def form_valid(self, form):
         self.object = form.save()
-
         document = update_object(Document, self.kwargs['pk'], update_date=datetime.now())
-
         return super().form_valid(form)
 
     def get_success_url(self):
