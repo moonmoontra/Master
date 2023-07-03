@@ -1,108 +1,69 @@
 {% extends 'home/base.html' %}
 {% block content %}
-    <div class="document-detail-title">
-        <div class="document-detail-second-title-btn">
-            <div style="background-color: rgb(223, 225, 247);" class="document-detail-second-title">
-                <h2 class="title_h2">Товари в документі</h2>
-            </div>
-            <a class="document-detail-second-title-btn" role="button" style="border-top: 4px solid green;" href="{% url 'provider_create' %}">Додати</a>
-        </div>
-
-        <div class="document-detail-info">
-            <ul>
-                <li>Кількість: <span class="product-count">{{ object.products_in_document.count }}</span></li>
-                <li>Загальна сума: <span class="summ-valute">100000 {{ object.valuta }}</span></li>
-            </ul>
-{#            <h4>Кількість: {{ object.products_in_document.count }}</h4>#}
-{#            <h4>Загальна сума: 100000 {{ object.valuta }}</h4>#}
-        </div>
+    <div class="document-detail-header">
+        <h2 class="document-detail-title"><i class="fa-solid fa-file"></i> Документ від <em>{{ document.create_date }}</em>
+        </h2>
     </div>
-
-{#    <div class="content-main">#}
-{#        <div class="content-table">#}
-{#            <table class="table">#}
-{#              <thead>#}
-{#                <tr>#}
-{#                    <th scope="col">Номер</th>#}
-{#                    <th scope="col">Тип документу</th>#}
-{#                    <th scope="col">Загальна сума</th>#}
-{#                    <th scope="col">Тип ціни</th>#}
-{#                    <th scope="col">Валюта</th>#}
-{#                    <th scope="col">Дата створення</th>#}
-{#                    <th scope="col">Дата редагування</th>#}
-{#                    <th scope="col">Проведено?</th>#}
-{#                </tr>#}
-{#              </thead>#}
-{#              <tbody>#}
-{#                    <tr>#}
-{#                        <th scope="row"> {{ object.pk }} </th>#}
-{#                        {% if object.document_type == 'receipt' %}#}
-{#                            <td>Прихід</td>#}
-{#                        {% else %}#}
-{#                            <td>Витрата</td>#}
-{#                        {% endif %}#}
+    <div class="content-main">
+        <div class="content-table">
+            <table class="table">
+              <thead>
+                <tr>
+                    <th scope="col">Номер</th>
+                    <th scope="col">Тип документу</th>
+                    <th scope="col">Тип ціни</th>
+                    <th scope="col">Валюта</th>
+                    <th scope="col">Дата створення</th>
+                    <th scope="col">Дата редагування</th>
+                    <th scope="col">Проведено?</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <tr>
+                        <th scope="row"> {{ object.pk }} </th>
+                        {% if object.document_type == 'receipt' %}
+                            <td>Прихід</td>
+                        {% else %}
+                            <td>Витрата</td>
+                        {% endif %}
 {#                        {% if object.document_type == 'receipt' %}#}
 {#                            <td style="color: green"><b>smth</b></td>#}
 {#                        {% else %}#}
 {#                            <td style="color: red"><b>smth</b></td>#}
 {#                        {% endif %}#}
-{#                        <td>{{ object.price_name }}</td>#}
-{#                        <td>{{ object.valuta }}</td>#}
-{#                        <td>{{ object.create_date }}</td>#}
-{#                        <td>{{ object.update_date }}</td>#}
+                        <td>{{ object.price_name }}</td>
+                        <td>{{ object.valuta }}</td>
+                        <td>{{ object.create_date }}</td>
+                        <td>{{ object.update_date }}</td>
 {#                        {% if documentDetail.flag == True %}#}
 {#                            <td><a href="{% url 'document-edit-flag' documentDetail.pk %}"><i class="fa-solid fa-check"></i></a></td>#}
 {#                        {% else %}#}
 {#                            <td><a href="{% url 'document-edit-flag' documentDetail.pk %}"><i class="fa-solid fa-xmark"></i></a></td>#}
 {#                        {% endif %}#}
-{#                    </tr>#}
-{#              </tbody>#}
-{#            </table>#}
-{#        </div>#}
-{#    </div>#}
+                    </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="document-detail-header">
+        <h3 class="document-detail-title">Товари в документі
+            <a class="document-detail-title-add-product" href="{% url 'provider_create' %}"><i
+                    class="fa-sharp fa-solid fa-plus"></i></a>
+        </h3>
+    </div>
+
+    <div class="document-detail-info">
+        <ul>
+            <li>Кількість: <span class="product-count">{{ object.products_in_document.count }}</span></li>
+            <li>Загальна сума: <span class="summ-valute">100000 {{ object.valuta }}</span></li>
+        </ul>
+    </div>
+
         <div class="product_list">
             {% for document_product in object.products_in_document.all %}
                 <ul class="category-list">
-                    <li><a href="">{{ document_product }}</a><span>{{ document_product.count }}</span></li>
+                    <li><a href="">{{ document_product }}</a><span>{{ document_product.count }} {{ document_product.product.unit_of_measure }}</span></li>
                 </ul>
             {% endfor %}
-{#            {% if document_products %}#}
-{#                <ul class="ul_product_list">#}
-{#                    {% for document_product in document_products %}#}
-{#                        <li class="list-group-item">#}
-{#                            {% if documentDetail.flag %}#}
-{#                                {{ document_product }}#}
-{#                            {% else %}#}
-{#                                <a href="">{{ document_product }}</a>#}
-{#                            {% endif %}#}
-{#                            {% if documentDetail.document_type != 'receipt' %}#}
-{#                                {% for balance_product in balance_products %}#}
-{#                                    {% if balance_product.product.id == document_product.product.id %}#}
-{#                                        {% if balance_product.count < document_product.count %}#}
-{#                                        <b style="color: red; margin-left: 30px">В залишку: <b>{{ balance_product.count }}</b></b>#}
-{#                                        {% endif %}#}
-{#                                    {% endif %}#}
-{#                                {% endfor %}#}
-{#                            {% endif %}#}
-{#                            <div class="element_price_in_list">#}
-{#                                <b>Сума:#}
-{#                                    {% if documentDetail.document_type == 'receipt' %}#}
-{#                                        <b style="color: green">{{ document_product.price_calc }}</b>#}
-{#                                    {% else %}#}
-{#                                        <b style="color: red">{{ document_product.price_calc }}</b>#}
-{#                                    {% endif %}#}
-{#                                    {% if documentDetail.flag == False %}#}
-{#                                    <a style="margin-left: 30px; color: red" href="{% url 'document_product_delete' document_product.pk %}"><i class="fa-solid fa-xmark"></i></a>#}
-{#                                    {% endif %}#}
-{#                                </b>#}
-{#                            </div>#}
-{#                        </li>#}
-{#                    {% endfor %}#}
-{#                </ul>#}
-{#            {% else %}#}
-{#                <div class="alert alert-danger" role="alert">#}
-{#                  <p style="text-align: center"><strong>В цьому документі немає товарів!</strong></p>#}
-{#                </div>#}
-{#            {% endif %}#}
         </div>
 {% endblock %}

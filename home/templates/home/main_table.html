@@ -77,6 +77,12 @@
                         {% else %}
                             <td>Юридична особа</td>
                         {% endif %}
+                    {% elif field == 'document_type' %}
+                        {% if object|get_attr:field == 'receipt' %}
+                            <td>Прихід</td>
+                        {% else %}
+                            <td>Витрата</td>
+                        {% endif %}
                     {% else %}
                         {% if object|get_attr:field == None %}
                             <td>Не зазначено</td>

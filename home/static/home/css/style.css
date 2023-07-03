@@ -332,17 +332,8 @@ legend {
   color: #c93961;
   border: 1px solid #c93961;
 }
-
 .document-detail-title{
-	text-align: left;
-	margin-top: 15px;
-	border-bottom: 1px solid black;
-}
-.document-detail-second-title{
 	text-align: center;
-	border: 1px solid dimgray;
-	width: 500px;
-	border-radius: 5px;
 }
 .document-detail-info{
 	color: dimgrey;
@@ -361,4 +352,21 @@ legend {
 }
 .summ-valute{
 	color: darkgreen;
+}
+.document-detail-header{
+	margin-top: 20px;
+}
+.document-detail-header a{
+	border-top: 4px solid darkolivegreen;
+}
+.document-detail-title-add-product{
+	margin-left: 15px;
+	border: 1px solid dimgray;
+	border-radius: 50px;
+	padding: 5px 10px;
+	color: darkgreen;
+}
+.content-table{
+margin-top: 30px;
+	padding-bottom: 10px;
 }
