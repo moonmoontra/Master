@@ -58,18 +58,20 @@ class ProductInDocumentCreateView(CreateView):
     form_class = ProductInDocumentForm
     template_name = 'documents/document_product_create.html'
 
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['document'] = get_object_or_404(Document, pk=self.kwargs['pk'])
+        context['document'] = self.get_document()
         return context
 
     def get_initial(self):
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
-        return {'document': document}
+        return {'document': self.get_document()}
 
     def form_valid(self, form):
         self.object = form.save()
-        document = update_object(Document, self.kwargs['pk'], update_date=datetime.now())
+        update_object(Document, self.kwargs['pk'], update_date=datetime.now())
         return super().form_valid(form)
 
     def get_success_url(self):
