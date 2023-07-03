@@ -1,19 +1,4 @@
-{% extends 'home/base.html' %}
+{% extends 'home/base_create_template.html' %}
 
-{% block content %}
-    <div class="create-title">
-        <h2><i class="fa-solid fa-pen-to-square"></i> Додати нового працівника</h2>
-    </div>
-    <div class="create-form">
-        <form action="{% url 'employee_create' %}" method="post" class="row g-3">
-            {% csrf_token %}
-            {% include 'home/fields_for_form.html' %}
-            <div class="a-create">
-                <div class="a-btn">
-                    <a class="btn-edit-href" onclick="document.querySelector('form').submit(); return false;"
-                       role="button">Додати</a>
-                </div>
-            </div>
-        </form>
-    </div>
-{% endblock content %}
+{% block title %}Додати нового працівника{% endblock %}
+{% block url_for_create %}{% url 'employee_create' %}{% endblock %}
