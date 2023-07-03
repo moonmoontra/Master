@@ -1,3 +1,5 @@
+import locale
+
 from django.db import models
 
 from persons.models import Provider
@@ -24,7 +26,10 @@ class Document(BaseData):
     cash = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса', related_name='cash_documents')
 
     def __str__(self):
-        return '[{pk}] {create_date}'.format(pk=self.pk, create_date=self.create_date)
+        locale.setlocale(locale.LC_TIME, 'uk_UA.UTF-8')
+        formatted_date = self.create_date.strftime('%d %B %Y, %H:%M')
+        locale.setlocale(locale.LC_TIME, '')
+        return 'Документ [№{pk}] від {create_date}'.format(pk=self.pk, create_date=formatted_date)
 
     class Meta:
         verbose_name = 'Документ'
