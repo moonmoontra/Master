@@ -56,12 +56,6 @@ class ProductInDocumentCreateView(BaseCreateView):
     template_name = 'documents/document_product_create.html'
     model = ProductInDocument
 
-    # def get_form(self, form_class=None):
-    #     document_id = self.object.document.id
-    #     form = super().get_form(form_class)
-    #     form.fields['document'].initial = document_id
-    #     return form
-
     def get_success_url(self):
         url = '/documents/documents/document_detail/' + str(self.object.document.id)
         return url
