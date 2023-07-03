@@ -9,5 +9,7 @@ urlpatterns = [
             name='document_create'),
     re_path(r'^documents/document_detail/(?P<pk>\d+)$', views.DocumentDetailView.as_view(),
             name='document_detail'),
+    re_path(r'^documents/document_product_create/$', views.ProductInDocumentCreateView.as_view(),
+            name='document_product_create'),
     re_path(r'^delete_document/$', views.delete_documents_view, name='delete_document'),
 ]

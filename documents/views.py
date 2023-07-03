@@ -3,8 +3,8 @@ from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.apps import apps
 from home.base_view import BaseListView
-from documents.forms import DocumentForm
-from documents.models import Document
+from documents.forms import DocumentForm, ProductInDocumentForm
+from documents.models import Document, ProductInDocument
 from home.services import delete_objects
 
 
@@ -15,6 +15,8 @@ class BaseDocumentView:
     success_url = '/documents/'
 
     def get_success_url(self):
+        if self.model.__name__ == 'ProductInDocument':
+            return '/'
         return self.success_url + self.model.__name__.lower() + 's'
 
 
@@ -49,6 +51,18 @@ class DocumentDetailView(DetailView):
     form_class = DocumentForm
     template_name = 'documents/document_detail.html'
     model = Document
+
+
+class ProductInDocumentCreateView(BaseCreateView):
+    form_class = ProductInDocumentForm
+    template_name = 'documents/document_product_create.html'
+    model = ProductInDocument
+
+
+# class ProductInDocumentEditView(BaseEditView):
+#     form_class = ProductInDocumentForm
+#     template_name = 'documents/document_edit.html'
+#     model = ProductInDocument
 
 
 @require_POST
