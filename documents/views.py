@@ -15,8 +15,6 @@ class BaseDocumentView:
     success_url = '/documents/'
 
     def get_success_url(self):
-        if self.model.__name__ == 'ProductInDocument':
-            return '/'
         return self.success_url + self.model.__name__.lower() + 's'
 
 
@@ -57,6 +55,10 @@ class ProductInDocumentCreateView(BaseCreateView):
     form_class = ProductInDocumentForm
     template_name = 'documents/document_product_create.html'
     model = ProductInDocument
+
+    def get_success_url(self):
+        url = '/documents/documents/document_detail/' + str(self.object.document.id)
+        return url
 
 
 # class ProductInDocumentEditView(BaseEditView):
