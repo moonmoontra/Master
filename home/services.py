@@ -1,4 +1,6 @@
 import re
+
+from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect
@@ -118,3 +120,7 @@ def get_all_related_names():
 
 def update_object(model, object_id, **kwargs):
     return model.objects.filter(id=object_id).update(**kwargs)
+
+
+def get_all_sum_document(model, field_name):
+    return model.objects.all().aggregate(Sum(field_name))

@@ -52,6 +52,9 @@ class DocumentDetailView(DetailView):
     template_name = 'documents/document_detail.html'
     model = Document
 
+    def get_all_sum(self):
+        return sum([product_in_document.sum for product_in_document in self.object.products_in_document.all()])
+
 
 class ProductInDocumentCreateView(CreateView):
     model = ProductInDocument

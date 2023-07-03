@@ -146,3 +146,11 @@
   background-color: #ff0000; /* Задайте желаемый цвет фона для активного чекбокса */
   border-color: #ff0000; /* Задайте желаемый цвет границы для активного чекбокса */
 }
+
+.dark-theme .summ-valuta {
+    color: #65c056;
+}
+
+.dark-theme .product-count{
+    color: #ff7575;
+}
