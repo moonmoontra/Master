@@ -105,3 +105,7 @@ def get_all_related_names():
             if hasattr(field, 'related_name') and field.related_name:
                 related_names.append(field.related_name)
     return related_names
+
+
+def get_object_by_id(model, object_id):
+    return model.objects.get(id=object_id)

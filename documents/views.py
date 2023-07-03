@@ -5,7 +5,7 @@ from django.apps import apps
 from home.base_view import BaseListView
 from documents.forms import DocumentForm, ProductInDocumentForm
 from documents.models import Document, ProductInDocument
-from home.services import delete_objects
+from home.services import delete_objects, get_object_by_id
 
 
 class BaseDocumentView:
@@ -55,6 +55,12 @@ class ProductInDocumentCreateView(BaseCreateView):
     form_class = ProductInDocumentForm
     template_name = 'documents/document_product_create.html'
     model = ProductInDocument
+
+    # def get_form(self, form_class=None):
+    #     document_id = self.object.document.id
+    #     form = super().get_form(form_class)
+    #     form.fields['document'].initial = document_id
+    #     return form
 
     def get_success_url(self):
         url = '/documents/documents/document_detail/' + str(self.object.document.id)
