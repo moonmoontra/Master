@@ -107,5 +107,5 @@ def get_all_related_names():
     return related_names
 
 
-def get_object_by_id(model, object_id):
-    return model.objects.get(id=object_id)
+def update_object(model, object_id, **kwargs):
+    return model.objects.filter(id=object_id).update(**kwargs)

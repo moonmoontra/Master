@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from datetime import datetime
+
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.apps import apps
 from home.base_view import BaseListView
 from documents.forms import DocumentForm, ProductInDocumentForm
 from documents.models import Document, ProductInDocument
-from home.services import delete_objects, get_object_by_id
+from home.services import delete_objects, update_object
 
 
 class BaseDocumentView:
@@ -58,12 +60,19 @@ class ProductInDocumentCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['document'] = get_object_by_id(Document, self.kwargs['pk'])
+        context['document'] = get_object_or_404(Document, pk=self.kwargs['pk'])
         return context
 
     def get_initial(self):
-        document = get_object_by_id(Document, self.kwargs['pk'])
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
         return {'document': document}
+
+    def form_valid(self, form):
+        self.object = form.save()
+
+        document = update_object(Document, self.kwargs['pk'], update_date=datetime.now())
+
+        return super().form_valid(form)
 
     def get_success_url(self):
         url = '/documents/documents/document_detail/' + str(self.object.document.id)
