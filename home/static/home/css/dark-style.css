@@ -143,8 +143,8 @@
 }
 
 .dark-theme .form-check-input:checked {
-  background-color: #ff0000; /* Задайте желаемый цвет фона для активного чекбокса */
-  border-color: #ff0000; /* Задайте желаемый цвет границы для активного чекбокса */
+  background-color: #ff0000;
+  border-color: #ff0000;
 }
 
 .dark-theme .summ-valuta {
