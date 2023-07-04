@@ -1,13 +1,4 @@
-{% extends 'home/base.html' %}
-{% load user_tags %}
-
-{% block title %} Працівники {% endblock title %}
-{% block content %}
-
-    <div class="second-title second-title-employee">
-        <h2 class="title_h2">Працівники</h2>
-    </div>
-
-    {% include 'home/main_table.html' %}
-    {% include 'persons/../../../home/templates/home/pagination.html' %}
-{% endblock content %}
+{% extends 'home/base_list_template.html' %}
+{% block title %}Працівники{% endblock title %}
+{% block personal-second-title-class-for-css %}second-title-employee{% endblock %}
+{% block second-title %}Працівники{% endblock second-title %}

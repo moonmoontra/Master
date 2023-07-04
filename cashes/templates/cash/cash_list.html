@@ -1,13 +1,4 @@
-{% extends 'home/base.html' %}
-{% load user_tags %}
-
-{% block title %} Каси {% endblock title %}
-{% block content %}
-
-    <div class="second-title second-title-cash">
-        <h2 class="title_h2">Каси</h2>
-    </div>
-
-    {% include 'home/main_table.html' %}
-    {% include 'home/pagination.html' %}
-{% endblock content %}
+{% extends 'home/base_list_template.html' %}
+{% block title %}Каси{% endblock title %}
+{% block personal-second-title-class-for-css %}second-title-cash{% endblock %}
+{% block second-title %}Каси{% endblock second-title %}

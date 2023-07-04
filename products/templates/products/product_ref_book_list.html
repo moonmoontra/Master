@@ -1,13 +1,4 @@
-{% extends 'home/base.html' %}
-{% load user_tags %}
-
-{% block title %} Довідник товарів {% endblock title %}
-{% block content %}
-
-    <div class="second-title second-title-product-ref-book">
-        <h2 class="title_h2">Довідник товарів</h2>
-    </div>
-
-    {% include 'home/main_table.html' %}
-    {% include 'home/pagination.html' %}
-{% endblock content %}
+{% extends 'home/base_list_template.html' %}
+{% block title %}Довідник товарів{% endblock title %}
+{% block personal-second-title-class-for-css %}second-title-product-ref-book{% endblock %}
+{% block second-title %}Довідник товарів{% endblock second-title %}

@@ -1,14 +1,4 @@
-{% extends 'home/base.html' %}
-{% load user_tags %}
-
-{% block title %} Контрагенти {% endblock title %}
-{% block content %}
-
-    <div class="second-title second-title-provider">
-        <h2 class="title_h2">Контрагенти</h2>
-    </div>
-
-    {% include 'home/main_table.html' %}
-    {% include 'home/pagination.html' %}
-{% endblock content %}
-
+{% extends 'home/base_list_template.html' %}
+{% block title %}Контрагенти{% endblock title %}
+{% block personal-second-title-class-for-css %}second-title-provider{% endblock %}
+{% block second-title %}Контрагенти{% endblock second-title %}

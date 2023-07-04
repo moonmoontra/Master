@@ -1,13 +1,4 @@
-{% extends 'home/base.html' %}
-{% load user_tags %}
-
-{% block title %} Типи цін товарів {% endblock title %}
-{% block content %}
-
-    <div class="second-title second-title-product-price">
-        <h2 class="title_h2">Типи цін товарів</h2>
-    </div>
-
-    {% include 'home/main_table.html' %}
-    {% include 'home/pagination.html' %}
-{% endblock content %}
+{% extends 'home/base_list_template.html' %}
+{% block title %}Типи цін товарів{% endblock title %}
+{% block personal-second-title-class-for-css %}second-title-product-price{% endblock %}
+{% block second-title %}Типи цін товарів{% endblock second-title %}

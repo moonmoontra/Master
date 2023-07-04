@@ -1,13 +1,4 @@
-{% extends 'home/base.html' %}
-{% load user_tags %}
-
-{% block title %} Виробники {% endblock title %}
-{% block content %}
-
-    <div class="second-title second-title-manufacturer">
-        <h2 class="title_h2">Виробники</h2>
-    </div>
-
-    {% include 'home/main_table.html' %}
-    {% include 'persons/../../../home/templates/home/pagination.html' %}
-{% endblock content %}
+{% extends 'home/base_list_template.html' %}
+{% block title %}Виробники{% endblock title %}
+{% block personal-second-title-class-for-css %}second-title-manufacturer{% endblock %}
+{% block second-title %}Виробники{% endblock second-title %}

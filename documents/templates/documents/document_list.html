@@ -1,13 +1,4 @@
-{% extends 'home/base.html' %}
-{% load user_tags %}
-
-{% block title %} Документи {% endblock title %}
-{% block content %}
-
-    <div class="second-title second-title-document">
-        <h2 class="title_h2">Документи</h2>
-    </div>
-
-    {% include 'home/main_table.html' %}
-    {% include 'home/pagination.html' %}
-{% endblock content %}
+{% extends 'home/base_list_template.html' %}
+{% block title %}Документи{% endblock title %}
+{% block personal-second-title-class-for-css %}second-title-document{% endblock %}
+{% block second-title %}Документи{% endblock second-title %}

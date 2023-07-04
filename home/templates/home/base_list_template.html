@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+
+{% load user_tags %}
+
+{% block title %}{% endblock title %}
+{% block content %}
+
+    <div class="second-title {% block personal-second-title-class-for-css %}{% endblock %}">
+        <h2 class="title_h2">{% block second-title %}{% endblock second-title %}</h2>
+    </div>
+
+    {% include 'home/main_table.html' %}
+    {% include 'home/pagination.html' %}
+{% endblock content %}

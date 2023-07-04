@@ -1,13 +1,4 @@
-{% extends 'home/base.html' %}
-{% load user_tags %}
-
-{% block title %} Одиниці вимірювання {% endblock title %}
-{% block content %}
-
-    <div class="second-title second-title-unit-of-measure">
-        <h2 class="title_h2">Одиниці вимірювання</h2>
-    </div>
-
-    {% include 'home/main_table.html' %}
-    {% include 'home/pagination.html' %}
-{% endblock content %}
+{% extends 'home/base_list_template.html' %}
+{% block title %}Одиниці вимірювання{% endblock title %}
+{% block personal-second-title-class-for-css %}second-title-unit-of-measure{% endblock %}
+{% block second-title %}Одиниці вимірювання{% endblock second-title %}
