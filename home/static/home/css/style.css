@@ -436,8 +436,6 @@ margin-top: 30px;
   z-index: 1; /* Оставайтесь на вершине */
   top: 0;
   left: 0;
-  /*background-color: #f1f1f1; !* Черный *!  !*dcdcdc*!*/
-  /*background-color: rgb(248,249,250);*/
   background-color: rgb(254, 253, 248);
   overflow-x: hidden; /* Отключить горизонтальную прокрутку */
   padding-top: 60px; /* Поместите содержимое 60px сверху */
@@ -446,7 +444,7 @@ margin-top: 30px;
 
 /* На боковой панели */
 .sidebar a {
-  padding: 0 8px 5px 32px;
+  padding: 3px 8px 5px 32px;
   text-decoration: none;
   font-size: 16px;
   color: #818181;
@@ -458,12 +456,8 @@ margin-top: 30px;
 	margin-left: 20px;
 	font-size: 20px;
 	padding: 10px 0;
-	border-bottom: 0 solid red;
 }
 
-.sidebar button:hover{
-	border-bottom: 2px solid red;
-}
 
 /* При наведении курсора мыши на навигационные ссылки измените их цвет */
 .sidebar ul li a:hover {
@@ -512,7 +506,7 @@ margin-top: 30px;
 	font-size: 35px;
 }
 .list-unstyled .ps-0{
-	margin-top: 30px;
+	margin-top: 15px;
 }
 .sidebar-main-btn{
 	color: rgb(117,58,0);
@@ -526,7 +520,7 @@ margin-top: 30px;
 
 
 .sidebar .btn-toggle-nav{
-	margin-top: 15px;
+	margin-top: 10px;
 }
 .sidebar .btn-toggle-nav li{
 	/*margin-bottom: -1em;*/

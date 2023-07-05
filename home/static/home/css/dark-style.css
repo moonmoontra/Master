@@ -144,3 +144,6 @@
 .dark-theme .product-count{
     color: #ff7575;
 }
+.dark-theme .sidebar{
+    background-color: rgb(242, 255, 242);
+}

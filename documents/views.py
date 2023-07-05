@@ -53,6 +53,7 @@ class DocumentDetailView(DetailView):
     model = Document
 
     def get_all_sum(self):
+        print(self.object)
         return get_all_sum_document(self.object)
 
 
