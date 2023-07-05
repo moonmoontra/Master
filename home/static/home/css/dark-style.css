@@ -145,5 +145,23 @@
     color: #ff7575;
 }
 .dark-theme .sidebar{
-    background-color: rgb(242, 255, 242);
+    background-color: rgb(106, 106, 106);
+}
+.dark-theme .openbtn{
+    background-color: rgb(63,63,63);
+	color: white;
+}
+.dark-theme .closebtn{
+    color: black;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+}
+.dark-theme .sidebar-navbar-brand{
+    color: rgb(243,243,243);
+}
+.dark-theme .sidebar-main-btn{
+    color: black;
+}
+.dark-theme .btn-toggle-nav li a{
+    color: white;
 }
