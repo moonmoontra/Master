@@ -30,6 +30,7 @@ class StockListView(BaseListView, BaseStockView):
     template_name = 'stock/stocks_list.html'
     edit_view_name = 'stock_edit'
     delete_view_name = 'delete_stock'
+    create_view_name = 'stock_create'
 
 
 class StockEditView(BaseEditView):

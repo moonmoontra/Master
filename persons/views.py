@@ -29,6 +29,7 @@ class ProviderListView(BaseListView, BasePersonView):
     template_name = 'persons/provider_list.html'
     edit_view_name = 'provider_edit'
     delete_view_name = 'delete_person'
+    create_view_name = 'provider_create'
     model = Provider
 
 
@@ -36,6 +37,7 @@ class ManufacturerListView(BaseListView, BasePersonView):
     template_name = 'persons/manufacturer_list.html'
     edit_view_name = 'manufacturer_edit'
     delete_view_name = 'delete_person'
+    create_view_name = 'manufacturer_create'
     model = Manufacturer
 
 
@@ -43,6 +45,7 @@ class EmployeeListView(BaseListView, BasePersonView):
     template_name = 'persons/employees_list.html'
     edit_view_name = 'employee_edit'
     delete_view_name = 'delete_person'
+    create_view_name = 'employee_create'
     model = Employee
 
 
@@ -50,6 +53,7 @@ class ClientListView(BaseListView, BasePersonView):
     template_name = 'persons/clients_list.html'
     edit_view_name = 'client_edit'
     delete_view_name = 'delete_person'
+    create_view_name = 'client_create'
     model = Client
 
 

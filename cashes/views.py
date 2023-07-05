@@ -33,6 +33,7 @@ class CashListView(BaseListView, BaseCashView):
     template_name = 'cash/cash_list.html'
     edit_view_name = 'cash_edit'
     delete_view_name = 'delete_cash'
+    create_view_name = 'cash_create'
     model = Cash
 
 
@@ -51,6 +52,7 @@ class ValutaListView(BaseListView, BaseCashView):
     template_name = 'cash/valuta_list.html'
     edit_view_name = 'valuta_edit'
     delete_view_name = 'delete_cash'
+    create_view_name = 'valuta_create'
     model = Valuta
 
 
@@ -70,6 +72,7 @@ class RateListView(BaseListView, BaseCashView):
     template_name = 'cash/rate_list.html'
     edit_view_name = 'rate_edit'
     delete_view_name = 'delete_cash'
+    create_view_name = 'rate_create'
     model = Rate
 
 

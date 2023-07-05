@@ -53,6 +53,7 @@ class ProductRefBookListView(BaseListView, BaseProductView):
     template_name = 'products/product_ref_book_list.html'
     edit_view_name = 'product_ref_book_edit'
     delete_view_name = 'delete_product'
+    create_view_name = 'product_ref_book_create'
 
 
 class ProductRefBookEditView(BaseEditView):
@@ -72,6 +73,7 @@ class ProductPriceNameListView(BaseListView, BaseProductView):
     template_name = 'products/product_price_list.html'
     edit_view_name = 'product_price_edit'
     delete_view_name = 'delete_product'
+    create_view_name = 'product_price_create'
 
 
 class ProductPriceNameCreateView(BaseCreateView):
@@ -91,6 +93,7 @@ class UnitOfMeasureListView(BaseListView, BaseProductView):
     template_name = 'products/unit_of_measure_list.html'
     edit_view_name = 'unit_of_measure_edit'
     delete_view_name = 'delete_product'
+    create_view_name = 'unit_of_measure_create'
 
 
 class UnitOfMeasureCreateView(BaseCreateView):
@@ -110,6 +113,7 @@ class PriceNameListView(BaseListView, BaseProductView):
     template_name = 'products/price_name_list.html'
     edit_view_name = 'price_name_edit'
     delete_view_name = 'delete_product'
+    create_view_name = 'price_name_create'
 
 
 class PriceNameCreateView(BaseCreateView):

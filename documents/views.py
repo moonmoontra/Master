@@ -32,6 +32,7 @@ class DocumentListView(BaseListView, BaseDocumentView):
     template_name = 'documents/document_list.html'
     edit_view_name = 'document_detail'
     delete_view_name = 'delete_document'
+    create_view_name = 'document_create'
     model = Document
 
 
