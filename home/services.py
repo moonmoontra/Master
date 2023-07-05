@@ -8,9 +8,11 @@ from django.http import HttpResponse
 from django.apps import apps
 
 """get_model_context - метод возвращающий словарь контекста во views.py...
-   model - модель, для которой нужно получить контекст
-   url_for_edit - url для редактирования объекта, например: 'manufacturer_edit'
-   exclude - исключить определенные поля из контекста, по умолчанию True"""
+    model - модель, для которой нужно получить контекст
+    url_for_edit - url для редактирования объекта, например: 'manufacturer_edit'
+    url_for_delete - url для удаления объекта, например: 'manufacturer_delete'
+    url_for_create - url для создания объекта, например: 'manufacturer_create'
+    exclude - исключить определенные поля из контекста, по умолчанию True"""
 
 
 def get_model_context(model, url_for_edit: str, url_for_delete: str, url_for_create: str, exclude: bool = True) -> dict:
