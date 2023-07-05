@@ -168,3 +168,38 @@
 .dark-theme .btn-toggle-nav li a{
     color: rgb(215,215,215);
 }
+
+.dark-theme .btn-menu{
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+.dark-theme .btn-menu li a {
+	margin-right: 41px;
+	font-size: 19px;
+	border: 1px solid #ffffff;
+	border-radius: 10px;
+	width: 125px
+}
+.dark-theme .btn-menu li button{
+	margin-right: 41px;
+	font-size: 19px;
+	border: 1px solid #ffffff;
+	border-radius: 10px;
+	width: 125px
+}
+
+.dark-theme .btn-menu li a:hover {
+    border-color: rgb(63,63,63);
+}
+
+.dark-theme .btn-menu li button:hover {
+    border-color: rgb(63,63,63);
+}
+
+.dark-theme .btn-menu li a:last-child {
+	margin-right: 0px;
+}
+.dark-theme .btn-menu li button:last-child {
+	margin-right: 0px;
+}
