@@ -148,8 +148,10 @@
     background-color: rgb(106, 106, 106);
 }
 .dark-theme .openbtn{
-    background-color: rgb(63,63,63);
+    /*background-color: rgb(63,63,63);*/
+    background-color: rgb(43,48,53);
 	color: white;
+    border: none;
 }
 .dark-theme .closebtn{
     color: black;
@@ -157,11 +159,12 @@
     border-right: 2px solid black;
 }
 .dark-theme .sidebar-navbar-brand{
-    color: rgb(243,243,243);
+    /*color: rgb(243,243,243);*/
+    color: rgb(241, 78, 86);
 }
 .dark-theme .sidebar-main-btn{
-    color: black;
+    color: white;
 }
 .dark-theme .btn-toggle-nav li a{
-    color: white;
+    color: rgb(215,215,215);
 }
