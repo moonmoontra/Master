@@ -29,6 +29,82 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" id="main-nav">
             <div class="container-fluid">
+                <button class="openbtn" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
+                <div id="mySidebar" class="sidebar">
+                    <h3 class="sidebar-navbar-brand" href="{% url 'index' %}">MASTER<span>.</span></h3>
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+                        <i class="fa-solid fa-xmark" style="color: #000000;"></i></a>
+                    <hr>
+                    <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                            <button data-bs-toggle="collapse" data-bs-target="#add-collapse" aria-expanded="true">
+                                Додати
+                            </button>
+                            <div class="collapse show" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-dark rounded">Контрагента</a></li>
+                                    <li><a href="#" class="link-dark rounded">Виробника</a></li>
+                                    <li><a href="#" class="link-dark rounded">Працівника</a></li>
+                                    <li><a href="#" class="link-dark rounded">Клієнта</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                Створити
+                            </button>
+                            <div class="collapse show" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-dark rounded">Документ</a></li>
+                                    <li><a href="#" class="link-dark rounded">Касу</a></li>
+                                    <li><a href="#" class="link-dark rounded">Валюту</a></li>
+                                    <li><a href="#" class="link-dark rounded">Курс валюти</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button data-bs-toggle="collapse" data-bs-target="#dashboard-collapse"
+                                    aria-expanded="false">
+                                Dashboard
+                            </button>
+                            <div class="collapse" id="dashboard-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-dark rounded">Overview</a></li>
+                                    <li><a href="#" class="link-dark rounded">Weekly</a></li>
+                                    <li><a href="#" class="link-dark rounded">Monthly</a></li>
+                                    <li><a href="#" class="link-dark rounded">Annually</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                Orders
+                            </button>
+                            <div class="collapse" id="orders-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-dark rounded">New</a></li>
+                                    <li><a href="#" class="link-dark rounded">Processed</a></li>
+                                    <li><a href="#" class="link-dark rounded">Shipped</a></li>
+                                    <li><a href="#" class="link-dark rounded">Returned</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="border-top my-3"></li>
+                        <li class="mb-1">
+                            <button data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                Account
+                            </button>
+                            <div class="collapse" id="account-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-dark rounded">New...</a></li>
+                                    <li><a href="#" class="link-dark rounded">Profile</a></li>
+                                    <li><a href="#" class="link-dark rounded">Settings</a></li>
+                                    <li><a href="#" class="link-dark rounded">Sign out</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
                 <a class="navbar-brand" href="{% url 'index' %}">MASTER</a>
                 <div class="collapse navbar-collapse" id="navbarNav" style="font-size: 20px">
                     <ul class="nav" style="font-weight: 500">
@@ -77,67 +153,7 @@
                 </div>
             </div>
         </nav>
-    </header>
-
-<button class="openbtn" onclick="openNav()">&#9776; Переключение бокового бара</button>
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <button data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          Створити
-        </button>
-        <div class="collapse show" id="home-collapse" style="">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Документ</a></li>
-            <li><a href="#" class="link-dark rounded">Касу</a></li>
-            <li><a href="#" class="link-dark rounded">Валюту</a></li>
-            <li><a href="#" class="link-dark rounded">Курс валюти</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Dashboard
-        </button>
-        <div class="collapse" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Overview</a></li>
-            <li><a href="#" class="link-dark rounded">Weekly</a></li>
-            <li><a href="#" class="link-dark rounded">Monthly</a></li>
-            <li><a href="#" class="link-dark rounded">Annually</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Orders
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">New</a></li>
-            <li><a href="#" class="link-dark rounded">Processed</a></li>
-            <li><a href="#" class="link-dark rounded">Shipped</a></li>
-            <li><a href="#" class="link-dark rounded">Returned</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="border-top my-3"></li>
-      <li class="mb-1">
-        <button data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Account
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">New...</a></li>
-            <li><a href="#" class="link-dark rounded">Profile</a></li>
-            <li><a href="#" class="link-dark rounded">Settings</a></li>
-            <li><a href="#" class="link-dark rounded">Sign out</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-</div>
+        </header>
 
     <div class="container">
         {% block content %}
@@ -146,19 +162,17 @@
 
     <script>
         /* Установить ширину боковой панели шириной 250 пикселей и следующий и левом поле содержание страницы шириной 250 пикселей и следующий */
-function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
 
-/* Установите ширину боковой панели на 0, а левое поле содержимого страницы - на 0 */
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-}
+        /* Установите ширину боковой панели на 0, а левое поле содержимого страницы - на 0 */
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
     </script>
-
-    <script src="{% static 'home/js/dark-theme-activation.js' %}"></script>
 
 
 </body>
