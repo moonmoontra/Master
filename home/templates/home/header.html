@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" id="main-nav">
+    <div class="container-fluid">
+        <button class="openbtn" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
+        <a class="navbar-brand" href="{% url 'index' %}">MASTER</a>
+        <div class="collapse navbar-collapse" id="navbarNav" style="font-size: 20px">
+            <ul class="nav" style="font-weight: 500">
+                <div class="dropdown hoverable">
+                    <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                       aria-expanded="false" disabled> Гроші </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{% url 'cashes' %}">Каси</a></li>
+                        <li><a class="nav-link" href="{% url 'valutas' %}">Валюти</a></li>
+                        <li><a class="nav-link" href="{% url 'rates' %}">Курси валют</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown hoverable">
+                    <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                       aria-expanded="false" disabled> Персонал </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{% url 'providers' %}">Контрагенти</a></li>
+                        <li><a class="nav-link" href="{% url 'manufacturers' %}">Виробники</a></li>
+                        <li><a class="nav-link" href="{% url 'employees' %}">Працівники</a></li>
+                        <li><a class="nav-link" href="{% url 'clients' %}">Клієнти</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown hoverable">
+                    <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                       aria-expanded="false" disabled> Довідники </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{% url 'product_ref_books' %}">Довідник товарів</a></li>
+                        <li><a class="nav-link" href="{% url 'product_prices' %}">Ціни товарів</a></li>
+                        <li><a class="nav-link" href="{% url 'unit_of_measure' %}">Одиниці вимірювання</a></li>
+                        <li><a class="nav-link" href="{% url 'price_names' %}">Типи цін</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown hoverable">
+                    <li class="nav-item">
+                        <a class="nav-link" id="dropdownMenuLink" href="{% url 'stocks' %}">Склади</a>
+                    </li>
+                </div>
+                <div class="dropdown hoverable">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'documents' %}">Документи</a>
+                    </li>
+                </div>
+                <div class="dropdown hoverable">
+                    <li class="nav-item">
+                        <a class="nav-link" id="dropdownMenuLink" href="/admin/">Admin</a>
+                    </li>
+                </div>
+                <div class="dropdown hoverable">
+                    <li class="nav-item">
+                        <button class="nav-link" onclick="location.reload();" id="theme-toggle">Темна тема</button>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
