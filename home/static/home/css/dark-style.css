@@ -51,9 +51,6 @@
     color: black;
 }
 
-.dark-theme .second-title{
-    background-color: black;
-}
 .dark-theme .title_h2{
     color: white;
 }
@@ -92,7 +89,7 @@
     border-top: 3px solid white;
 }
 .dark-theme .second-title{
-    background-color: rgb(63,63,63);
+    background-color: rgb(47, 47, 47);
 }
 .dark-theme .page-link{
     background-color: rgb(63,63,63);
