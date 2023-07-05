@@ -100,6 +100,12 @@ legend {
 	/*font-family: 'Raleway', sans-serif;*/
 	font-family: 'Montserrat', sans-serif;
 }
+.table tr{
+	font-size: 16px;
+}
+.table tr td{
+	font-size: 14px;
+}
 .page_link{
 	font-family: 'Raleway', sans-serif;
 	color: darkblue;
@@ -225,6 +231,7 @@ legend {
 }
 .table tbody tr:hover {
     background: rgb(236, 231, 223);
+	font-size: 14px;
 }
 .container-fluid .navbar-brand{
 	margin-right: 30px;
@@ -434,6 +441,7 @@ legend {
 .content-table{
 margin-top: 30px;
 	padding-bottom: 10px;
+	/*font-size: 14px;*/
 }
 
 /* Меню бокового бара */
