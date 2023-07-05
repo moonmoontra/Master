@@ -97,7 +97,8 @@ legend {
 * {
 	/*font-family: 'Ysabeau', sans-serif;*/
 	/*font-family: 'Ubuntu', sans-serif;*/
-	font-family: 'Raleway', sans-serif;
+	/*font-family: 'Raleway', sans-serif;*/
+	font-family: 'Montserrat', sans-serif;
 }
 .page_link{
 	font-family: 'Raleway', sans-serif;
@@ -231,6 +232,7 @@ legend {
 	color: green;
 }
 .dropdown{
+	display: inline-block;
 	padding-top: 4px;
 }
 .dropdown a {
@@ -444,7 +446,7 @@ margin-top: 30px;
 
 /* На боковой панели */
 .sidebar a {
-  padding: 8px 8px 8px 32px;
+  padding: 0 8px 5px 32px;
   text-decoration: none;
   font-size: 16px;
   color: #818181;
@@ -455,10 +457,16 @@ margin-top: 30px;
 .sidebar button{
 	margin-left: 20px;
 	font-size: 20px;
+	padding: 10px 0;
+	border-bottom: 0 solid red;
+}
+
+.sidebar button:hover{
+	border-bottom: 2px solid red;
 }
 
 /* При наведении курсора мыши на навигационные ссылки измените их цвет */
-.sidebar a:hover {
+.sidebar ul li a:hover {
   /*color: #f1f1f1;*/
 	color: rgb(241, 78, 86);
 }
@@ -510,35 +518,22 @@ margin-top: 30px;
 	color: rgb(117,58,0);
 	font-weight: 500;
 }
-.btn-toggle-nav{
+
+/*.sidebar .dropdown{*/
+/*	display: inline-block;*/
+/*	padding-top: 4px;*/
+/*}*/
+
+
+.sidebar .btn-toggle-nav{
 	margin-top: 15px;
 }
-.btn-toggle-nav li{
-	margin-top: 7px;
+.sidebar .btn-toggle-nav li{
+	/*margin-bottom: -1em;*/
 }
-.btn-toggle-nav li a{
+.sidebar .btn-toggle-nav li a{
 	color: sienna;
 	font-size: 18px;
-}
-.dropdown button:after {
-    display: block;
-    content: "";
-	background-color: saddlebrown;
-    height: 3px;
-	margin-top: 5px;
-    width: 0%;
-    left: 40%;
-    position: absolute;
-    -webkit-transition: width .3s ease-in-out;
-    -moz--transition: width .3s ease-in-out;
-    transition: width .3s ease-in-out;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-.dropdown button:hover:after,
-.dropdown button:focus:after {
-    width: 70%;
 }
 
 /* Стиль содержимого страницы - используйте это, если вы хотите переместить содержимое страницы вправо при открытии боковой навигации */
