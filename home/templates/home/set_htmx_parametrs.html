@@ -1,5 +1,6 @@
-{#<a class="nav-link"#}
-{#   hx-get="{% block url %}{% endblock url %}"#}
-{#   hx-target="#main-content"#}
-{#   hx-push-url="true">{% block li_name %}{% endblock li_name %}#}
-{#</a>#}
+<a class="nav-link"
+   hx-get={% url url %}
+   hx-target="#main-content"
+   hx-push-url="true"
+   hx-title="{{ title }}">{{ title }}
+</a>

@@ -17,11 +17,7 @@
                     <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                        aria-expanded="false" disabled> Персонал </a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link"
-                               hx-get="{% url 'providers' %}"
-                               hx-target="#main-content"
-                               hx-push-url="true"
-                               hx-title="Контрагенти">Контрагенти</a></li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='providers' title='Контрагенти' %}</li>
                         <li><a class="nav-link"
                                hx-get="{% url 'manufacturers' %}"
                                hx-target="#main-content"
