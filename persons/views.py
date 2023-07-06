@@ -2,6 +2,7 @@ from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView
 from django.apps import apps
 from home.base_view import BaseListView
+from home.set_htmx_or_django_template import CustomHtmxMixin
 from persons.forms import *
 from persons.models import Provider, Manufacturer, Employee
 from home.services import delete_objects
@@ -23,14 +24,6 @@ class BaseCreateView(BasePersonView, CreateView):
 
 class BaseEditView(BasePersonView, UpdateView):
     pass
-
-
-class CustomHtmxMixin(BasePersonView):
-    def dispatch(self, request, *args, **kwargs):
-        self.template_htmx = self.template_name
-        if not self.request.META.get('HTTP_HX_REQUEST'):
-            self.template_name = 'home/include_base_block.html'
-        return super().dispatch(request, *args, **kwargs)
 
 
 class ProviderListView(CustomHtmxMixin, BaseListView, BasePersonView):
@@ -65,7 +58,7 @@ class ClientListView(CustomHtmxMixin, BaseListView, BasePersonView):
     model = Client
 
 
-class ProviderCreateView(BaseCreateView):
+class ProviderCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = ProviderForm
     template_name = 'persons/provider_create.html'
     model = Provider
@@ -77,7 +70,7 @@ class ProviderEditView(BaseEditView):
     model = Provider
 
 
-class EmployeeCreateView(BaseCreateView):
+class EmployeeCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = EmployeeForm
     template_name = 'persons/employee_create.html'
     model = Employee
@@ -89,7 +82,7 @@ class EmployeeEditView(BaseEditView):
     model = Employee
 
 
-class ManufacturerCreateView(BaseCreateView):
+class ManufacturerCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = ManufacturerForm
     template_name = 'persons/manufacturer_create.html'
     model = Manufacturer
@@ -101,7 +94,7 @@ class ManufacturerEditView(BaseEditView):
     model = Manufacturer
 
 
-class ClientCreateView(BaseCreateView):
+class ClientCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = ClientForm
     template_name = 'persons/client_create.html'
     model = Client

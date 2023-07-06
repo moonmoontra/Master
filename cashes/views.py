@@ -6,6 +6,7 @@ from home.base_view import BaseListView
 from cashes.forms import CashForm, ValutaForm, RateForm
 from cashes.models import Cash, Valuta, Rate
 from home.services import delete_objects
+from home.set_htmx_or_django_template import CustomHtmxMixin
 
 
 class BaseCashView:
@@ -29,7 +30,7 @@ class BaseEditView(BaseCashView, UpdateView):
     pass
 
 
-class CashListView(BaseListView, BaseCashView):
+class CashListView(CustomHtmxMixin, BaseListView, BaseCashView):
     template_name = 'cash/cash_list.html'
     edit_view_name = 'cash_edit'
     delete_view_name = 'delete_cash'
@@ -37,7 +38,7 @@ class CashListView(BaseListView, BaseCashView):
     model = Cash
 
 
-class CashCreateView(BaseCreateView):
+class CashCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = CashForm
     template_name = 'cash/cash_create.html'
     model = Cash
@@ -48,7 +49,8 @@ class CashEditView(BaseEditView):
     template_name = 'cash/cash_edit.html'
     model = Cash
 
-class ValutaListView(BaseListView, BaseCashView):
+
+class ValutaListView(CustomHtmxMixin, BaseListView, BaseCashView):
     template_name = 'cash/valuta_list.html'
     edit_view_name = 'valuta_edit'
     delete_view_name = 'delete_cash'
@@ -56,7 +58,7 @@ class ValutaListView(BaseListView, BaseCashView):
     model = Valuta
 
 
-class ValutaCreateView(BaseCreateView):
+class ValutaCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = ValutaForm
     template_name = 'cash/valuta_create.html'
     model = Valuta
@@ -68,7 +70,7 @@ class ValutaEditView(BaseEditView):
     model = Valuta
 
 
-class RateListView(BaseListView, BaseCashView):
+class RateListView(CustomHtmxMixin, BaseListView, BaseCashView):
     template_name = 'cash/rate_list.html'
     edit_view_name = 'rate_edit'
     delete_view_name = 'delete_cash'
@@ -76,7 +78,7 @@ class RateListView(BaseListView, BaseCashView):
     model = Rate
 
 
-class RateCreateView(BaseCreateView):
+class RateCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = RateForm
     template_name = 'cash/rate_create.html'
     model = Rate

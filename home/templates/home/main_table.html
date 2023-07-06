@@ -10,7 +10,9 @@
             <ul class="btn-menu">
                 <li>
                     <a class="btn" role="button" style="border-top: 4px solid green;"
-                       href="{% url url_for_create %}">Додати</a>
+                       hx-get="{% url url_for_create %}"
+                       hx-target="#main-content"
+                       hx-push-url="true">Додати</a>
 
                     {% include 'home/modal_for_delete.html' %}
                     <button class="btn" style="border-top: 4px solid red;" type="button" data-bs-toggle="modal"
@@ -31,7 +33,10 @@
         </thead>
         <tbody class='table-group-divider'>
         {% for object in object_list %}
-          <tr style="font-size: 19px;" data-href="{% url url_for_edit object.pk%}">
+          <tr style="font-size: 19px;" data-href="{% url url_for_edit object.pk%}"
+                            hx-get="{% url url_for_edit object.pk %}"
+                            hx-target="#main-content"
+                            hx-push-url="true">
               <td id="not-click">
                   <div class='form-check'>
                       <input class='form-check-input' type='checkbox' name="object_ids" value='{{ object.id }}'

@@ -1,6 +1,7 @@
 from django.views.generic import CreateView, UpdateView
 from home.base_view import BaseListView
 from home.services import delete_objects
+from home.set_htmx_or_django_template import CustomHtmxMixin
 from products.forms import UnitOfMeasureForm, ProductRefBookForm, ProductPriceNameForm, PriceNameForm
 from products.models import PriceName, ProductPriceName, UnitOfMeasure, ProductRefBook
 from django.apps import apps
@@ -48,7 +49,7 @@ class BaseEditView(BaseProductView, UpdateView):
     delete_view_name - имя представления для удаления объекта модели."""
 
 
-class ProductRefBookListView(BaseListView, BaseProductView):
+class ProductRefBookListView(CustomHtmxMixin, BaseListView, BaseProductView):
     model = ProductRefBook
     template_name = 'products/product_ref_book_list.html'
     edit_view_name = 'product_ref_book_edit'
@@ -62,13 +63,13 @@ class ProductRefBookEditView(BaseEditView):
     template_name = 'products/product_ref_book_edit.html'
 
 
-class ProductRefBookCreateView(BaseCreateView):
+class ProductRefBookCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = ProductRefBookForm
     model = ProductRefBook
     template_name = 'products/product_ref_book_create.html'
 
 
-class ProductPriceNameListView(BaseListView, BaseProductView):
+class ProductPriceNameListView(CustomHtmxMixin, BaseListView, BaseProductView):
     model = ProductPriceName
     template_name = 'products/product_price_list.html'
     edit_view_name = 'product_price_edit'
@@ -76,7 +77,7 @@ class ProductPriceNameListView(BaseListView, BaseProductView):
     create_view_name = 'product_price_create'
 
 
-class ProductPriceNameCreateView(BaseCreateView):
+class ProductPriceNameCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = ProductPriceNameForm
     model = ProductPriceName
     template_name = 'products/product_price_create.html'
@@ -88,7 +89,7 @@ class ProductPriceNameEditView(BaseEditView):
     template_name = 'products/product_price_edit.html'
 
 
-class UnitOfMeasureListView(BaseListView, BaseProductView):
+class UnitOfMeasureListView(CustomHtmxMixin, BaseListView, BaseProductView):
     model = UnitOfMeasure
     template_name = 'products/unit_of_measure_list.html'
     edit_view_name = 'unit_of_measure_edit'
@@ -96,7 +97,7 @@ class UnitOfMeasureListView(BaseListView, BaseProductView):
     create_view_name = 'unit_of_measure_create'
 
 
-class UnitOfMeasureCreateView(BaseCreateView):
+class UnitOfMeasureCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = UnitOfMeasureForm
     model = UnitOfMeasure
     template_name = 'products/unit_of_measure_create.html'
@@ -108,7 +109,7 @@ class UnitOfMeasureEditView(BaseEditView):
     template_name = 'products/unit_of_measure_edit.html'
 
 
-class PriceNameListView(BaseListView, BaseProductView):
+class PriceNameListView(CustomHtmxMixin, BaseListView, BaseProductView):
     model = PriceName
     template_name = 'products/price_name_list.html'
     edit_view_name = 'price_name_edit'
@@ -116,7 +117,7 @@ class PriceNameListView(BaseListView, BaseProductView):
     create_view_name = 'price_name_create'
 
 
-class PriceNameCreateView(BaseCreateView):
+class PriceNameCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = PriceNameForm
     model = PriceName
     template_name = 'products/price_name_create.html'

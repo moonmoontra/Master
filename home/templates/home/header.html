@@ -17,19 +17,19 @@
                     <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                        aria-expanded="false" disabled> Персонал </a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="{% url 'providers' %}"
+                        <li><a class="nav-link"
                                hx-get="{% url 'providers' %}"
                                hx-target="#main-content"
                                hx-push-url="true">Контрагенти</a></li>
-                        <li><a class="nav-link" href="{% url 'manufacturers' %}"
+                        <li><a class="nav-link"
                                hx-get="{% url 'manufacturers' %}"
                                hx-target="#main-content"
                                hx-push-url="true">Виробники</a></li>
-                        <li><a class="nav-link" href="{% url 'employees' %}"
+                        <li><a class="nav-link"
                                hx-get="{% url 'employees' %}"
                                hx-target="#main-content"
                                hx-push-url="true">Працівники</a></li>
-                        <li><a class="nav-link" href="{% url 'clients' %}"
+                        <li><a class="nav-link"
                                hx-get="{% url 'clients' %}"
                                hx-target="#main-content"
                                hx-push-url="true">Клієнти</a></li>
@@ -39,20 +39,41 @@
                     <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                        aria-expanded="false" disabled> Довідники </a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="{% url 'product_ref_books' %}">Довідник товарів</a></li>
-                        <li><a class="nav-link" href="{% url 'product_prices' %}">Ціни товарів</a></li>
-                        <li><a class="nav-link" href="{% url 'unit_of_measure' %}">Одиниці вимірювання</a></li>
-                        <li><a class="nav-link" href="{% url 'price_names' %}">Типи цін</a></li>
+                        <li><a class="nav-link"
+                            hx-get="{% url 'product_ref_books' %}"
+                            hx-target="#main-content"
+                            hx-push-url="true">Довідник товарів</a>
+                        </li>
+                        <li><a class="nav-link"
+                            hx-get="{% url 'product_prices' %}"
+                            hx-target="#main-content"
+                            hx-push-url="true">Ціни товарів</a>
+                        </li>
+                        <li><a class="nav-link"
+                            hx-get="{% url 'unit_of_measure' %}"
+                            hx-target="#main-content"
+                            hx-push-url="true">Одиниці вимірювання</a>
+                        </li>
+                        <li><a class="nav-link"
+                            hx-get="{% url 'price_names' %}"
+                            hx-target="#main-content"
+                            hx-push-url="true">Типи цін</a></li>
                     </ul>
                 </div>
                 <div class="dropdown hoverable">
                     <li class="nav-item">
-                        <a class="nav-link" id="dropdownMenuLink" href="{% url 'stocks' %}">Склади</a>
+                        <a class="nav-link" id="dropdownMenuLink"
+                            hx-get="{% url 'stocks' %}"
+                            hx-target="#main-content"
+                            hx-push-url="true">Склади</a>
                     </li>
                 </div>
                 <div class="dropdown hoverable">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'documents' %}">Документи</a>
+                        <a class="nav-link"
+                            hx-get="{% url 'documents' %}"
+                            hx-target="#main-content"
+                            hx-push-url="true">Документи</a>
                     </li>
                 </div>
                 <div class="dropdown hoverable">

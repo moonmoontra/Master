@@ -8,6 +8,7 @@ from home.base_view import BaseListView
 from documents.forms import DocumentForm, ProductInDocumentForm
 from documents.models import Document, ProductInDocument
 from home.services import delete_objects, update_object, get_all_sum_document
+from home.set_htmx_or_django_template import CustomHtmxMixin
 
 
 class BaseDocumentView:
@@ -28,7 +29,7 @@ class BaseEditView(BaseDocumentView, UpdateView):
     pass
 
 
-class DocumentListView(BaseListView, BaseDocumentView):
+class DocumentListView(CustomHtmxMixin, BaseListView, BaseDocumentView):
     template_name = 'documents/document_list.html'
     edit_view_name = 'document_detail'
     delete_view_name = 'delete_document'
@@ -36,7 +37,7 @@ class DocumentListView(BaseListView, BaseDocumentView):
     model = Document
 
 
-class DocumentCreateView(BaseCreateView):
+class DocumentCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = DocumentForm
     template_name = 'documents/document_create.html'
     model = Document

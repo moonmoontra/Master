@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView
 from home.base_view import BaseListView
 from home.services import delete_objects
+from home.set_htmx_or_django_template import CustomHtmxMixin
 from stocks.forms import StockForm
 from stocks.models import Stock
 from django.apps import apps
@@ -25,7 +26,7 @@ class BaseEditView(BaseStockView, UpdateView):
     pass
 
 
-class StockListView(BaseListView, BaseStockView):
+class StockListView(CustomHtmxMixin, BaseListView, BaseStockView):
     model = Stock
     template_name = 'stock/stocks_list.html'
     edit_view_name = 'stock_edit'
@@ -39,7 +40,7 @@ class StockEditView(BaseEditView):
     model = Stock
 
 
-class StockCreateView(BaseCreateView):
+class StockCreateView(CustomHtmxMixin, BaseCreateView):
     form_class = StockForm
     template_name = 'stock/stock_create.html'
     model = Stock
