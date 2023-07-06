@@ -47,8 +47,10 @@
     </div>
     <div class="document-detail-header">
         <h3 class="document-detail-title">Товари в документі
-            <a class="document-detail-title-add-product" href="{% url 'document_product_create' document.pk %}"><i
-                    class="fa-sharp fa-solid fa-plus"></i></a>
+            <a class="document-detail-title-add-product"
+                       hx-get="{% url 'document_product_create' document.pk %}"
+                       hx-target=".container"
+                       hx-push-url="true"><i class="fa-sharp fa-solid fa-plus"></i></a>
         </h3>
     </div>
 
