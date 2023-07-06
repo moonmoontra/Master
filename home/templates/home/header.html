@@ -8,9 +8,9 @@
                     <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                        aria-expanded="false" disabled> Гроші </a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="{% url 'cashes' %}">Каси</a></li>
-                        <li><a class="nav-link" href="{% url 'valutas' %}">Валюти</a></li>
-                        <li><a class="nav-link" href="{% url 'rates' %}">Курси валют</a></li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='cashes' title='Каси' %}</li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='valutas' title='Валюти' %}</li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='rates' title='Курси валют' %}</li>
                     </ul>
                 </div>
                 <div class="dropdown hoverable">
@@ -18,63 +18,26 @@
                        aria-expanded="false" disabled> Персонал </a>
                     <ul class="dropdown-menu">
                         <li>{% include 'home/set_htmx_parametrs.html' with url='providers' title='Контрагенти' %}</li>
-                        <li><a class="nav-link"
-                               hx-get="{% url 'manufacturers' %}"
-                               hx-target="#main-content"
-                               hx-push-url="true"
-                               hx-title="Виробники">Виробники</a></li>
-                        <li><a class="nav-link"
-                               hx-get="{% url 'employees' %}"
-                               hx-target="#main-content"
-                               hx-push-url="true"
-                               hx-title="Працівники">Працівники</a></li>
-                        <li><a class="nav-link"
-                               hx-get="{% url 'clients' %}"
-                               hx-target="#main-content"
-                               hx-push-url="true"
-                               hx-title="Клієнти">Клієнти</a></li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='manufacturers' title='Виробники' %}</li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='employees' title='Працівники' %}</li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='clients' title='Клієнти' %}</li>
                     </ul>
                 </div>
                 <div class="dropdown hoverable">
                     <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                        aria-expanded="false" disabled> Довідники </a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link"
-                            hx-get="{% url 'product_ref_books' %}"
-                            hx-target="#main-content"
-                            hx-push-url="true">Довідник товарів</a>
-                        </li>
-                        <li><a class="nav-link"
-                            hx-get="{% url 'product_prices' %}"
-                            hx-target="#main-content"
-                            hx-push-url="true">Ціни товарів</a>
-                        </li>
-                        <li><a class="nav-link"
-                            hx-get="{% url 'unit_of_measure' %}"
-                            hx-target="#main-content"
-                            hx-push-url="true">Одиниці вимірювання</a>
-                        </li>
-                        <li><a class="nav-link"
-                            hx-get="{% url 'price_names' %}"
-                            hx-target="#main-content"
-                            hx-push-url="true">Типи цін</a></li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='product_ref_books' title='Довідник товарів' %}</li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='product_prices' title='Ціни товарів' %}</li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='unit_of_measure' title='Одиниці вимірювання' %}</li>
+                        <li>{% include 'home/set_htmx_parametrs.html' with url='price_names' title='Типи цін' %}</li>
                     </ul>
                 </div>
                 <div class="dropdown hoverable">
-                    <li class="nav-item">
-                        <a class="nav-link" id="dropdownMenuLink"
-                            hx-get="{% url 'stocks' %}"
-                            hx-target="#main-content"
-                            hx-push-url="true">Склади</a>
-                    </li>
+                    <li>{% include 'home/set_htmx_parametrs.html' with url='stocks' title='Склади' %}</li>
                 </div>
                 <div class="dropdown hoverable">
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            hx-get="{% url 'documents' %}"
-                            hx-target="#main-content"
-                            hx-push-url="true">Документи</a>
-                    </li>
+                    <li>{% include 'home/set_htmx_parametrs.html' with url='documents' title='Документи' %}</li>
                 </div>
                 <div class="dropdown hoverable">
                     <li class="nav-item">
