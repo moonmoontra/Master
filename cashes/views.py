@@ -35,6 +35,7 @@ class CashListView(CustomHtmxMixin, BaseListView, BaseCashView):
     edit_view_name = 'cash_edit'
     delete_view_name = 'delete_cash'
     create_view_name = 'cash_create'
+    title = 'Каси'
     model = Cash
 
 
@@ -55,6 +56,7 @@ class ValutaListView(CustomHtmxMixin, BaseListView, BaseCashView):
     edit_view_name = 'valuta_edit'
     delete_view_name = 'delete_cash'
     create_view_name = 'valuta_create'
+    title = 'Валюти'
     model = Valuta
 
 
@@ -75,6 +77,7 @@ class RateListView(CustomHtmxMixin, BaseListView, BaseCashView):
     edit_view_name = 'rate_edit'
     delete_view_name = 'delete_cash'
     create_view_name = 'rate_create'
+    title = 'Курси валют'
     model = Rate
 
 

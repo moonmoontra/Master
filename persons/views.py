@@ -31,6 +31,7 @@ class ProviderListView(CustomHtmxMixin, BaseListView, BasePersonView):
     edit_view_name = 'provider_edit'
     delete_view_name = 'delete_person'
     create_view_name = 'provider_create'
+    title = 'Контрагенти'
     model = Provider
 
 
@@ -39,6 +40,7 @@ class ManufacturerListView(CustomHtmxMixin, BaseListView, BasePersonView):
     edit_view_name = 'manufacturer_edit'
     delete_view_name = 'delete_person'
     create_view_name = 'manufacturer_create'
+    title = 'Виробники'
     model = Manufacturer
 
 
@@ -47,6 +49,7 @@ class EmployeeListView(CustomHtmxMixin, BaseListView, BasePersonView):
     edit_view_name = 'employee_edit'
     delete_view_name = 'delete_person'
     create_view_name = 'employee_create'
+    title = 'Працівники'
     model = Employee
 
 
@@ -55,6 +58,7 @@ class ClientListView(CustomHtmxMixin, BaseListView, BasePersonView):
     edit_view_name = 'client_edit'
     delete_view_name = 'delete_person'
     create_view_name = 'client_create'
+    title = 'Клієнти'
     model = Client
 
 

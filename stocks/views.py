@@ -32,6 +32,7 @@ class StockListView(CustomHtmxMixin, BaseListView, BaseStockView):
     edit_view_name = 'stock_edit'
     delete_view_name = 'delete_stock'
     create_view_name = 'stock_create'
+    title = 'Склади'
 
 
 class StockEditView(BaseEditView):

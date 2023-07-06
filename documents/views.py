@@ -34,7 +34,7 @@ class DocumentListView(CustomHtmxMixin, BaseListView, BaseDocumentView):
     edit_view_name = 'document_detail'
     delete_view_name = 'delete_document'
     create_view_name = 'document_create'
-    title = 'Документы'
+    title = 'Документи'
     model = Document
 
 

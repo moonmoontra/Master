@@ -55,6 +55,7 @@ class ProductRefBookListView(CustomHtmxMixin, BaseListView, BaseProductView):
     edit_view_name = 'product_ref_book_edit'
     delete_view_name = 'delete_product'
     create_view_name = 'product_ref_book_create'
+    title = 'Товари'
 
 
 class ProductRefBookEditView(BaseEditView):
@@ -75,6 +76,7 @@ class ProductPriceNameListView(CustomHtmxMixin, BaseListView, BaseProductView):
     edit_view_name = 'product_price_edit'
     delete_view_name = 'delete_product'
     create_view_name = 'product_price_create'
+    title = 'Ціни товарів'
 
 
 class ProductPriceNameCreateView(CustomHtmxMixin, BaseCreateView):
@@ -95,6 +97,7 @@ class UnitOfMeasureListView(CustomHtmxMixin, BaseListView, BaseProductView):
     edit_view_name = 'unit_of_measure_edit'
     delete_view_name = 'delete_product'
     create_view_name = 'unit_of_measure_create'
+    title = 'Одиниці виміру'
 
 
 class UnitOfMeasureCreateView(CustomHtmxMixin, BaseCreateView):
@@ -115,6 +118,7 @@ class PriceNameListView(CustomHtmxMixin, BaseListView, BaseProductView):
     edit_view_name = 'price_name_edit'
     delete_view_name = 'delete_product'
     create_view_name = 'price_name_create'
+    title = 'Назви цін'
 
 
 class PriceNameCreateView(CustomHtmxMixin, BaseCreateView):
