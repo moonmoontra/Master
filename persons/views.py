@@ -1,5 +1,5 @@
 from django.views.decorators.http import require_POST
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, TemplateView
 from django.apps import apps
 from home.base_view import BaseListView
 from home.set_htmx_or_django_template import CustomHtmxMixin
@@ -26,7 +26,10 @@ class BaseCreateView(BasePersonView, CreateView):
 
 
 class BaseEditView(BasePersonView, UpdateView):
-    pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['template_htmx'] = self.template_htmx
+        return context
 
 
 class ProviderListView(CustomHtmxMixin, BaseListView, BasePersonView):
@@ -47,7 +50,7 @@ class ManufacturerListView(CustomHtmxMixin, BaseListView, BasePersonView):
     model = Manufacturer
 
 
-class EmployeeListView(CustomHtmxMixin, BaseListView, BasePersonView):
+class EmployeeListView (CustomHtmxMixin, BaseListView, BasePersonView):
     template_name = 'persons/employees_list.html'
     edit_view_name = 'employee_edit'
     delete_view_name = 'delete_person'
@@ -71,7 +74,7 @@ class ProviderCreateView(CustomHtmxMixin, BaseCreateView):
     model = Provider
 
 
-class ProviderEditView(BaseEditView):
+class ProviderEditView(CustomHtmxMixin, BaseEditView):
     form_class = ProviderForm
     template_name = 'persons/provider_edit.html'
     model = Provider
@@ -83,7 +86,7 @@ class EmployeeCreateView(CustomHtmxMixin, BaseCreateView):
     model = Employee
 
 
-class EmployeeEditView(BaseEditView):
+class EmployeeEditView(CustomHtmxMixin, BaseEditView):
     form_class = EmployeeForm
     template_name = 'persons/employee_edit.html'
     model = Employee
@@ -95,7 +98,7 @@ class ManufacturerCreateView(CustomHtmxMixin, BaseCreateView):
     model = Manufacturer
 
 
-class ManufacturerEditView(BaseEditView):
+class ManufacturerEditView(CustomHtmxMixin, BaseEditView):
     form_class = ManufacturerForm
     template_name = 'persons/manufacturer_edit.html'
     model = Manufacturer
@@ -107,7 +110,7 @@ class ClientCreateView(CustomHtmxMixin, BaseCreateView):
     model = Client
 
 
-class ClientEditView(BaseEditView):
+class ClientEditView(CustomHtmxMixin, BaseEditView):
     form_class = ClientForm
     template_name = 'persons/client_edit.html'
     model = Client

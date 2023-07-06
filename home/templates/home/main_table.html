@@ -28,11 +28,12 @@
             {% for header in headers %}
                 <th>{{ header }}</th>
             {% endfor %}
+{#        data-href="{% url url_for_edit object.pk%}"#}
         </tr>
         </thead>
         <tbody class='table-group-divider'>
         {% for object in object_list %}
-          <tr style="font-size: 19px;" data-href="{% url url_for_edit object.pk%}">
+          <tr style="font-size: 19px;" hx-get="{% url url_for_edit object.pk %}" hx-target=".container" hx-push-url="true">
                 {% for field in fields %}
                     {% if field == 'status' %}
                         {% if object|get_attr:field == 'individual' %}
