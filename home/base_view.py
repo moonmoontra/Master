@@ -9,8 +9,10 @@ class BaseListView(ListView):
     delete_view_name = None
     create_view_name = None
 
+
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['template_htmx'] = self.template_htmx
         if self.model._meta.model_name == 'productpricename':
             context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name,
                                              self.create_view_name, False))

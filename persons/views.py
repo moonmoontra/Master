@@ -25,7 +25,15 @@ class BaseEditView(BasePersonView, UpdateView):
     pass
 
 
-class ProviderListView(BaseListView, BasePersonView):
+class CustomHtmxMixin(BasePersonView):
+    def dispatch(self, request, *args, **kwargs):
+        self.template_htmx = self.template_name
+        if not self.request.META.get('HTTP_HX_REQUEST'):
+            self.template_name = 'home/include_base_block.html'
+        return super().dispatch(request, *args, **kwargs)
+
+
+class ProviderListView(CustomHtmxMixin, BaseListView, BasePersonView):
     template_name = 'persons/provider_list.html'
     edit_view_name = 'provider_edit'
     delete_view_name = 'delete_person'
@@ -33,7 +41,7 @@ class ProviderListView(BaseListView, BasePersonView):
     model = Provider
 
 
-class ManufacturerListView(BaseListView, BasePersonView):
+class ManufacturerListView(CustomHtmxMixin, BaseListView, BasePersonView):
     template_name = 'persons/manufacturer_list.html'
     edit_view_name = 'manufacturer_edit'
     delete_view_name = 'delete_person'
@@ -41,7 +49,7 @@ class ManufacturerListView(BaseListView, BasePersonView):
     model = Manufacturer
 
 
-class EmployeeListView(BaseListView, BasePersonView):
+class EmployeeListView(CustomHtmxMixin, BaseListView, BasePersonView):
     template_name = 'persons/employees_list.html'
     edit_view_name = 'employee_edit'
     delete_view_name = 'delete_person'
@@ -49,7 +57,7 @@ class EmployeeListView(BaseListView, BasePersonView):
     model = Employee
 
 
-class ClientListView(BaseListView, BasePersonView):
+class ClientListView(CustomHtmxMixin, BaseListView, BasePersonView):
     template_name = 'persons/clients_list.html'
     edit_view_name = 'client_edit'
     delete_view_name = 'delete_person'

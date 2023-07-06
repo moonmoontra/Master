@@ -17,10 +17,22 @@
                     <a class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                        aria-expanded="false" disabled> Персонал </a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="{% url 'providers' %}">Контрагенти</a></li>
-                        <li><a class="nav-link" href="{% url 'manufacturers' %}">Виробники</a></li>
-                        <li><a class="nav-link" href="{% url 'employees' %}">Працівники</a></li>
-                        <li><a class="nav-link" href="{% url 'clients' %}">Клієнти</a></li>
+                        <li><a class="nav-link" href="{% url 'providers' %}"
+                               hx-get="{% url 'providers' %}"
+                               hx-target="#main-content"
+                               hx-push-url="true">Контрагенти</a></li>
+                        <li><a class="nav-link" href="{% url 'manufacturers' %}"
+                               hx-get="{% url 'manufacturers' %}"
+                               hx-target="#main-content"
+                               hx-push-url="true">Виробники</a></li>
+                        <li><a class="nav-link" href="{% url 'employees' %}"
+                               hx-get="{% url 'employees' %}"
+                               hx-target="#main-content"
+                               hx-push-url="true">Працівники</a></li>
+                        <li><a class="nav-link" href="{% url 'clients' %}"
+                               hx-get="{% url 'clients' %}"
+                               hx-target="#main-content"
+                               hx-push-url="true">Клієнти</a></li>
                     </ul>
                 </div>
                 <div class="dropdown hoverable">
