@@ -136,3 +136,4 @@ def update_object(model, object_id: int, **kwargs: dict):
 
 def get_all_sum_document(_object: object) -> Sum:
     return sum([product_in_document.sum for product_in_document in _object.products_in_document.all()])
+

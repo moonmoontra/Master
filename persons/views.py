@@ -19,7 +19,10 @@ class BasePersonView:
 
 
 class BaseCreateView(BasePersonView, CreateView):
-    pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['template_htmx'] = self.template_htmx
+        return context
 
 
 class BaseEditView(BasePersonView, UpdateView):

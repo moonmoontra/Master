@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 from home.services import get_model_context
 
