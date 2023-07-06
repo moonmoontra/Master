@@ -163,12 +163,16 @@ legend {
 	margin-top: 22px;
 }
 
-/*.btn-edit-href {*/
-/*	font-size: 19px;*/
-/*	border: 1px solid black;*/
-/*	border-radius: 10px;*/
-/*	width: 125px*/
-/*}*/
+.btn-edit-href {
+	width: 500px;
+	font-size: 19px;
+	padding-bottom: 7px;
+	border-top: 4px solid green;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	border-radius: 10px;
+}
 
 .btn-menu{
 	margin: 0;
@@ -203,20 +207,20 @@ legend {
 	margin-top: 50px;
 }
 .create-form .a-create{
-	width: -500px;
+	/*width: -500px;*/
 	text-align: center;
 }
-.a-btn{
-	margin-left: 350px;
-	margin-right: 350px;
-	padding-top: 7px;
-	padding-bottom: 7px;
-	border-top: 4px solid green;
-	border-left: 1px solid black;
-	border-right: 1px solid black;
-	border-bottom: 1px solid black;
-	border-radius: 10px;
-}
+/*.a-btn{*/
+/*	margin-left: 350px;*/
+/*	margin-right: 350px;*/
+/*	padding-top: 7px;*/
+/*	padding-bottom: 7px;*/
+/*	border-top: 4px solid green;*/
+/*	border-left: 1px solid black;*/
+/*	border-right: 1px solid black;*/
+/*	border-bottom: 1px solid black;*/
+/*	border-radius: 10px;*/
+/*}*/
 .create-form a {
 	text-decoration: none;
 	font-size: 21px;

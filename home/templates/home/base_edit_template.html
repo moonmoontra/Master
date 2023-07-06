@@ -20,10 +20,8 @@
             {% csrf_token %}
             {% include 'home/fields_for_form.html' %}
             <div class="a-create">
-                <div class="a-btn">
-                    <a class="btn-edit-href" onclick="document.querySelector('form').submit(); return false;"
-                       role="button">Змінити</a>
-                </div>
+                <button class="btn-edit-href" onclick="document.querySelector('form').submit(); return false;"
+                   role="button">Змінити</button>
             </div>
         </form>
     </div>

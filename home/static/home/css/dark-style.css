@@ -24,17 +24,21 @@
 }
 .dark-theme .btn-edit-href {
     color: white;
-}
-.dark-theme .btn-edit-href:hover {
-    color: lightcoral;
-}
-.dark-theme .a-btn {
     border-top: 4px solid lightgreen;
     border-left: 1px solid white;
 	border-right: 1px solid white;
 	border-bottom: 1px solid white;
-    color: white;
 }
+.dark-theme .btn-edit-href:hover {
+    color: lightcoral;
+}
+/*.dark-theme .a-btn {*/
+/*    border-top: 4px solid lightgreen;*/
+/*    border-left: 1px solid white;*/
+/*	border-right: 1px solid white;*/
+/*	border-bottom: 1px solid white;*/
+/*    color: white;*/
+/*}*/
 .dark-theme .table tbody tr:hover {
     background: rgb(77, 77, 77);
 }
@@ -43,12 +47,20 @@
     background-color: #000000;
 }
 .dark-theme .modal-content{
-    background-color: grey;
+    background-color: rgb(99,99, 99);
+    color: lightgrey;
+}
+.dark-theme .modal-content .btn{
+    background-color: rgb(99,99, 99);
+    color: lightgrey;
+}
+.dark-theme .modal-content .btn:hover{
+    border-color: rgb(99,99, 99);
     color: white;
 }
-.dark-theme .modal-content button{
-    background-color: white;
-    color: black;
+.dark-theme .modal-content h1{
+    color: white;
+    font-weight: bold;
 }
 
 .dark-theme .title_h2{
@@ -145,15 +157,14 @@
     background-color: #1f2326;
 }
 .dark-theme .openbtn{
-    /*background-color: rgb(63,63,63);*/
     background-color: rgb(43,48,53);
 	color: white;
     border: none;
 }
 .dark-theme .closebtn{
-    color: black;
-    border-top: 2px solid black;
-    border-right: 2px solid black;
+    color: white;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
 }
 .dark-theme .sidebar-navbar-brand{
     /*color: rgb(243,243,243);*/
