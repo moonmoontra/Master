@@ -1,5 +1,5 @@
 from django.views.decorators.http import require_POST
-from django.views.generic import CreateView, UpdateView, TemplateView
+from django.views.generic import CreateView, UpdateView, ListView
 from django.apps import apps
 from home.base_view import BaseListView
 from home.set_htmx_or_django_template import CustomHtmxMixin
