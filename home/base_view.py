@@ -8,18 +8,18 @@ class BaseListView(ListView):
     edit_view_name = None
     delete_view_name = None
     create_view_name = None
-
+    title = None
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['template_htmx'] = self.template_htmx
         if self.model._meta.model_name == 'productpricename':
             context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name,
-                                             self.create_view_name, False))
+                                             self.create_view_name, self.title, False))
         elif self.model._meta.model_name == 'document':
             context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name,
-                                             self.create_view_name, False))
+                                             self.create_view_name, self.title, False))
         else:
             context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name,
-                                             self.create_view_name))
+                                             self.create_view_name, self.title))
         return context

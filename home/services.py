@@ -15,7 +15,8 @@ from django.apps import apps
     exclude - исключить определенные поля из контекста, по умолчанию True"""
 
 
-def get_model_context(model, url_for_edit: str, url_for_delete: str, url_for_create: str, exclude: bool = True) -> dict:
+def get_model_context(model, url_for_edit: str, url_for_delete: str,
+                      url_for_create: str, title: str, exclude: bool = True) -> dict:
     context = {
         'headers': get_headers_table(model, exclude),
         'fields': get_fields_table(model, exclude),
@@ -23,6 +24,7 @@ def get_model_context(model, url_for_edit: str, url_for_delete: str, url_for_cre
         'url_for_edit': url_for_edit,
         'url_for_delete': url_for_delete,
         'url_for_create': url_for_create,
+        'title': title,
     }
     return context
 
