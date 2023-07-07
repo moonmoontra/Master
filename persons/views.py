@@ -1,10 +1,10 @@
 from django.views.decorators.http import require_POST
-from django.views.generic import CreateView, UpdateView, ListView
+from django.views.generic import CreateView, UpdateView
 from django.apps import apps
 from home.base_view import BaseListView, BaseCreateEditMixin
 from home.set_htmx_or_django_template import CustomHtmxMixin
-from persons.forms import *
-from persons.models import Provider, Manufacturer, Employee
+from persons.forms import ProviderForm, EmployeeForm, ManufacturerForm, ClientForm
+from persons.models import Provider, Manufacturer, Employee, Client
 from home.services import delete_objects
 
 

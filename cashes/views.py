@@ -45,7 +45,7 @@ class CashCreateView(CustomHtmxMixin, BaseCreateView):
     model = Cash
 
 
-class CashEditView(BaseEditView):
+class CashEditView(CustomHtmxMixin, BaseEditView):
     form_class = CashForm
     template_name = 'cash/cash_edit.html'
     model = Cash
@@ -66,7 +66,7 @@ class ValutaCreateView(CustomHtmxMixin, BaseCreateView):
     model = Valuta
 
 
-class ValutaEditView(BaseEditView):
+class ValutaEditView(CustomHtmxMixin, BaseEditView):
     form_class = ValutaForm
     template_name = 'cash/valuta_edit.html'
     model = Valuta
@@ -87,7 +87,7 @@ class RateCreateView(CustomHtmxMixin, BaseCreateView):
     model = Rate
 
 
-class RateEditView(BaseEditView):
+class RateEditView(CustomHtmxMixin, BaseEditView):
     form_class = RateForm
     template_name = 'cash/rate_edit.html'
     model = Rate

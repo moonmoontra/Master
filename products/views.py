@@ -58,7 +58,7 @@ class ProductRefBookListView(CustomHtmxMixin, BaseListView, BaseProductView):
     title = 'Товари'
 
 
-class ProductRefBookEditView(BaseEditView):
+class ProductRefBookEditView(CustomHtmxMixin, BaseEditView):
     form_class = ProductRefBookForm
     model = ProductRefBook
     template_name = 'products/product_ref_book_edit.html'
@@ -85,7 +85,7 @@ class ProductPriceNameCreateView(CustomHtmxMixin, BaseCreateView):
     template_name = 'products/product_price_create.html'
 
 
-class ProductPriceNameEditView(BaseEditView):
+class ProductPriceNameEditView(CustomHtmxMixin, BaseEditView):
     form_class = ProductPriceNameForm
     model = ProductPriceName
     template_name = 'products/product_price_edit.html'
@@ -106,7 +106,7 @@ class UnitOfMeasureCreateView(CustomHtmxMixin, BaseCreateView):
     template_name = 'products/unit_of_measure_create.html'
 
 
-class UnitOfMeasureEditView(BaseEditView):
+class UnitOfMeasureEditView(CustomHtmxMixin, BaseEditView):
     form_class = UnitOfMeasureForm
     model = UnitOfMeasure
     template_name = 'products/unit_of_measure_edit.html'
@@ -127,7 +127,7 @@ class PriceNameCreateView(CustomHtmxMixin, BaseCreateView):
     template_name = 'products/price_name_create.html'
 
 
-class PriceNameEditView(BaseEditView):
+class PriceNameEditView(CustomHtmxMixin, BaseEditView):
     form_class = PriceNameForm
     model = PriceName
     template_name = 'products/price_name_edit.html'

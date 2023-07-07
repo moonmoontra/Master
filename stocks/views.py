@@ -35,7 +35,7 @@ class StockListView(CustomHtmxMixin, BaseListView, BaseStockView):
     title = 'Склади'
 
 
-class StockEditView(BaseEditView):
+class StockEditView(CustomHtmxMixin, BaseEditView):
     form_class = StockForm
     template_name = 'stock/stock_edit.html'
     model = Stock
