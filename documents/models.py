@@ -24,6 +24,8 @@ class Document(BaseData):
     valuta = models.ForeignKey(Valuta, default=None, on_delete=models.SET_DEFAULT, verbose_name='Валюта',
                                   related_name='valute_documents')
     cash = models.ForeignKey(Cash, on_delete=models.PROTECT, verbose_name='Каса', related_name='cash_documents')
+    hold = models.BooleanField(default=False, verbose_name='Проведено')
+    paid = models.BooleanField(default=False, verbose_name='Сплачено')
 
     def __str__(self):
         locale.setlocale(locale.LC_TIME, 'uk_UA.UTF-8')

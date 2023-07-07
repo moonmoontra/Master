@@ -7,7 +7,7 @@ class Valuta(models.Model):
     valuta_short = models.CharField(max_length=5, default=None, verbose_name='Скорочено')
 
     def __str__(self):
-        return '[{valuta_short}] {valuta_name}'.format(valuta_short=self.valuta_short, valuta_name=self.valuta_name)
+        return '{valuta_short}'.format(valuta_short=self.valuta_short)
 
     class Meta:
         verbose_name = 'Валюта'
@@ -33,7 +33,7 @@ class Cash(BaseData):
     valuta = models.ForeignKey(Valuta, on_delete=models.PROTECT, verbose_name='Валюта', related_name='valuta_cash')
 
     def __str__(self):
-        return '{summa} {valuta}'.format(summa=self.summa, valuta=self.valuta)
+        return '[{pk}] {valuta}'.format(pk=self.pk, valuta=self.valuta)
 
     class Meta:
         verbose_name = 'Каса підприємства'
