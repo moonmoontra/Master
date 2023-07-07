@@ -23,3 +23,10 @@ class BaseListView(ListView):
             context.update(get_model_context(self.model, self.edit_view_name, self.delete_view_name,
                                              self.create_view_name, self.title))
         return context
+
+
+class BaseCreateEditMixin:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['template_htmx'] = self.template_htmx
+        return context

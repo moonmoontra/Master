@@ -72,8 +72,12 @@
 .dark-theme .category-list{
     background-color: rgb(63,63,63);
 }
-.dark-theme .category-list a{
+.dark-theme .product_list .category-list li{
     color: white;
+}
+.dark-theme .product_list .category-list li:hover{
+    border: 1px solid #c93961;
+    border-radius: 5px;
 }
 .dark-theme .document-detail-info li{
 	color: grey;

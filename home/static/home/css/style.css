@@ -399,14 +399,28 @@ legend {
 	border: 1px solid #efefef;
 	border-radius: 5px;
 	padding: 0 5px;
-	font-size: 13px;
 	color: black;
 	font-size: 20px;
+	margin-right: 5px;
 }
-.category-list li:hover a {color: #c93961;}
+.category-list li .edit-span-pen {
+	float: right;
+	display: inline-block;
+	border: none;
+	padding: 0 5px;
+	color: black;
+	font-size: 22px;
+}
+.category-list li .edit-span-pen a i {
+	cursor: pointer;
+}
+.category-list li:hover {color: #c93961;}
 .category-list li:hover span {
   color: #c93961;
   border: 1px solid #c93961;
+}
+.category-list li:hover .edit-span-pen {
+  border: none;
 }
 .document-detail-title{
 	text-align: center;
@@ -543,6 +557,7 @@ margin-top: 30px;
 
 .sidebar .btn-toggle-nav{
 	margin-top: 10px;
+	cursor: pointer;
 }
 .sidebar .btn-toggle-nav li a{
 	color: rgb(69,43,29);

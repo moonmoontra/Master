@@ -12,10 +12,14 @@
                 </button>
             <div class="collapse" id="add-collapse" style="">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="link-dark rounded">Контрагента</a></li>
-                    <li><a href="#" class="link-dark rounded">Виробника</a></li>
-                    <li><a href="#" class="link-dark rounded">Працівника</a></li>
-                    <li><a href="#" class="link-dark rounded">Клієнта</a></li>
+                    <li><a hx-get="{% url 'provider_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Контрагента</a></li>
+                    <li><a hx-get="{% url 'manufacturer_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Виробника</a></li>
+                    <li><a hx-get="{% url 'employee_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Працівника</a></li>
+                    <li><a hx-get="{% url 'client_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Клієнта</a></li>
                 </ul>
             </div>
         </li>
@@ -25,10 +29,18 @@
                 </button>
             <div class="collapse" id="home-collapse" style="">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="link-dark rounded">Документ</a></li>
-                    <li><a href="#" class="link-dark rounded">Касу</a></li>
-                    <li><a href="#" class="link-dark rounded">Валюту</a></li>
-                    <li><a href="#" class="link-dark rounded">Курс валюти</a></li>
+                    <li><a hx-get="{% url 'unit_of_measure_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Одиницю вимірювання</a></li>
+                    <li><a hx-get="{% url 'product_ref_book_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Товар</a></li>
+                    <li><a hx-get="{% url 'document_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Документ</a></li>
+                    <li><a hx-get="{% url 'cash_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Касу</a></li>
+                    <li><a hx-get="{% url 'valuta_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Валюту</a></li>
+                    <li><a hx-get="{% url 'rate_create' %}" hx-target=".container"
+                       hx-push-url="true" class="link-dark rounded">Курс валюти</a></li>
                 </ul>
             </div>
         </li>
