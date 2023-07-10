@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.apps import apps
@@ -29,6 +29,10 @@ class BaseEditView(BaseCreateEditMixin, BaseDocumentView, UpdateView):
     pass
 
 
+class BaseDetailView(BaseCreateEditMixin, DetailView):
+    pass
+
+
 class DocumentListView(CustomHtmxMixin, BaseListView, BaseDocumentView):
     template_name = 'documents/document_list.html'
     edit_view_name = 'document_detail'
@@ -50,7 +54,7 @@ class DocumentEditView(BaseEditView):
     model = Document
 
 
-class DocumentDetailView(DetailView):
+class DocumentDetailView(CustomHtmxMixin, BaseDetailView, DetailView):
     form_class = DocumentForm
     template_name = 'documents/document_detail.html'
     model = Document
@@ -60,7 +64,7 @@ class DocumentDetailView(DetailView):
         return get_all_sum_document(self.object)
 
 
-class ProductInDocumentCreateView(CreateView):
+class ProductInDocumentCreateView(CustomHtmxMixin, BaseCreateView):
     model = ProductInDocument
     form_class = ProductInDocumentForm
     template_name = 'documents/document_product_create.html'
@@ -86,7 +90,7 @@ class ProductInDocumentCreateView(CreateView):
         return url
 
 
-class ProductInDocumentEditView(UpdateView):
+class ProductInDocumentEditView(CustomHtmxMixin, BaseEditView):
     model = ProductInDocument
     form_class = ProductInDocumentForm
     template_name = 'documents/document_product_edit.html'
@@ -110,12 +114,6 @@ class ProductInDocumentEditView(UpdateView):
     def get_success_url(self):
         url = '/documents/documents/document_detail/' + str(self.object.document.id)
         return url
-
-
-# class ProductInDocumentEditView(BaseEditView):
-#     form_class = ProductInDocumentForm
-#     template_name = 'documents/document_edit.html'
-#     model = ProductInDocument
 
 
 @require_POST
