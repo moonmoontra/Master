@@ -15,7 +15,7 @@ class BaseDocumentClass(forms.ModelForm):
 
     class Meta:
         model = Document
-        fields = '__all__'
+        fields = ['document_type', 'provider', 'stock', 'price_name', 'valuta', 'cash']
 
 
 class BaseProductInDocumentClass(forms.ModelForm):
