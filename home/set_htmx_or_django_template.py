@@ -14,4 +14,5 @@ class CustomHtmxMixin:
         self.template_htmx = self.template_name
         if not self.request.META.get('HTTP_HX_REQUEST'):
             self.template_name = 'home/include_base_block.html'
+
         return super().dispatch(request, *args, **kwargs)
