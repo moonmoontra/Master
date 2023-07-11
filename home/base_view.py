@@ -25,7 +25,7 @@ class BaseListView(ListView):
         return context
 
 
-class BaseCreateEditMixin:
+class BaseCreateEditView:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['template_htmx'] = self.template_htmx

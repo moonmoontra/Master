@@ -1,7 +1,7 @@
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView
 from django.apps import apps
-from home.base_view import BaseListView, BaseCreateEditMixin
+from home.base_view import BaseListView, BaseCreateEditView
 from home.set_htmx_or_django_template import CustomHtmxMixin
 from persons.forms import ProviderForm, EmployeeForm, ManufacturerForm, ClientForm
 from persons.models import Provider, Manufacturer, Employee, Client
@@ -18,11 +18,11 @@ class BasePersonView:
         return self.success_url + self.model.__name__.lower() + 's'
 
 
-class BaseCreateView(BaseCreateEditMixin, BasePersonView, CreateView):
+class BaseCreateView(BaseCreateEditView, BasePersonView, CreateView):
     pass
 
 
-class BaseEditView(BaseCreateEditMixin, BasePersonView, UpdateView):
+class BaseEditView(BaseCreateEditView, BasePersonView, UpdateView):
     pass
 
 

@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.apps import apps
-from home.base_view import BaseListView, BaseCreateEditMixin
+from home.base_view import BaseListView, BaseCreateEditView
 from documents.forms import DocumentForm, ProductInDocumentForm
 from documents.models import Document, ProductInDocument
 from home.services import delete_objects, update_object, get_all_sum_document
@@ -21,15 +21,41 @@ class BaseDocumentView:
         return self.success_url + self.model.__name__.lower() + 's'
 
 
-class BaseCreateView(BaseCreateEditMixin, BaseDocumentView, CreateView):
+class ProductInDocumentCreateEditView(CustomHtmxMixin):
+    model = ProductInDocument
+    form_class = ProductInDocumentForm
+    template_name = None
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['document'] = self.get_document()
+        return context
+
+    def get_initial(self):
+        return {'document': self.get_document()}
+
+    def form_valid(self, form):
+        self.object = form.save()
+        update_object(Document, self.kwargs['pk'], update_date=datetime.now())
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        url = '/documents/documents/document_detail/' + str(self.object.document.id)
+        return url
+
+
+class BaseCreateView(BaseCreateEditView, BaseDocumentView, CreateView):
     pass
 
 
-class BaseEditView(BaseCreateEditMixin, BaseDocumentView, UpdateView):
+class BaseEditView(BaseCreateEditView, BaseDocumentView, UpdateView):
     pass
 
 
-class BaseDetailView(BaseCreateEditMixin, DetailView):
+class BaseDetailView(BaseCreateEditView, DetailView):
     pass
 
 
@@ -64,56 +90,12 @@ class DocumentDetailView(CustomHtmxMixin, BaseDetailView, DetailView):
         return get_all_sum_document(self.object)
 
 
-class ProductInDocumentCreateView(CustomHtmxMixin, BaseCreateView):
-    model = ProductInDocument
-    form_class = ProductInDocumentForm
+class ProductInDocumentCreateView(ProductInDocumentCreateEditView, BaseCreateView):
     template_name = 'documents/document_product_create.html'
 
-    def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['document'] = self.get_document()
-        return context
-
-    def get_initial(self):
-        return {'document': self.get_document()}
-
-    def form_valid(self, form):
-        self.object = form.save()
-        update_object(Document, self.kwargs['pk'], update_date=datetime.now())
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        url = '/documents/documents/document_detail/' + str(self.object.document.id)
-        return url
-
-
-class ProductInDocumentEditView(CustomHtmxMixin, BaseEditView):
-    model = ProductInDocument
-    form_class = ProductInDocumentForm
+class ProductInDocumentEditView(ProductInDocumentCreateEditView, BaseEditView):
     template_name = 'documents/document_product_edit.html'
-
-    def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['document'] = self.get_document()
-        return context
-
-    def get_initial(self):
-        return {'document': self.get_document()}
-
-    def form_valid(self, form):
-        self.object = form.save()
-        update_object(Document, self.kwargs['pk'], update_date=datetime.now())
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        url = '/documents/documents/document_detail/' + str(self.object.document.id)
-        return url
 
 
 @require_POST

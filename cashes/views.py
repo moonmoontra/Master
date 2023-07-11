@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView
 from django.apps import apps
-from home.base_view import BaseListView, BaseCreateEditMixin
+from home.base_view import BaseListView, BaseCreateEditView
 from cashes.forms import CashForm, ValutaForm, RateForm
 from cashes.models import Cash, Valuta, Rate
 from home.services import delete_objects
@@ -22,11 +22,11 @@ class BaseCashView:
             return self.success_url + self.model.__name__.lower() + 's'
 
 
-class BaseCreateView(BaseCreateEditMixin, BaseCashView, CreateView):
+class BaseCreateView(BaseCreateEditView, BaseCashView, CreateView):
     pass
 
 
-class BaseEditView(BaseCreateEditMixin, BaseCashView, UpdateView):
+class BaseEditView(BaseCreateEditView, BaseCashView, UpdateView):
     pass
 
 

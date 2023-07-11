@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView
-from home.base_view import BaseListView, BaseCreateEditMixin
+from home.base_view import BaseListView, BaseCreateEditView
 from home.services import delete_objects
 from home.set_htmx_or_django_template import CustomHtmxMixin
 from stocks.forms import StockForm
@@ -18,11 +18,11 @@ class BaseStockView:
         return self.success_url + self.model.__name__.lower() + 's'
 
 
-class BaseCreateView(BaseCreateEditMixin, BaseStockView, CreateView):
+class BaseCreateView(BaseCreateEditView, BaseStockView, CreateView):
     pass
 
 
-class BaseEditView(BaseCreateEditMixin, BaseStockView, UpdateView):
+class BaseEditView(BaseCreateEditView, BaseStockView, UpdateView):
     pass
 
 

@@ -1,5 +1,5 @@
 from django.views.generic import CreateView, UpdateView
-from home.base_view import BaseListView, BaseCreateEditMixin
+from home.base_view import BaseListView, BaseCreateEditView
 from home.services import delete_objects
 from home.set_htmx_or_django_template import CustomHtmxMixin
 from products.forms import UnitOfMeasureForm, ProductRefBookForm, ProductPriceNameForm, PriceNameForm
@@ -30,7 +30,7 @@ class BaseProductView:
     и использующих форму для создания объектов модели."""
 
 
-class BaseCreateView(BaseCreateEditMixin, BaseProductView, CreateView):
+class BaseCreateView(BaseCreateEditView, BaseProductView, CreateView):
     pass
 
 
@@ -38,7 +38,7 @@ class BaseCreateView(BaseCreateEditMixin, BaseProductView, CreateView):
     и использующих форму для редактирования объектов модели."""
 
 
-class BaseEditView(BaseCreateEditMixin, BaseProductView, UpdateView):
+class BaseEditView(BaseCreateEditView, BaseProductView, UpdateView):
     pass
 
 
