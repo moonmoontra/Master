@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'stocks.apps.StocksConfig',
     'cashes.apps.CashesConfig',
     'documents.apps.DocumentsConfig',
+    'product_balance.apps.ProductBalanceConfig'
 ]
 
 MIDDLEWARE = [
