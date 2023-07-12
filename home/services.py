@@ -146,7 +146,6 @@ def product_balancing(document: Document, hold: bool) -> None:
     for product in products:
         if hold:
             BalanceProduct.objects.create(document=document, product_in_document=product,
-                                          stock=document.stock, count=-product.count)
+                                          stock=document.stock, count=product.count)
         else:
-            BalanceProduct.objects.filter(document=document, product_in_document=product,
-                                          stock=document.stock, count=product.count).delete()
+            BalanceProduct.objects.filter(document=document, product_in_document=product).delete()
