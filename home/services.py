@@ -152,11 +152,22 @@ def product_balancing(document: Document, hold: bool) -> None:
 
 
 def holding_accept(document: Document) -> None:
+    accept = True
     products = document.products_in_document.all()
-    count_in_stock = 0
-    for product in products:
-        balance_products = BalanceProduct.objects.filter(product_in_document=product)
-        for balance_product in balance_products:
-            count_in_stock += balance_product.count
+    balance_products = []
 
-    print(count_in_stock)
+    for product in products:
+        balance_products += BalanceProduct.objects.filter(product_in_document=product)
+
+    print(balance_products)
+
+    #
+    # balance_products = BalanceProduct.objects.filter(product_in_document__product__articul=products.product)\
+    #     .values('product_in_document__product__articul').annotate(all_count=Sum('count'))
+
+
+    # print(balance_products)
+
+        # balance_products = BalanceProduct.objects.filter(product_in_document=product)
+        # for balance_product in balance_products:
+        #     print(balance_product.count)
