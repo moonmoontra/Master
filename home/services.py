@@ -41,7 +41,6 @@ def get_model_context(model, url_for_edit: str, url_for_delete: str,
 
 
 def get_fields_table(model, exclude: bool = True) -> list:
-
     excluded_models_date = ['create_date', 'update_date']
     excluded_fields_related_name = get_all_related_names()
     if exclude:
@@ -153,21 +152,21 @@ def product_balancing(document: Document, hold: bool) -> None:
 
 def holding_accept(document: Document) -> None:
     accept = True
-    products = document.products_in_document.all()
+    products_in_document = document.products_in_document.all()
     balance_products = []
 
-    for product in products:
-        balance_products += BalanceProduct.objects.filter(product_in_document=product)
+    for product_in_document in products_in_document:
+        balance_products += BalanceProduct.objects. \
+                filter(product_in_document__product__articul=product_in_document.product.articul). \
+                values('product_in_document__product__articul').annotate(
+                all_count=Sum('count'))
 
-    print(balance_products)
+    for product_in_document in products_in_document:
+        for balance_product in balance_products:
+            if product_in_document.product.articul == balance_product['product_in_document__product__articul']:
+                if product_in_document.count > balance_product['all_count']:
+                    accept = False
+                    break
 
-    #
-    # balance_products = BalanceProduct.objects.filter(product_in_document__product__articul=products.product)\
-    #     .values('product_in_document__product__articul').annotate(all_count=Sum('count'))
 
-
-    # print(balance_products)
-
-        # balance_products = BalanceProduct.objects.filter(product_in_document=product)
-        # for balance_product in balance_products:
-        #     print(balance_product.count)
+    print(accept)
