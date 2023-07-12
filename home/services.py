@@ -150,16 +150,16 @@ def product_balancing(document: Document, hold: bool) -> None:
             BalanceProduct.objects.filter(document=document, product_in_document=product).delete()
 
 
-def holding_accept(document: Document) -> None:
+def holding_accept(document: Document) -> bool:
     accept = True
     products_in_document = document.products_in_document.all()
     balance_products = []
 
     for product_in_document in products_in_document:
         balance_products += BalanceProduct.objects. \
-                filter(product_in_document__product__articul=product_in_document.product.articul). \
-                values('product_in_document__product__articul').annotate(
-                all_count=Sum('count'))
+            filter(product_in_document__product__articul=product_in_document.product.articul). \
+            values('product_in_document__product__articul').annotate(
+            all_count=Sum('count'))
 
     for product_in_document in products_in_document:
         for balance_product in balance_products:
@@ -168,5 +168,4 @@ def holding_accept(document: Document) -> None:
                     accept = False
                     break
 
-
-    print(accept)
+    return accept
