@@ -15,9 +15,11 @@
 
     <tbody class='table-group-divider'>
         {% for object in object_list %}
-            {% for field in fields %}
-                <td>{{ object|get_attr:field }}</td>
-            {% endfor %}
+            <tr>
+                {% for field in fields %}
+                    <td>{{ object|get_attr:field }}</td>
+                {% endfor %}
+            </tr>
         {% endfor %}
     </tbody>
 

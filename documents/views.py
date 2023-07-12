@@ -7,7 +7,7 @@ from django.apps import apps
 from home.base_view import BaseListView, BaseCreateEditView
 from documents.forms import DocumentForm, ProductInDocumentForm, DocumentHoldForm
 from documents.models import Document, ProductInDocument
-from home.services import delete_objects, update_object, get_all_sum_document
+from home.services import delete_objects, update_object, get_all_sum_document, product_balancing
 from home.set_htmx_or_django_template import CustomHtmxMixin
 
 
@@ -84,6 +84,14 @@ class DocumentHoldEditView(CustomHtmxMixin, BaseEditView):
     form_class = DocumentHoldForm
     template_name = 'documents/document_hold_edit.html'
     model = Document
+
+    def form_valid(self, form):
+        self.object = form.save()
+        if form.cleaned_data['hold']:
+            product_balancing(self.object, True)
+        else:
+            product_balancing(self.object, False)
+        return super().form_valid(form)
 
 
 class DocumentDetailView(CustomHtmxMixin, BaseDetailView, DetailView):

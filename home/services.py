@@ -7,6 +7,9 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.apps import apps
 
+from documents.models import Document
+from product_balance.models import BalanceProduct
+
 """get_model_context - метод возвращающий словарь контекста во views.py...
     model - модель, для которой нужно получить контекст
     url_for_edit - url для редактирования объекта, например: 'manufacturer_edit'
@@ -137,3 +140,13 @@ def update_object(model, object_id: int, **kwargs: dict):
 def get_all_sum_document(_object: object) -> Sum:
     return sum([product_in_document.sum for product_in_document in _object.products_in_document.all()])
 
+
+def product_balancing(document: Document, hold: bool) -> None:
+    products = document.products_in_document.all()
+    for product in products:
+        if hold:
+            BalanceProduct.objects.create(document=document, product_in_document=product,
+                                          stock=document.stock, count=-product.count)
+        else:
+            BalanceProduct.objects.filter(document=document, product_in_document=product,
+                                          stock=document.stock, count=product.count).delete()
