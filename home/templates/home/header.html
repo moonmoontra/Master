@@ -40,13 +40,13 @@
                 <div class="dropdown hoverable">
                     <li>{% include 'home/set_htmx_parametrs.html' with url='documents' title='Документи' %}</li>
                 </div>
-                <div class="dropdown hoverable">
-                    <li class="nav-item">
-                        <a class="nav-link" id="dropdownMenuLink" href="/admin/">Admin</a>
-                    </li>
-                </div>
+{#                <div class="dropdown hoverable">#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" id="dropdownMenuLink" href="/admin/" target="_blank">Admin</a>#}
+{#                    </li>#}
+{#                </div>#}
                 <li class="nav-item">
-                    <button class="nav-link" onclick="location.reload();" id="theme-toggle">Темна тема</button>
+                    <a class="nav-link" onclick="location.reload();" id="theme-toggle">Темна тема</a>
                 </li>
             </ul>
         </div>
