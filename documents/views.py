@@ -87,10 +87,13 @@ class DocumentHoldEditView(CustomHtmxMixin, BaseEditView):
 
     def form_valid(self, form):
         self.object = form.save()
-        if form.cleaned_data['hold']:
-            product_balancing(self.object, True)
-        else:
-            product_balancing(self.object, False)
+        if self.object.document_type == 'receipt':
+            if form.cleaned_data['hold']:
+                product_balancing(self.object, True)
+            else:
+                product_balancing(self.object, False)
+        # else:
+
         return super().form_valid(form)
 
 

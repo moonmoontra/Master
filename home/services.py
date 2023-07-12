@@ -149,3 +149,14 @@ def product_balancing(document: Document, hold: bool) -> None:
                                           stock=document.stock, count=product.count)
         else:
             BalanceProduct.objects.filter(document=document, product_in_document=product).delete()
+
+
+def holding_accept(document: Document) -> None:
+    products = document.products_in_document.all()
+    count_in_stock = 0
+    for product in products:
+        balance_products = BalanceProduct.objects.filter(product_in_document=product)
+        for balance_product in balance_products:
+            count_in_stock += balance_product.count
+
+    print(count_in_stock)
