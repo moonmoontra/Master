@@ -158,6 +158,9 @@ legend {
 	background-color: rgb(237, 220, 220);
 	width: 400px;
 }
+.second-title-product-balance{
+	background-color: rgb(229, 255, 227);
+}
 .title-nav{
 	float: right;
 	margin-top: 22px;
