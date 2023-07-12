@@ -1,4 +1,24 @@
+{% load user_tags %}
 
-{% block content %}
-    <h1>Home</h1>
-{% endblock %}
+<div class="second-title manufacturer">
+    <h3 class="title_h2">Залишки</h3>
+</div>
+
+<table class='table' id="main-table">
+    <thead>
+        <tr>
+            {% for header in headers %}
+                <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody class='table-group-divider'>
+        {% for object in object_list %}
+            {% for field in fields %}
+                <td>{{ object|get_attr:field }}</td>
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+
+</table>
