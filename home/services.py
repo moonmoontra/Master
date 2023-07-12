@@ -142,12 +142,23 @@ def get_all_sum_document(_object: object) -> Sum:
 
 def product_balancing(document: Document, hold: bool) -> None:
     products = document.products_in_document.all()
+
     for product in products:
-        if hold:
-            BalanceProduct.objects.create(document=document, product_in_document=product,
-                                          stock=document.stock, count=product.count)
+        if document.document_type == 'receipt':
+            if hold:
+                BalanceProduct.objects.create(document=document, product_in_document=product,
+                                              stock=document.stock, count=product.count)
+            else:
+                if holding_accept(document):
+                    BalanceProduct.objects.filter(document=document, product_in_document=product).delete()
+                else:
+                    raise ValidationError(_('Неможливо відмінити проведення, так як на складі недостатньо товару!'))
         else:
-            BalanceProduct.objects.filter(document=document, product_in_document=product).delete()
+            if holding_accept(document):
+                BalanceProduct.objects.create(document=document, product_in_document=product,
+                                              stock=document.stock, count=product.count)
+            else:
+                raise ValidationError(_('Неможливо провести документ, так як на складі недостатньо товару!'))
 
 
 def holding_accept(document: Document) -> bool:
