@@ -13,5 +13,7 @@ urlpatterns = [
             name='document_product_create'),
     re_path(r'^documents/document_product_edit/(?P<pk>\d+)$', views.ProductInDocumentEditView.as_view(),
             name='document_product_edit'),
+    re_path(r'^documents/document_hold_edit/(?P<pk>\d+)$', views.DocumentHoldEditView.as_view(),
+            name='document_hold_edit'),
     re_path(r'^delete_document/$', views.delete_documents_view, name='delete_document'),
 ]

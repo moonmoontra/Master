@@ -36,3 +36,9 @@ class DocumentForm(BaseDocumentClass):
 
 class ProductInDocumentForm(BaseProductInDocumentClass):
     pass
+
+
+class DocumentHoldForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ['hold']

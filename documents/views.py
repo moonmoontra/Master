@@ -5,7 +5,7 @@ from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.apps import apps
 from home.base_view import BaseListView, BaseCreateEditView
-from documents.forms import DocumentForm, ProductInDocumentForm
+from documents.forms import DocumentForm, ProductInDocumentForm, DocumentHoldForm
 from documents.models import Document, ProductInDocument
 from home.services import delete_objects, update_object, get_all_sum_document
 from home.set_htmx_or_django_template import CustomHtmxMixin
@@ -77,6 +77,12 @@ class DocumentCreateView(CustomHtmxMixin, BaseCreateView):
 class DocumentEditView(BaseEditView):
     form_class = DocumentForm
     template_name = 'documents/document_edit.html'
+    model = Document
+
+
+class DocumentHoldEditView(CustomHtmxMixin, BaseEditView):
+    form_class = DocumentHoldForm
+    template_name = 'documents/document_hold_edit.html'
     model = Document
 
 
