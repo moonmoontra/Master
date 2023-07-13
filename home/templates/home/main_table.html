@@ -54,7 +54,7 @@
 {#                            {% if object|get_attr:field.get_absolute_url == Null %}#}
 {#                                <td><a href="{{ object|get_attr:field.get_absolute_url }}">{{ object|get_attr:field }}</a></td>#}
 {#                            {% else %}#}
-                            <td>{{ object|get_attr:field }}</td>
+                            <td><a href="{{ object|has_get_absolute_url:field }}">{{ object|get_attr:field }}</a></td>
 {#                            {% endif %}#}
                         {% endif %}
                     {% endif %}
