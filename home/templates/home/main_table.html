@@ -47,6 +47,19 @@
                         {% else %}
                             <td>Витрата</td>
                         {% endif %}
+                    {% elif field == 'hold' %}
+                        {% if object|get_attr:field %}
+                            <td><a class="hold-paid-icon-link" href="{% url 'document_hold_edit' object.pk %}"><i class="fa-solid fa-check true-icon"></i></a></td>
+                        {% else %}
+                            <td><a class="hold-paid-icon-link" href="{% url 'document_hold_edit' object.pk %}"><i class="fa-solid fa-times false-icon"></i></a></td>
+                        {% endif %}
+                    {% elif field == 'paid' %}
+                        {% if object|get_attr:field %}
+                            <td><a class="hold-paid-icon-link" href=""><i class="fa-solid fa-check true-icon"></i></a></td>
+                        {% else %}
+                            <td><a class="hold-paid-icon-link" href=""><i class="fa-solid fa-times false-icon"></i></a></td>
+                        {% endif %}
+
                     {% else %}
                         {% if object|get_attr:field == None %}
                             <td>Не зазначено</td>

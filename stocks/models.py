@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from home.models import BaseData
 
 
@@ -8,6 +10,9 @@ class Stock(BaseData):
 
     def __str__(self):
         return f"{self.stock_name}"
+
+    def get_absolute_url(self):
+        return reverse('stock_edit', args=[str(self.id)])
 
     class Meta:
         verbose_name = 'Склад'

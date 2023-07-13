@@ -578,3 +578,16 @@ margin-top: 30px;
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
 }
+
+.hold-paid-icon-link{
+    position: relative;
+}
+
+.hold-paid-icon-link::after{
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+}
