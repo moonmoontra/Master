@@ -2,5 +2,5 @@
 
 {% block title %}Проведення документу{% endblock %}
 {% block create_title %}Проведення документу{% endblock create_title %}
-{#{% block create_title-param %}{{ object.client_name }} {{ object.document_type }}{% endblock create_title-param %}#}
+{% block create_title-param %} <br> {{ object }}{% endblock create_title-param %}
 {% block url_for_edit %}{% url 'document_hold_edit' object.pk %}{% endblock %}
