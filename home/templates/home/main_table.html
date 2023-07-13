@@ -51,11 +51,11 @@
                         {% if object|get_attr:field == None %}
                             <td>Не зазначено</td>
                         {% else %}
-                            {% if object|get_attr:field.get_absolute_url %}
-                                <td><a href="{{ object|get_attr:field.get_absolute_url }}">{{ object|get_attr:field }}</a></td>
-                            {% else %}
-                                <td>{{ object|get_attr:field }}</td>
-                            {% endif %}
+{#                            {% if object|get_attr:field.get_absolute_url == Null %}#}
+{#                                <td><a href="{{ object|get_attr:field.get_absolute_url }}">{{ object|get_attr:field }}</a></td>#}
+{#                            {% else %}#}
+                            <td>{{ object|get_attr:field }}</td>
+{#                            {% endif %}#}
                         {% endif %}
                     {% endif %}
                 {% endfor %}
