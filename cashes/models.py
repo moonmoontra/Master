@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from home.models import BaseData
 
 
@@ -34,6 +36,9 @@ class Cash(BaseData):
 
     def __str__(self):
         return '[{pk}] {valuta}'.format(pk=self.pk, valuta=self.valuta)
+
+    def get_absolute_url(self):
+        return reverse('cash_edit', args=[str(self.id)])
 
     class Meta:
         verbose_name = 'Каса підприємства'
