@@ -52,7 +52,8 @@
                             <td>Не зазначено</td>
                         {% else %}
                             {% if object|has_get_absolute_url:field %}
-                                <td><a href="{{ object|has_get_absolute_url:field }}">{{ object|get_attr:field }}</a></td>
+{#                                <td><a hx-get="{{ object|has_get_absolute_url:field }}" hx-target=".container" hx-push-url="true">{{ object|get_attr:field }}</a></td>#}
+                                <td><a class="table-link" href="{{ object|has_get_absolute_url:field }}">{{ object|get_attr:field }}</a></td>
                             {% else %}
                                 <td>{{ object|get_attr:field }}</td>
                             {% endif %}

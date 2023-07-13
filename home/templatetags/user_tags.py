@@ -11,7 +11,7 @@ def get_attr(obj, attr):
     return getattr(obj, attr)
 
 
-"""has_get_absolute_url - пользовательский тег, который проверяет есть ли у атрибута метод get_absolute_url
+"""has_get_absolute_url - пользовательский тег, который проверяет есть ли у объекта метод get_absolute_url
 Использование: {{ object|has_get_absolute_url:"attr_name" }}"""
 
 

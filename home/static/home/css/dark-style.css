@@ -214,3 +214,7 @@
 .dark-theme .btn-menu li button:last-child {
 	margin-right: 0px;
 }
+
+.dark-theme .table-link{
+    color: #ff9ea7;
+}
