@@ -152,12 +152,14 @@ def product_balancing(document: Document, hold: bool) -> None:
                 if holding_accept(document):
                     BalanceProduct.objects.filter(document=document, product_in_document=product).delete()
                 else:
+                    Document.objects.filter(id=document.id).update(hold=True)
                     raise ValidationError(_('Неможливо відмінити проведення, так як на складі недостатньо товару!'))
         else:
             if holding_accept(document):
                 BalanceProduct.objects.create(document=document, product_in_document=product,
                                               stock=document.stock, count=product.count)
             else:
+                Document.objects.filter(id=document.id).update(hold=False)
                 raise ValidationError(_('Неможливо провести документ, так як на складі недостатньо товару!'))
 
 

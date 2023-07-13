@@ -40,7 +40,7 @@ class Document(BaseData):
     class Meta:
         verbose_name = 'Документ'
         verbose_name_plural = 'Документи'
-        ordering = ['provider_id']
+        ordering = ['-create_date']
 
 
 class ProductInDocument(models.Model):
