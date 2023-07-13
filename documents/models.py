@@ -1,6 +1,7 @@
 import locale
 
 from django.db import models
+from django.urls import reverse
 
 from persons.models import Provider
 from products.models import PriceName, ProductRefBook
@@ -32,6 +33,9 @@ class Document(BaseData):
         formatted_date = self.create_date.strftime('%d %B %Y, %H:%M')
         locale.setlocale(locale.LC_TIME, '')
         return 'Документ [№{pk}] від {create_date}'.format(pk=self.pk, create_date=formatted_date)
+
+    def get_absolute_url(self):
+        return reverse('document_detail', args=[str(self.id)])
 
     class Meta:
         verbose_name = 'Документ'
