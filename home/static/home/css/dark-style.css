@@ -216,6 +216,7 @@
 }
 
 .dark-theme .table-link{
+    z-index: 1000;
     color: #ff9ea7;
 }
 
