@@ -35,7 +35,9 @@
         {% for object in object_list %}
           <tr style="font-size: 19px;" hx-get="{% url url_for_edit object.pk %}" hx-target=".container" hx-push-url="true">
                 {% for field in fields %}
-                    {% if field == 'status' %}
+                    {% if field == 'id' %}
+                        <td><strong class="table-field-id">{{ object|get_attr:field }}</strong></td>
+                    {% elif field == 'status' %}
                         {% if object|get_attr:field == 'individual' %}
                             <td>Фізична особа</td>
                         {% else %}
@@ -66,7 +68,6 @@
                         {% else %}
                             {% if object|has_get_absolute_url:field %}
                                 <td><a type="button" class="nav-link table-link" hx-get="{{ object|has_get_absolute_url:field }}" hx-target=".container" hx-push-url="true" onclick="event.stopPropagation()">{{ object|get_attr:field }}</a></td>
-{#                                <td><a class="table-link" href="{{ object|has_get_absolute_url:field }}">{{ object|get_attr:field }}</a></td>#}
                             {% else %}
                                 <td>{{ object|get_attr:field }}</td>
                             {% endif %}

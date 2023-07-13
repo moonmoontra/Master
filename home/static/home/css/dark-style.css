@@ -240,3 +240,7 @@
     bottom: -10px;
     left: -10px;
 }
+
+.dark-theme .table-field-id{
+    color: #ffffff;
+}
