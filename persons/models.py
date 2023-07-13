@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -19,6 +20,9 @@ class Provider(BaseData):
 
     def __str__(self):
         return f"{self.provider_name}"
+
+    def get_absolute_url(self):
+        return reverse('provider_edit', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'Контрагент'
