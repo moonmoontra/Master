@@ -13,13 +13,13 @@
             <div class="collapse" id="add-collapse" style="">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a hx-get="{% url 'provider_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Контрагента</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Контрагента</a></li>
                     <li><a hx-get="{% url 'manufacturer_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Виробника</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Виробника</a></li>
                     <li><a hx-get="{% url 'employee_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Працівника</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Працівника</a></li>
                     <li><a hx-get="{% url 'client_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Клієнта</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Клієнта</a></li>
                 </ul>
             </div>
         </li>
@@ -30,17 +30,17 @@
             <div class="collapse" id="home-collapse" style="">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a hx-get="{% url 'unit_of_measure_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Од. виміру</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Од. виміру</a></li>
                     <li><a hx-get="{% url 'product_ref_book_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Товар</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Товар</a></li>
                     <li><a hx-get="{% url 'document_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Документ</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Документ</a></li>
                     <li><a hx-get="{% url 'cash_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Касу</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Касу</a></li>
                     <li><a hx-get="{% url 'valuta_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Валюту</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Валюту</a></li>
                     <li><a hx-get="{% url 'rate_create' %}" hx-target=".container"
-                       hx-push-url="true" class="link-dark rounded">Курс валюти</a></li>
+                       hx-push-url="true" class="link-dark rounded" onclick="closeNav()">Курс валюти</a></li>
                 </ul>
             </div>
         </li>
@@ -52,16 +52,16 @@
             <div class="collapse" id="setting-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li>
-                        <a href="#" class="link-dark rounded"><i style="margin-right: 10px" class="fa-solid fa-gear"></i>Загальні</a>
+                        <a href="#" class="link-dark rounded" onclick="closeNav()"><i style="margin-right: 10px" class="fa-solid fa-gear"></i>Загальні</a>
                     </li>
                     <li>
-                        <a class="nav-link theme-toggle-dark" onclick="location.reload();"><i style="margin-right: 10px" class="fa-solid fa-moon fa-lg"></i>Темна тема</a>
+                        <a class="nav-link theme-toggle-dark" onclick="location.reload(); closeNav();"><i style="margin-right: 10px" class="fa-solid fa-moon fa-lg"></i>Темна тема</a>
                     </li>
                     <li>
-                        <a class="nav-link theme-toggle-light" onclick="location.reload();"><i style="margin-right: 10px;" class="fa-regular fa-sun"></i>Світла тема</a>
+                        <a class="nav-link theme-toggle-light" onclick="location.reload(); closeNav();"><i style="margin-right: 10px;" class="fa-regular fa-sun"></i>Світла тема</a>
                     </li>
                     <li>
-                        <a class="nav-link" id="dropdownMenuLink" href="/admin/" target="_blank"><i style="margin-right: 10px" class="fa-solid fa-screwdriver-wrench"></i>Управління</a>
+                        <a class="nav-link" id="dropdownMenuLink" href="/admin/" target="_blank" onclick="closeNav()"><i style="margin-right: 10px" class="fa-solid fa-screwdriver-wrench"></i>Управління</a>
                     </li>
                 </ul>
             </div>
