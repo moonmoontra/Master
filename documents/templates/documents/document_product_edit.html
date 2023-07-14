@@ -3,4 +3,4 @@
 {% block title %}Редагувати товар в документі{% endblock %}
 {% block create_title %}Редагувати товар в документі{% endblock create_title %}
 {% block create_title-param %}{{ object.product }} {% endblock create_title-param %}
-{% block url_for_edit %}{% url 'document_product_edit' object.pk %}{% endblock %}
+{% block url_for_edit %}{% url 'document_product_edit' productindocument.pk %}{% endblock %}

@@ -11,5 +11,5 @@ class DocumentAdmin(admin.ModelAdmin):
 
 @admin.register(ProductInDocument)
 class ProductInDocumentAdmin(admin.ModelAdmin):
-    list_display = ('document', 'product', 'count', 'price')
+    list_display = ('id', 'document', 'product', 'count', 'price')
     list_filter = ('document',)

@@ -26,20 +26,10 @@
                         {% else %}
                             <td>Витрата</td>
                         {% endif %}
-{#                        {% if object.document_type == 'receipt' %}#}
-{#                            <td style="color: green"><b>smth</b></td>#}
-{#                        {% else %}#}
-{#                            <td style="color: red"><b>smth</b></td>#}
-{#                        {% endif %}#}
                         <td>{{ object.price_name }}</td>
                         <td>{{ object.valuta }}</td>
                         <td>{{ object.create_date }}</td>
                         <td>{{ object.update_date }}</td>
-{#                        {% if documentDetail.flag == True %}#}
-{#                            <td><a href="{% url 'document-edit-flag' documentDetail.pk %}"><i class="fa-solid fa-check"></i></a></td>#}
-{#                        {% else %}#}
-{#                            <td><a href="{% url 'document-edit-flag' documentDetail.pk %}"><i class="fa-solid fa-xmark"></i></a></td>#}
-{#                        {% endif %}#}
                     </tr>
               </tbody>
             </table>
@@ -67,7 +57,7 @@
                 <ul class="category-list">
                     <li>{{ document_product }}
                         <span class="edit-span-pen">
-                            <a hx-get="{% url 'document_product_edit' document.pk %}"
+                            <a hx-get="{% url 'document_product_edit' document_product.pk %}"
                                hx-target=".container"
                                hx-push-url="true"><i class="fa-solid fa-pen"></i></a>
                         </span>

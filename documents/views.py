@@ -108,8 +108,13 @@ class ProductInDocumentCreateView(ProductInDocumentCreateEditView, BaseCreateVie
     template_name = 'documents/document_product_create.html'
 
 
-class ProductInDocumentEditView(ProductInDocumentCreateEditView, BaseEditView):
+class ProductInDocumentEditView(CustomHtmxMixin, BaseEditView, UpdateView):
+    model = ProductInDocument
+    form_class = ProductInDocumentForm
     template_name = 'documents/document_product_edit.html'
+
+    def get_success_url(self):
+        return '/documents/documents/document_detail/' + str(self.object.document.id)
 
 
 @require_POST
