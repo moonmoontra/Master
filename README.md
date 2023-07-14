@@ -6,7 +6,7 @@ Master - a system for recording the work of small and medium-sized enterprises.
 3. Install [Git](https://git-scm.com/downloads)
 4. Clone repository
 ```bash
-git clone
+git clone https://github.com/moonmoontra/Master.git
 ```
 5. Create virtual environment
 ```bash
