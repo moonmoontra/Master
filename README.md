@@ -1,7 +1,7 @@
 # Master
 Master - a system for recording the work of small and medium-sized enterprises.
 ## Installation
-1. Install [Python 3.7](https://www.python.org/downloads/release/python-370/)
+1. Install [Python 3.11](https://www.python.org/downloads/release/python-3114/)
 2. Install [PostgreSQL](https://www.postgresql.org/download/)
 3. Install [Git](https://git-scm.com/downloads)
 4. Clone repository
