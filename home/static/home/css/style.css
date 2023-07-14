@@ -552,12 +552,6 @@ margin-top: 30px;
 	font-weight: 500;
 }
 
-/*.sidebar .dropdown{*/
-/*	display: inline-block;*/
-/*	padding-top: 4px;*/
-/*}*/
-
-
 .sidebar .btn-toggle-nav{
 	margin-top: 10px;
 	cursor: pointer;
@@ -568,10 +562,10 @@ margin-top: 30px;
 }
 
 /* Стиль содержимого страницы - используйте это, если вы хотите переместить содержимое страницы вправо при открытии боковой навигации */
-#main {
-  transition: margin-left .5s; /* Если вы хотите эффект перехода */
-  padding: 20px;
-}
+/*#my-container {*/
+/*  transition: margin-left .5s; !* Если вы хотите эффект перехода *!*/
+/*  padding: 20px;*/
+/*}*/
 
 /* На небольших экранах, где высота меньше 450px, измените стиль sidebar (меньше отступов и меньший размер шрифта) */
 @media screen and (max-height: 450px) {
