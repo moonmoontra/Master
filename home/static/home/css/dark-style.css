@@ -76,7 +76,7 @@
     color: white;
 }
 .dark-theme .product_list .category-list li:hover{
-    border: 1px solid #c93961;
+    border-bottom: 1px solid #c93961;
     border-radius: 5px;
 }
 .dark-theme .document-detail-info li{

@@ -55,14 +55,12 @@
         <div class="product_list">
             {% for document_product in object.products_in_document.all %}
                 <ul class="category-list">
-                    <li>{{ document_product }}
-                        <span class="edit-span-pen">
-                            <a hx-get="{% url 'document_product_edit' document_product.pk %}"
+                    <li>
+                        {{ document_product }}
+                        <span style="color: #65c056">
+                            <a type="button" hx-get="{% url 'document_product_edit' document_product.pk %}"
                                hx-target=".container"
-                               hx-push-url="true"><i class="fa-solid fa-pen"></i></a>
-                        </span>
-                        <span>{{ document_product.count }}
-                            {{ document_product.product.unit_of_measure }}
+                               hx-push-url="true">{{ document_product.count }} {{ document_product.product.unit_of_measure }}</a>
                         </span>
                     </li>
                 </ul>
