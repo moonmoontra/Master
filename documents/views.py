@@ -7,7 +7,7 @@ from django.apps import apps
 from home.base_view import BaseListView, BaseCreateEditView
 from documents.forms import DocumentForm, ProductInDocumentForm, DocumentHoldForm, DocumentPaidForm
 from documents.models import Document, ProductInDocument
-from home.services import delete_objects, update_object, get_all_sum_document, product_balancing
+from home.services import delete_objects, update_object, get_all_sum_document, product_balancing, cash_balancing
 from home.set_htmx_or_django_template import CustomHtmxMixin
 
 
@@ -102,11 +102,9 @@ class DocumentPaidEditView(CustomHtmxMixin, BaseEditView):
     def form_valid(self, form):
         self.object = form.save()
         if form.cleaned_data['paid']:
-            # product_balancing(self.object, True)
-            print('ff')
+            cash_balancing(self.object, True)
         else:
-            # product_balancing(self.object, False)
-            print('ff')
+            cash_balancing(self.object, False)
         return super().form_valid(form)
 
 

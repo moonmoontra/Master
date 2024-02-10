@@ -182,3 +182,16 @@ def holding_accept(document: Document) -> bool:
                     break
 
     return accept
+
+
+def cash_balancing(document: Document, paid: bool) -> None:
+    all_sum = get_all_sum_document(document)
+
+
+def payment_accept(document: Document) -> bool:
+    accept = True
+    all_sum_document = get_all_sum_document(document)
+    if all_sum_document > document.cash.summa:
+        accept = False
+
+    return accept
