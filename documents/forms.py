@@ -42,3 +42,9 @@ class DocumentHoldForm(forms.ModelForm):
     class Meta:
         model = Document
         fields = ['hold']
+
+
+class DocumentPaidForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ['paid']

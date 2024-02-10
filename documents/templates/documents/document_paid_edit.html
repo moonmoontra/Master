@@ -1,0 +1,6 @@
+{% extends 'home/base_edit_template.html' %}
+
+{% block title %}Оплата документу{% endblock %}
+{% block create_title %}Оплата документу{% endblock create_title %}
+{% block create_title-param %} <br> {{ object }}{% endblock create_title-param %}
+{% block url_for_edit %}{% url 'document_paid_edit' object.pk %}{% endblock %}

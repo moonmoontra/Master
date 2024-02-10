@@ -56,9 +56,9 @@
                         {% endif %}
                     {% elif field == 'paid' %}
                         {% if object|get_attr:field %}
-                            <td style="text-align: center;"><a class="hold-paid-icon-link" href=""><i class="fa-solid fa-check true-icon"></i></a></td>
+                            <td style="text-align: center;"><a class="hold-paid-icon-link" href="{% url 'document_paid_edit' object.pk %}"><i class="fa-solid fa-check true-icon"></i></a></td>
                         {% else %}
-                            <td style="text-align: center;"><a class="hold-paid-icon-link" href=""><i class="fa-solid fa-times false-icon"></i></a></td>
+                            <td style="text-align: center;"><a class="hold-paid-icon-link" href="{% url 'document_paid_edit' object.pk %}"><i class="fa-solid fa-times false-icon"></i></a></td>
                         {% endif %}
 
                     {% else %}
