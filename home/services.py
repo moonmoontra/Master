@@ -187,24 +187,31 @@ def holding_accept(document: Document) -> bool:
 
 def cash_balancing(document: Document, paid: bool) -> None:
     cash = document.cash
+    cash_id = cash.id
     all_sum_document = get_all_sum_document(document)
 
     if document.document_type == 'receipt':
         if paid:
-            Cash.objects.filter(cash=cash).update(summa=cash.summa + all_sum_document)
-            Document.objects.filter(document=document.id).update(paid=False)
+            Cash.objects.filter(id=cash_id).update(summa=cash.summa - all_sum_document)
+            Document.objects.filter(id=document.id).update(paid=False)
         else:
             if payment_accept(document):
-                Cash.objects.filter(cash=cash).update(cash.summa - all_sum_document)
-                Document.objects.filter(document=document.id).update(paid=True)
+                Cash.objects.filter(id=cash_id).update(summa=cash.summa + all_sum_document)
+                Document.objects.filter(id=document.id).update(paid=True)
+            else:
+                Document.objects.filter(id=document.id).update(paid=False)
+                raise ValidationError(_('Неможливо відмінити оплату, в касі недостатньо коштів!'))
     else:
         if paid:
             if payment_accept(document):
-                Cash.objects.filter(cash=cash).update(cash.summa - all_sum_document)
-                Document.objects.filter(document=document.id).update(paid=True)
+                Cash.objects.filter(id=cash_id).update(cash.summa + all_sum_document)
+                Document.objects.filter(id=document.id).update(paid=True)
+            else:
+                Document.objects.filter(id=document.id).update(paid=False)
+                raise ValidationError(_('Неможливо відмінити оплату, в касі недостатньо коштів!'))
         else:
-            Cash.objects.filter(cash=cash).update(summa=cash.summa + all_sum_document)
-            Document.objects.filter(document=document.id).update(paid=False)
+            Cash.objects.filter(id=cash_id).update(summa=cash.summa - all_sum_document)
+            Document.objects.filter(id=document.id).update(paid=False)
 
 
 def payment_accept(document: Document) -> bool:
