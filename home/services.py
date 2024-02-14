@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.apps import apps
 
+from cashes.models import Cash
 from documents.models import Document
 from product_balance.models import BalanceProduct
 
@@ -185,13 +186,29 @@ def holding_accept(document: Document) -> bool:
 
 
 def cash_balancing(document: Document, paid: bool) -> None:
-    all_sum = get_all_sum_document(document)
+    cash = document.cash
+    all_sum_document = get_all_sum_document(document)
+
+    if document.document_type == 'receipt':
+        if paid:
+            Cash.objects.filter(cash=cash).update(summa=cash.summa + all_sum_document)
+            Document.objects.filter(document=document.id).update(paid=False)
+        else:
+            if payment_accept(document):
+                Cash.objects.filter(cash=cash).update(cash.summa - all_sum_document)
+                Document.objects.filter(document=document.id).update(paid=True)
+    else:
+        if paid:
+            if payment_accept(document):
+                Cash.objects.filter(cash=cash).update(cash.summa - all_sum_document)
+                Document.objects.filter(document=document.id).update(paid=True)
+        else:
+            Cash.objects.filter(cash=cash).update(summa=cash.summa + all_sum_document)
+            Document.objects.filter(document=document.id).update(paid=False)
 
 
 def payment_accept(document: Document) -> bool:
     accept = True
     all_sum_document = get_all_sum_document(document)
-    if all_sum_document > document.cash.summa:
-        accept = False
 
-    return accept
+    return accept if document.cash.summa >= all_sum_document else not accept
