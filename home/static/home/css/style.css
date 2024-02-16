@@ -380,7 +380,7 @@ legend {
 }
 
 .toc a {
-    color: sienna;
+    color: #2a5954;
 }
 
 .toc a:hover {
@@ -681,4 +681,8 @@ content-counters(li);
 
 .table-field-id {
     color: black;
+}
+
+.table-group-divider{
+    cursor: pointer;
 }

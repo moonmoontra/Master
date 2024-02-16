@@ -244,3 +244,7 @@
 .dark-theme .table-field-id{
     color: #ffffff;
 }
+
+.table-group-divider{
+    cursor: pointer;
+}
