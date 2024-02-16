@@ -57,7 +57,7 @@
                 <ul class="category-list">
                     <li>
                         {{ document_product }}
-                            <a type="button" hx-get="{% url 'document_product_edit' document_product.pk %}"
+                            <a style="order: 2; margin-left: auto" type="button" hx-get="{% url 'document_product_edit' document_product.pk %}"
                                hx-target=".container"
                                hx-push-url="true"><span style="color: #65c056">{{ document_product.count }} {{ document_product.product.unit_of_measure }}</span></a>
                     </li>

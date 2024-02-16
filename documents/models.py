@@ -1,7 +1,7 @@
 import locale
-
 from django.db import models
 from django.urls import reverse
+import pymorphy3
 
 from persons.models import Provider
 from products.models import PriceName, ProductRefBook
@@ -29,10 +29,14 @@ class Document(BaseData):
     paid = models.BooleanField(default=False, verbose_name='Сплачено')
 
     def __str__(self):
-        locale.setlocale(locale.LC_TIME, 'uk_UA.UTF-8')
-        formatted_date = self.create_date.strftime('%d %B %Y, %H:%M')
-        locale.setlocale(locale.LC_TIME, '')
-        return 'Документ [№{pk}] від {create_date}'.format(pk=self.pk, create_date=formatted_date)
+        locale.setlocale(locale.LC_ALL, 'uk-ua')
+        morph = pymorphy3.MorphAnalyzer(lang='uk')
+        month = self.create_date.strftime('%B')
+        parsed_month = morph.parse(month)[0]
+        valid_month = parsed_month.inflect({'gent'})[0]
+        date = self.create_date.strftime('%d {valid_month} %Y, %H:%M'.format(valid_month=valid_month))
+
+        return 'Документ [№{pk}] від {create_date}'.format(pk=self.pk, create_date=date)
 
     def get_absolute_url(self):
         return reverse('document_detail', args=[str(self.id)])
