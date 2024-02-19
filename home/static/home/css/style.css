@@ -372,7 +372,7 @@ legend {
     margin-bottom: 40px;
     margin-left: 40px;
     padding-left: 20px;
-    border-left: 3px solid sienna;
+    border-left: 3px solid #a1b6a3;
 }
 
 .second-menu li {
@@ -563,7 +563,7 @@ content-counters(li);
     top: 0;
     left: 0;
     /*background-color: rgb(254, 253, 248);*/
-    background-color: rgb(248, 248, 248);
+    background-color: rgb(255, 255, 255);
     overflow-x: hidden; /* Отключить горизонтальную прокрутку */
     padding-top: 60px; /* Поместите содержимое 60px сверху */
     transition: 0.5s; /* 0.5 секунд эффект перехода для скольжения в боковой панели */
@@ -595,12 +595,12 @@ content-counters(li);
 /* Положение и стиль кнопки закрытия (верхний правый угол) */
 .sidebar .closebtn {
     position: absolute;
-    top: 0px;
+    top: 2.5%;
     right: 0px;
     font-size: 26px;
     color: rgb(85, 43, 0);
     /*border-top: 2px solid rgb(85, 43, 0);*/
-    border-right: 2px solid rgb(85, 43, 0);
+    /*border-right: 2px solid rgb(85, 43, 0);*/
 }
 
 /* Кнопка для открытия бокового бара */
@@ -698,4 +698,9 @@ content-counters(li);
 
 .table-group-divider{
     cursor: pointer;
+}
+
+.table-link{
+    z-index: 2000;
+    color: #ff9ea7;
 }

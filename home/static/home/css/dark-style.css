@@ -160,10 +160,14 @@
 .dark-theme .sidebar{
     background-color: #1f2326;
 }
-.dark-theme .openbtn{
-    background-color: rgb(43,48,53);
-	color: white;
+.dark-theme .openbtn {
+    background-color: rgb(43, 48, 53);
+    color: white;
     border: none;
+}
+
+.dark-theme .openbtn:hover{
+    color: rgb(241, 78, 86);
 }
 .dark-theme .closebtn{
     color: white;
@@ -245,6 +249,14 @@
     color: #ffffff;
 }
 
-.table-group-divider{
+.dark-theme .table-group-divider{
     cursor: pointer;
+}
+
+.dark-theme .toc a {
+    color: #ff9ea7;
+}
+
+.dark-theme .toc a:hover {
+    border-bottom: 1px solid #ff9ea7;
 }
