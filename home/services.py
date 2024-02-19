@@ -151,6 +151,10 @@ def get_all_sum_document(_object: object) -> Sum:
     return sum([product_in_document.sum for product_in_document in _object.products_in_document.all()])
 
 
+""" product_balancing - метод для редактирования остатка товаров...
+    products - список всех товаров, которые есть в документе"""
+
+
 def product_balancing(document: Document, hold: bool) -> None:
     products = document.products_in_document.all()
 
@@ -172,6 +176,11 @@ def product_balancing(document: Document, hold: bool) -> None:
             else:
                 Document.objects.filter(id=document.id).update(hold=False)
                 raise ValidationError(_('Неможливо провести документ, так як на складі недостатньо товару!'))
+
+
+""" holding_accept - метод проверяющий, разрешено ли проводить документ...
+    products_in_document = список всех товаров, которые есть в документе
+    balance_products - список хранящий количество определенного товара в остатках"""
 
 
 def holding_accept(document: Document) -> bool:
@@ -204,28 +213,22 @@ def cash_balancing(document: Document, paid: bool) -> None:
         if paid:
             if payment_accept(document):
                 Cash.objects.filter(id=cash_id).update(summa=cash.summa - all_sum_document)
-                # Document.objects.filter(id=document.id).update(paid=False)
                 update_objects(Document, {"id": document.id}, paid=True)
             else:
-                # Document.objects.filter(id=document.id).update(paid=False)
                 update_objects(Document, {"id": document.id}, paid=False)
                 raise ValidationError(_('Неможливо провести оплату, в касі недостатньо коштів!'))
         else:
             Cash.objects.filter(id=cash_id).update(summa=cash.summa + all_sum_document)
-            # Document.objects.filter(id=document.id).update(paid=True)
             update_objects(Document, {"id": document.id}, paid=True)
     else:
         if paid:
             Cash.objects.filter(id=cash_id).update(cash.summa + all_sum_document)
-            # Document.objects.filter(id=document.id).update(paid=True)
             update_objects(Document, {"id": document.id}, paid=True)
         else:
             if payment_accept(document):
                 Cash.objects.filter(id=cash_id).update(cash.summa - all_sum_document)
-                # Document.objects.filter(id=document.id).update(paid=False)
                 update_objects(Document, {"id": document.id}, paid=False)
             else:
-                # Document.objects.filter(id=document.id).update(paid=True)
                 update_objects(Document, {"id": document.id}, paid=True)
                 raise ValidationError(_('Неможливо відмінити оплату, в касі недостатньо коштів!'))
 
