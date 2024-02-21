@@ -31,11 +31,12 @@ class Rate(models.Model):
 
 
 class Cash(BaseData):
+    cash_name = models.CharField(max_length=30, default=None, verbose_name='Назва каси')
     summa = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Сума')
     valuta = models.ForeignKey(Valuta, on_delete=models.PROTECT, verbose_name='Валюта', related_name='valuta_cash')
 
     def __str__(self):
-        return '[{pk}] {valuta}'.format(pk=self.pk, valuta=self.valuta)
+        return '[{pk}] {cash_name}'.format(pk=self.pk, cash_name=self.cash_name)
 
     def get_absolute_url(self):
         return reverse('cash_edit', args=[str(self.id)])
